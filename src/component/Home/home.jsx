@@ -41,7 +41,7 @@ class Home extends React.Component {
                                        placeholder="Address, City, Neighborhood or Zip"
                                        name={'city'}
                                         onChange={this.handleInputChange}/>
-                                <Link className="submit"  to={{pathname:'/apartments',state:{test:this.state.city}}} >Search</Link>
+                                <Link className="submit"  to={{pathname:'/apartments',state:{data:this.state.city}}} >Search</Link>
                             </form>
                             <div className="ohiowraper">
                                 <a href="/">

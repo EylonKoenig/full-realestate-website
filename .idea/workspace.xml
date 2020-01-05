@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bb84603b-c383-4314-ba1f-167a0f7b8604" name="Default Changelist" comment="" />
+    <list default="true" id="bb84603b-c383-4314-ba1f-167a0f7b8604" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/Home/home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/Home/home.jsx" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -248,6 +252,8 @@
       <workItem from="1574948262533" duration="698000" />
       <workItem from="1574962243392" duration="516000" />
       <workItem from="1578214818386" duration="900000" />
+      <workItem from="1578216898468" duration="7000" />
+      <workItem from="1578228133012" duration="183000" />
     </task>
     <task id="LOCAL‎00001" summary="commit">
       <created>1573402317950</created>

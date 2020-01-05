@@ -45,7 +45,7 @@ class App extends React.Component {
                         <Route path='/apartments'  component=
                             {(props) => (this.state.loading ?
                                 <SearchPageLoading array={searchLoadingData} page={'filter'}/> :
-                                <Gallery routerData={props.location.state.test} apartments={this.state.apartments} cities={this.state.cities}/>
+                                <Gallery routerData={props.location.state.data} apartments={this.state.apartments} cities={this.state.cities}/>
                                 )}/>
 
                         <Route path="/cities">
