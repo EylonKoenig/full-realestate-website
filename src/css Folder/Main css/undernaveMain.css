@@ -1,0 +1,33 @@
+#undernavMain {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 5px 0;
+    position: relative;
+    z-index: 2;
+
+}
+#undernavMain img {
+    margin-top:7px;
+}
+#undernavMain p {
+    margin: 6px;
+    font-size: 12px;
+    font-weight:0;
+
+}
+#undernavMain button {
+    background-color:#ffffff;
+    color: #d92228;
+    border:1px solid #d92228;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: lighter;
+    text-align:center;
+    padding: 4px 16px;
+    font-size: 11px
+}   
+#undernavMain button:hover{
+    background-color:#EDEDED; 
+}  

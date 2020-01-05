@@ -1,0 +1,60 @@
+.navphone{
+	position: absolute;
+	background-color: white;
+	width: 270px;
+	top:40px;
+	right: 0;
+	margin: 0px;
+	opacity: 0;
+	z-index: 999;
+	visibility: hidden;
+}
+.navphone img{
+	height: 50px;
+	width: 50px;
+	box-shadow: 0 1px 3px rgba(0,0,0,.25);
+}
+.navphone-firstrow{
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid transparent;
+	padding: 20px 20px;
+}
+.navphone-firstrow a{
+	text-decoration:none;
+}
+.navphone-lastpart{
+	list-style: none;
+	padding: 0px 20px;
+}
+.navphone .navphone-lastpart li{
+	display: flex;
+	padding: 0;
+	border-bottom: 1px solid transparent;
+}
+.iosandoridnav {
+    display: flex;
+    list-style: none;
+    font-size: 13px;
+    padding: 2px;
+}
+.iosandoridnav li {
+    color: #999;
+    padding: 16px 5px;
+}
+.iosandoridnav li a {
+    color: #000;
+    text-decoration: none;
+}
+.navigation .iphone{
+	padding: 0px;
+	position: relative;
+}
+.left-nav-bar{
+	padding: 5px ;
+}
+.iphone:hover .navphone{
+visibility: visible;
+transition: opacity 0.5s linear;
+opacity: 1;
+}

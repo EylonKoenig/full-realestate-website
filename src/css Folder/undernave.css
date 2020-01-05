@@ -1,0 +1,41 @@
+#undernav {
+    background-color: #ffffff;
+    display: flex;  
+    padding: 5px 0px;
+    position: relative;
+    z-index: 2;
+    transform: scale(0.8) translate(-12%,2%);
+
+}
+.input-form{
+    min-width: 280px;
+}
+.search-icon{
+    background-color:red;
+    color:white;
+    border-top-right-radius:4px!important;
+    border-bottom-right-radius:4px!important;
+    height: 36px;
+    border: none;
+    width: 42px;
+}
+.search-input{
+    border-radius: 4px;
+    height: 36px;
+    background-color:transparent;
+    margin-left: 10px;
+
+}
+.clear-input{
+    position:absolute;
+    top:6px;
+    right:45px;
+    background-color: transparent;
+    border:none;
+}
+.dropdown-button-menu{
+    border:1px solid #dfdfdf;
+    margin-right:5px;
+    white-space: nowrap;
+    height: fit-content;
+}

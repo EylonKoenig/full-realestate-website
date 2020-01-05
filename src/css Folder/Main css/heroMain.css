@@ -1,0 +1,31 @@
+.hero-image{
+	position: relative;
+	margin-top:150px;
+	height: 100%;
+	width: 100%;
+
+}
+.background-hero-img{
+	position: absolute;
+	top:0;
+	bottom:0;
+	right:0;
+	left:0;
+}
+
+.background-hero-img img{
+position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    z-index: 0;
+    max-width: 100%;
+    min-height: 100%;
+    width: 100%;
+}
+.content-hero{
+	color: white;
+	position: relative;
+	
+
+}
