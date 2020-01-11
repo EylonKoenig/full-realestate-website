@@ -4,8 +4,10 @@ import '../css Folder/loading/loading.css'
 
 class UnderImage extends React.Component {
     render() {
+        console.log(this.props.item);
         const item = this.props.item;
-        const obj = this.props.cardType === 'apartment' ? cities.find(o => o.id === item.cityId) : item;
+        // const obj = this.props.cardType === 'apartment' ? cities.find(o => o.id === item.cityId) : item;
+        const obj = item;
         return (
             <div>
                 {this.props.cardType === 'loading' ?

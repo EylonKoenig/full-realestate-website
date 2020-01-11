@@ -11,6 +11,7 @@ import '../App.css'
 import '../css Folder/filterResults.css'
 import {getDataFromServer} from "../component/server-action";
 import SortResults from "./sortResults";
+import axios from "axios";
 class Gallery extends React.Component {
     constructor(props){
         super(props);
@@ -236,7 +237,12 @@ class Gallery extends React.Component {
     }
     componentDidMount(){
         getDataFromServer('apartments-rt.json',this.handleSuccess);
-        this.setState({filterArray:this.props.apartments});
+        axios.get(`http://localhost:5000/users`)
+            .then(res => {
+                console.log(res.data);
+                this.setState({filterArray:res.data,allApartments:res.data});
+            });
+        // this.setState({filterArray:this.props.apartments});
         if (this.props.routerData){
             let cur = this.state.filterObj;
             cur.cityFilter = this.props.routerData;
@@ -247,9 +253,10 @@ class Gallery extends React.Component {
     }
 
     handleSuccess = (data) => {
-        this.setState({
-            filterArray:data,
-        })};
+        // this.setState({
+        //     filterArray:data,
+        // })
+    };
     getCitiesDataById = (id) => {
         return cities.find(city => city.id === parseInt(id))
     };
@@ -273,6 +280,7 @@ class Gallery extends React.Component {
 
     render() {
         let resultsArray = this.state.isFilted ? this.state.filterList : this.state.allApartments;
+        console.log(this.state);
         return (
             <div>
                 <SearchNav handleInputChange={this.handleInputChange}/>

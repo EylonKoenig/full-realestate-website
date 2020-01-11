@@ -10,6 +10,7 @@ class Card extends React.Component {
         }
     }
     render() {
+        console.log(this.props);
         let insideImg = null;
         let underImg = null;
         let srcImg =null;
@@ -21,7 +22,7 @@ class Card extends React.Component {
         else if (this.props.cardType === 'apartment'){
              insideImg = <InsideImage item={this.props} cardType={'apartment'}/>;
              underImg = <UnderImage item={this.props} cardType={'apartment'}/>;
-             srcImg = `/images/apartment/${this.props.main_image}`
+             srcImg = `${this.props.main_image}`
         }
         else if (this.props.cardType === 'loading'){
              insideImg = null;
