@@ -12,7 +12,7 @@ class SearchPageLoading extends React.Component{
 
     handleInputChange = () => {};
     render() {
-
+        console.log(this.props);
         return (
             <div>
                 {this.props.page === 'filter' &&
