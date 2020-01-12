@@ -1,11 +1,11 @@
 import React from 'react';
-import Card from "../../apartments/Card";
-import SearchNav from "../Search/searchNav";
-import '../../css Folder/search-line.css'
-import '../../css Folder/undernave.css';
-import '../../css Folder/reset.css';
-import '../../css Folder/phonenav.css';
-import '../../css Folder/styletopnav.css';
+import Card from "../card/Card";
+import SearchNav from "../SearchNav/searchNav";
+import '../../css/galleryCss/search-line.css'
+import '../../css/galleryCss/undernave.css';
+import '../../css/galleryCss/reset.css';
+import '../../css/galleryCss/phonenav.css';
+import '../../css/galleryCss/styletopnav.css';
 import '../../App.css'
 
 class SearchPageLoading extends React.Component{

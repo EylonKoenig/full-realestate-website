@@ -1,8 +1,8 @@
-@import url(resetMain.css);
-@import url(undernaveMain.css);
-@import url(styleMain.css);
-@import url(phonenavMain.css);
-@import url(heroMain.css);
+@import url(resetHomePage.css);
+@import url(undernaveHomePage.css);
+@import url(styleHomePage.css);
+@import url(phonenavHomePage.css);
+@import url(heroHomePage.css);
 .social-media {
   background-color: #3b3b3b; }
   .social-media .top-social-media {

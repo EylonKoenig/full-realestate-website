@@ -1,10 +1,10 @@
 import React from 'react';
-import Card from "../card/Card";
-import '../../css/search-line.css'
-import '../../css/undernave.css';
-import '../../css/reset.css';
-import '../../css/phonenav.css';
-import '../../css/styletopnav.css';
+import Card from "../../components/card/Card";
+import '../../css/galleryCss/search-line.css'
+import '../../css/galleryCss/undernave.css';
+import '../../css/galleryCss/reset.css';
+import '../../css/galleryCss/phonenav.css';
+import '../../css/galleryCss/styletopnav.css';
 import '../../App.css'
 
 class CitiesGallery extends React.Component{
