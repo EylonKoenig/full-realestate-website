@@ -59,7 +59,7 @@ class Home extends React.Component {
                     </div>
                 </div>
                 <MainPageCards apartments={this.props.apartments} loading={this.props.loading}/>
-                <MainPageCities cities={this.props.cities} loading={this.props.loading}/>
+                {/*<MainPageCities cities={this.props.cities} loading={this.props.loading}/>*/}
                 <div className="container-fluid">
                     <div className="warperdetails">
                         <div className="detailsheader">

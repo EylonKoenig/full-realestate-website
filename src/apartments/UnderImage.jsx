@@ -1,11 +1,11 @@
 import React from 'react';
-import {cities} from "./data-app/cities";
 import '../css Folder/loading/loading.css'
 
 class UnderImage extends React.Component {
     render() {
         const item = this.props.item;
-        const obj = this.props.cardType === 'apartment' ? cities.find(o => o.id === item.cityId) : item;
+        // const obj = this.props.cardType === 'apartment' ? cities.find(o => o.id === item.cityId) : item;
+        const obj = item;
         return (
             <div>
                 {this.props.cardType === 'loading' ?
@@ -21,16 +21,17 @@ class UnderImage extends React.Component {
                 <div className={'underpicuercontent'}>
                     {item.cardType === 'apartment' &&
                     <ul className={'pictuerdetails'}>
-                        <li>bedsroom :<b>{item.number_of_beds}</b></li>
-                        <li>bathsroom :<b>{item.number_of_rooms}</b></li>
+                        <li>bed :<b>{item.number_of_bath}</b></li>
+                        <li>bath :<b>{item.number_of_room}</b></li>
 
                     </ul>
                     }
                     <div className={'underpicuercontentLast'}>
-                        Country: {obj.country} {`  City: ${obj.label}`}
+                        Country: {obj.country} {`  City: ${obj.city_name}`}
                     </div>
                     {item.cardType === 'apartment' ? (
                         <div className={'email-agent'}>
+                            {/*need to add email agent as  obj.email_agent*/}
                             <button>Email Agent</button>
                         </div>
                     ) : (<div>Description : {obj.description} </div>)}

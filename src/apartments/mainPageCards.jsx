@@ -11,12 +11,13 @@ import {searchLoadingData} from "./data-app/searchLoadingData";
 
 class MainPageCards extends React.Component{
     render() {
+        console.log(this.props);
         return (
             <div>
                 {this.props.loading ? <SearchPageLoading array={searchLoadingData.filter(apartment => apartment.id <= 4)}/> :
                     <div className={'container-fluid'}>
                         <div id={'apartment_row'} className={'row'}>
-                            {this.props.apartments.filter(apartment => apartment.id <= 4).map((item,i) => {
+                            {this.props.apartments.map((item,i) => {
                                 return (
                                     <Card {...item} cardType={'apartment'}  key = {i}/>
                                 )})

@@ -14,6 +14,8 @@ import Footer from "./component/Footer/footer";
 import SearchPageLoading from "./component/Loading/searchPageLoading";
 import {searchLoadingData} from "./apartments/data-app/searchLoadingData";
 
+
+import axios from 'axios';
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -24,11 +26,19 @@ class App extends React.Component {
         }
     }
     componentDidMount(){
-        getDataFromServer('data-rt.json',this.handleSuccess);
+        getDataFromServer('apartments-rt.json',this.handleSuccess);
+        this.test();
+
     };
+    async test(){
+      await axios.get(`http://localhost:5000/users`)
+            .then(res => {
+                console.log(res.data);
+                this.setState({apartments:res.data});
+            });
+    }
     handleSuccess = (data) => {
         this.setState({
-            apartments:data.apartments,
             cities:data.cities,
         });
         setTimeout(() => {
@@ -40,28 +50,28 @@ class App extends React.Component {
         return (
             <Router>
                 <Header/>
-                    <Switch>
+                <Switch>
 
-                        <Route path='/apartments'  component=
-                            {(props) => (this.state.loading ?
+                    <Route path='/apartments'  component=
+                        {(props) => (this.state.loading ?
                                 <SearchPageLoading array={searchLoadingData} page={'filter'}/> :
-                                <Gallery routerData={props.location.state.data} apartments={this.state.apartments} cities={this.state.cities}/>
-                                )}/>
+                                <Gallery routerData={props.location.state.test} apartments={this.state.apartments} cities={this.state.cities}/>
+                        )}/>
 
-                        <Route path="/cities">
-                            {this.state.loading ? <SearchPageLoading array={searchLoadingData} /> :
-                                <CitiesGallery cities={this.state.cities}/>
-                            }
-                        </Route>
-                            <Route path={"/singleApartment/:id"}
-                                   component={(props)  => (this.state.loading ? <p>LOADING</p> : <SingelApartment apartments={this.state.apartments}
-                                                                          aprId={props.match.params.id}
-                                                                          cities={this.state.cities}/>)}/>
-                        <Route path="/">
-                            <Home apartments={this.state.apartments} cities={this.state.cities} loading={this.state.loading}/>
-                        </Route>
-                    </Switch>
-            <Footer {...this.props}/>
+                    <Route path="/cities">
+                        {this.state.loading ? <SearchPageLoading array={searchLoadingData} /> :
+                            <CitiesGallery cities={this.state.cities}/>
+                        }
+                    </Route>
+                    <Route path={"/singleApartment/:id"}
+                           component={(props)  => (this.state.loading ? <p>LOADING</p> : <SingelApartment apartments={this.state.apartments}
+                                                                                                          aprId={props.match.params.id}
+                                                                                                          cities={this.state.cities}/>)}/>
+                    <Route path="/">
+                        <Home apartments={this.state.apartments} cities={this.state.cities} loading={this.state.loading}/>
+                    </Route>
+                </Switch>
+                <Footer {...this.props}/>
             </Router>
         );
     }

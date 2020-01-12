@@ -4,17 +4,19 @@ class InsideImage extends React.Component {
 
     render() {
         function numberWithCommas(x) {
-            x = x*1000000;
             x = Math.round(x);
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
         var status = undefined;
         const item = this.props.item;
-        if (item.for_sale || item.for_rent){
-            if (item.for_sale){
-                 status = 'sale';
-            } else {  status = 'rent'}
+        if(item.sale_status === 'both'){
+            status = ' sale or rent'
+        } else if (item.sale_status === 'sale'){
+            status = ' sale'
+        } else {
+            status = ' rent'
         }
+        //enum('sale','rent','both')  sale_status
         return (
             <div id={'contentImg'} className={'inimagecontent'}>
                 <span className={'topleftimg green-background'}>{item.description}</span>
