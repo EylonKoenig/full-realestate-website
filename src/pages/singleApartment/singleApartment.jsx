@@ -1,15 +1,9 @@
 import React from 'react';
-<<<<<<< HEAD:src/pages/singleApartment/singleApartment.jsx
-// import {agents} from './data-app/agents';
-// import {Link} from "react-router-dom";
-import '../../css/apratment css/apratment.css'
-import AprtmentFrom from "../pages/singleApartment/singleApartmentForm";
-=======
-import '../css Folder/apratment css/apratment.css'
-import AprtmentFrom from "./apartmentForm";
->>>>>>> origin/master:src/apartments/singelApartment.jsx
+import '../../css/apratmentCss/apratment.css'
+import ApartmentFrom from "./singleApartmentForm";
 
-class SingelApartment extends React.Component {
+
+class singleApartment extends React.Component {
     constructor(props) {
         super(props);
         const apartmentId = this.props.aprId;
@@ -75,7 +69,7 @@ class SingelApartment extends React.Component {
                             </a>
                         </div>
                         <div className={'from-wrapper'}>
-                            <AprtmentFrom/>
+                            <ApartmentFrom/>
                         </div>
                         <div className={'inside-carousel'}>
                             <div className={'carousel-overlay topleftimg'} style={{top:'unset'}}>
@@ -150,4 +144,4 @@ class SingelApartment extends React.Component {
 
     )}}
 
-export default SingelApartment;
+export default singleApartment;

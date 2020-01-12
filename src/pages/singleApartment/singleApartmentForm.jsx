@@ -1,7 +1,6 @@
 import React from 'react';
 
-
-class AprtmentFrom extends React.Component {
+class ApartmentFrom extends React.Component {
 
     render() {
 
@@ -50,6 +49,6 @@ class AprtmentFrom extends React.Component {
     }
 }
 
-export default AprtmentFrom;
+export default ApartmentFrom;
 
 

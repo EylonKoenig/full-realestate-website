@@ -1,17 +1,18 @@
 import React from 'react';
-import Card from "./components/card/Card";
-import './css/search-line.css';
-import '../css/undernave.css';
-import '../css/reset.css';
-import '../css/phonenav.css';
-import '../css/styletopnav.css';
-import '../App.css'
-import {searchLoadingData} from "../data-app/searchLoadingData";
-import SearchPageLoading from "../components/Loading/searchPageLoading";
+import Card from "../../components/card/Card";
+import '../../css/galleryCss/search-line.css';
+import '../../css/galleryCss/undernave.css';
+import '../../css/galleryCss/reset.css';
+import '../../css/galleryCss/phonenav.css';
+import '../../css/galleryCss/styletopnav.css';
+import '../../App.css'
+import {searchLoadingData} from "../../data-app/searchLoadingData";
+import SearchPageLoading from "../../components/Loading/searchPageLoading";
 
 
 class MainPageCities extends React.Component{
     render() {
+        console.log(searchLoadingData)
         return (
             <div className={'container-fluid my-5'}>
                 <div className="top-image-page my-3 d-flex">
