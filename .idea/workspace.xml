@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="bb84603b-c383-4314-ba1f-167a0f7b8604" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -22,6 +23,9 @@
       <change beforePath="$PROJECT_DIR$/src/pages/singleApartment/singleApartment.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/singleApartment/singleApartment.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/singleApartment/singleApartmentForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/singleApartment/singleApartmentForm.jsx" afterDir="false" />
     </list>
+=======
+    <list default="true" id="bb84603b-c383-4314-ba1f-167a0f7b8604" name="Default Changelist" comment="" />
+>>>>>>> 4f181f0ec207809dd7059143aee091f1cb79005d
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
