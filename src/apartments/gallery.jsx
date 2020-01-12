@@ -236,13 +236,10 @@ class Gallery extends React.Component {
             (curCity.country.toLowerCase()+" "+curCity.label.toLowerCase()).indexOf(value.toLowerCase()) !== -1 ;
     }
     componentDidMount(){
-        getDataFromServer('apartments-rt.json',this.handleSuccess);
-        axios.get(`http://localhost:5000/users`)
+        axios.get(`http://localhost:5000/apartments`)
             .then(res => {
-                console.log(res.data);
                 this.setState({filterArray:res.data,allApartments:res.data});
             });
-        // this.setState({filterArray:this.props.apartments});
         if (this.props.routerData){
             let cur = this.state.filterObj;
             cur.cityFilter = this.props.routerData;
@@ -252,11 +249,6 @@ class Gallery extends React.Component {
         }
     }
 
-    handleSuccess = (data) => {
-        // this.setState({
-        //     filterArray:data,
-        // })
-    };
     getCitiesDataById = (id) => {
         return cities.find(city => city.id === parseInt(id))
     };
@@ -280,7 +272,6 @@ class Gallery extends React.Component {
 
     render() {
         let resultsArray = this.state.isFilted ? this.state.filterList : this.state.allApartments;
-        console.log(this.state);
         return (
             <div>
                 <SearchNav handleInputChange={this.handleInputChange}/>

@@ -34,12 +34,11 @@ class App extends React.Component {
       await axios.get(`http://localhost:5000/users`)
             .then(res => {
                 console.log(res.data);
-                this.setState({apartments:res.data,loading:false});
+                this.setState({apartments:res.data});
             });
     }
     handleSuccess = (data) => {
         this.setState({
-            // apartments:data.apartments,
             cities:data.cities,
         });
         setTimeout(() => {

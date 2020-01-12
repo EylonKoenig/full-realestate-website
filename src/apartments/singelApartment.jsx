@@ -1,6 +1,4 @@
 import React from 'react';
-// import {agents} from './data-app/agents';
-// import {Link} from "react-router-dom";
 import '../css Folder/apratment css/apratment.css'
 import AprtmentFrom from "./apartmentForm";
 
@@ -16,28 +14,32 @@ class SingelApartment extends React.Component {
     getApartmentDataById = (id) => {
             return this.props.apartments.find(apartment => apartment.id === parseInt(id))
         };
-    getCitiesDataById = (id) => {
-        return this.props.cities.find(city => city.id === parseInt(id))
-    };
+    // need to add axios for each single
     render() {
         const {apartment} = this.state;
         let carouselItems = [];
-        let detailsArr = ['number_of_beds','number_of_rooms','sqft'];
+        let detailsArr = ['number_of_bath','number_of_room','sqft'];
         let detailsArrLabel = ['Beds','Rooms','sqft'];
         let statue = '';
-        let city = this.getCitiesDataById(apartment.cityId);
-        if (apartment.for_rent || apartment.for_sale){
-            statue = (apartment.for_sale) ? 'Sale' : 'Rent';
+        let city = apartment.city_name;
+        const images = apartment.images.toString().split(',');
+        let status = null;
+        if(apartment.sale_status === 'both'){
+            status = ' sale or rent'
+        } else if (apartment.sale_status === 'sale'){
+            status = ' sale'
+        } else {
+            status = ' rent'
         }
-        carouselItems.push(apartment.images.map((item,i) =>  {
+        carouselItems.push(images.map((item,i) =>  {
             return (
                             <div className='carousel-item' key={i}>
-                 <img src={`../images/apartment/${apartment.images[i]}`} className="d-block w-100" alt="..."/>
+                 <img src={`/${images[i]}`} className="d-block w-100" alt="..."/>
                              </div>
             )
         }));
+        console.log(this.props);
         function numberWithCommas(x) {
-            x = x*1000000;
             x = Math.round(x);
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
@@ -52,7 +54,7 @@ class SingelApartment extends React.Component {
                         <div id="carouselExampleFade" className="carousel slide carousel-fade" data-ride="carousel">
                             <div className="carousel-inner">
                                 <div className="carousel-item active">
-                                    <img src={`../images/apartment/${apartment.main_image}`} className="d-block w-100" alt="..." data-interval="10000" ref={'cpDev1'}/>
+                                    <img src={`/${apartment.main_image}`} className="d-block w-100" alt="..." data-interval="10000" ref={'cpDev1'}/>
                                 </div>
                                 {carouselItems}
                             </div>
@@ -90,8 +92,8 @@ class SingelApartment extends React.Component {
                             })}
                             </ul>
                             <ul className={'pictuerdetails'}>
-                                <li>{`${city.label}`}</li>
-                                <li>{`${city.country}`}</li>
+                                <li>{`${apartment.city_name}`}</li>
+                                <li>{`${apartment.country}`}</li>
                             </ul>
                         </div>
                         <div className={'container-fluid SubDetails'}>
@@ -130,7 +132,7 @@ class SingelApartment extends React.Component {
                         </div>
                     </div>
                     <div id="map-container-google-1" className="z-depth-1-half map-container" style={{height: "200px", width:"50%"}}>
-                        <iframe title={'googleMaps'} src={`https://maps.google.com/maps?q=${(city.country+city.label).replace(/\s/g, '')}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
+                        <iframe title={'googleMaps'} src={`https://maps.google.com/maps?q=${(apartment.country).replace(/\s/g, '')}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
                                 frameBorder="0"
                                 style={{border:"0"}} allowFullScreen>
                         </iframe>

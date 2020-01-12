@@ -10,7 +10,6 @@ class Card extends React.Component {
         }
     }
     render() {
-        console.log(this.props);
         let insideImg = null;
         let underImg = null;
         let srcImg =null;
@@ -29,6 +28,7 @@ class Card extends React.Component {
              underImg = <UnderImage item={this.props} cardType={'loading'}/>;
              srcImg = this.props.main_image
         }
+        const images =this.props.images ? this.props.images.toString().split(',') : '';
         return (
             <div className={"cell col-12 col-sm-6 col-md-4 col-lg-3"}>
                 <div className={'text-above-picter'} id={"picter"}>{this.props.title}</div>
@@ -41,7 +41,7 @@ class Card extends React.Component {
                              onMouseOver={() => this.setState({hover:true})}>
                                 <img className={'images-center'} id={'image-bottom'} src={srcImg} alt={''}/>
                             {this.props.cardType === 'apartment' &&
-                                <img className={'images-center'} id={'image-top'} src={`/images/apartment/${this.props.images[0]}`} alt={''} style={{position: 'absolute',left:0}}/>}
+                                <img className={'images-center'} id={'image-top'} src={`${images[0]}`} alt={''} style={{position: 'absolute',left:0}}/>}
                             {insideImg}
                         </div>
                         {underImg}
