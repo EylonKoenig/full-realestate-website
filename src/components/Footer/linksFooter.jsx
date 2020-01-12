@@ -1,5 +1,5 @@
 import React from 'react';
-import {linksData} from "../../apartments/data-app/popular-section links";
+import {linksData} from "../../data-app/popular-section links";
 
 class LinksFooter extends React.Component{
     constructor(props) {

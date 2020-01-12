@@ -7,6 +7,7 @@ import '../../css Folder/reset.css';
 import '../../css Folder/phonenav.css';
 import '../../css Folder/styletopnav.css';
 import '../../App.css'
+
 class SearchPageLoading extends React.Component{
 
     handleInputChange = () => {};

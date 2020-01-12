@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="bb84603b-c383-4314-ba1f-167a0f7b8604" name="Default Changelist" comment="" />
+=======
     <list default="true" id="bb84603b-c383-4314-ba1f-167a0f7b8604" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
@@ -12,6 +15,7 @@
       <change beforePath="$PROJECT_DIR$/src/apartments/singelApartment.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/apartments/singelApartment.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/component/Loading/searchPageLoading.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/Loading/searchPageLoading.jsx" afterDir="false" />
     </list>
+>>>>>>> origin/master
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

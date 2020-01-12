@@ -5,7 +5,7 @@ import BedSearch from "./search component/bedsSearch";
 import RoomsSearch from "./search component/roomsSearch";
 import TextSearch from "./search component/textSearch";
 import ListingStatus from "./search component/listingSatus";
-import '../../css Folder/undernave.css'
+import '../../css/undernave.css'
 
 class SearchNav extends Component {
     constructor(props) {

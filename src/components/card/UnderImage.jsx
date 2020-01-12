@@ -1,5 +1,10 @@
 import React from 'react';
+<<<<<<< HEAD:src/components/card/UnderImage.jsx
+import {cities} from "../data-app/cities";
+import '../css/loading/loading.css'
+=======
 import '../css Folder/loading/loading.css'
+>>>>>>> origin/master:src/apartments/UnderImage.jsx
 
 class UnderImage extends React.Component {
     render() {
