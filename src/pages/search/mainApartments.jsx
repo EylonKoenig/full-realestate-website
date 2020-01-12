@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Header from "../Header/header";
-import Gallery from "../../apartments/gallery";
+import Gallery from "../../pages/search/gallery";
 class MainApartments extends React.Component {
     render () {
         return(

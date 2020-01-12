@@ -3,7 +3,7 @@ import '../../css Folder/styletopnav.css';
 import '../../css Folder/phonenav.css'
 import MainLine from "./mainLine";
 import LeftNavBar from '../../apartments/leftNavBar';
-import {headerData} from '../../apartments/data-app/headerData'
+import {headerData} from '../../data-app/headerData'
 import {Link} from "react-router-dom";
 
 class Header extends React.Component{

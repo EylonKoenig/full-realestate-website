@@ -12,8 +12,7 @@ class ColMeunNavbar extends React.Component{
                         return (
                             <li key={index}><a href={value.herfLink}>{value.title}</a></li>
                         )
-                    })
-                    }
+                    })}
                 </ul>
             </div>
         )

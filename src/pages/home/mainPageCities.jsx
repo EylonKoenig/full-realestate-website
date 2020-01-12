@@ -1,13 +1,13 @@
 import React from 'react';
-import Card from "./Card";
-import '../css Folder/search-line.css';
-import '../css Folder/undernave.css';
-import '../css Folder/reset.css';
-import '../css Folder/phonenav.css';
-import '../css Folder/styletopnav.css';
+import Card from "./components/card/Card";
+import './css/search-line.css';
+import '../css/undernave.css';
+import '../css/reset.css';
+import '../css/phonenav.css';
+import '../css/styletopnav.css';
 import '../App.css'
-import {searchLoadingData} from "./data-app/searchLoadingData";
-import SearchPageLoading from "../component/Loading/searchPageLoading";
+import {searchLoadingData} from "../data-app/searchLoadingData";
+import SearchPageLoading from "../components/Loading/searchPageLoading";
 
 
 class MainPageCities extends React.Component{

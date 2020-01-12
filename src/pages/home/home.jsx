@@ -1,8 +1,8 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import '../../css Folder/Main css/main.css'
-import MainPageCities from "../../apartments/mainPageCities";
-import MainPageCards from "../../apartments/mainPageCards";
+import '../../css/Main css/main.css'
+import MainPageCities from "../../mainPageCities";
+import MainPageCards from "../../pages/search/mainPageCards";
 import LinksFooter from "./linksFooter";
 class Home extends React.Component {
     constructor(props){

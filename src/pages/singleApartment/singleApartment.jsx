@@ -1,8 +1,8 @@
 import React from 'react';
 // import {agents} from './data-app/agents';
 // import {Link} from "react-router-dom";
-import '../css Folder/apratment css/apratment.css'
-import AprtmentFrom from "./apartmentForm";
+import '../../css/apratment css/apratment.css'
+import AprtmentFrom from "../pages/singleApartment/singleApartmentForm";
 
 class SingelApartment extends React.Component {
     constructor(props) {

@@ -1,15 +1,15 @@
 import React from 'react';
-import SearchNav from "../component/Search/searchNav";
-import {cities} from "./data-app/cities";
+import SearchNav from "../components/Search/searchNav";
+import {cities} from "../data-app/cities";
 import Card from "./Card";
-import '../css Folder/search-line.css';
-import '../css Folder/undernave.css';
-import '../css Folder/reset.css';
-import '../css Folder/phonenav.css';
-import '../css Folder/styletopnav.css';
+import '../css/search-line.css';
+import '../css/undernave.css';
+import '../css/reset.css';
+import '../css/phonenav.css';
+import '../css/styletopnav.css';
 import '../App.css'
-import '../css Folder/filterResults.css'
-import {getDataFromServer} from "../component/server-action";
+import '../css/filterResults.css'
+import {getDataFromServer} from "../data-app/server-action";
 import SortResults from "./sortResults";
 class Gallery extends React.Component {
     constructor(props){

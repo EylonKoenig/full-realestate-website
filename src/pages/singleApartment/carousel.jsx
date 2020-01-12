@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css Folder/apratment css/apratment.css'
+import '../css/apratment css/apratment.css'
 
 class Carousel extends React.Component {
     constructor(props) {

@@ -39,8 +39,8 @@ class AprtmentFrom extends React.Component {
                     <button type="submit" name="commit"
                             className="submit btn btn-block btn-primary"
                             id="primary_lead_submit">
-                        <div className="icon-email-container"><span
-                            className="email-icon"></span>
+                        <div className="icon-email-container">
+                            <span className="email-icon"></span>
                             <span className="">Email Agent</span>
                         </div>
                     </button>
