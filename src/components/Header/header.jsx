@@ -1,8 +1,8 @@
 import React from 'react';
-import '../../css Folder/styletopnav.css';
-import '../../css Folder/phonenav.css'
+import '../../css/galleryCss/styletopnav.css';
+import '../../css/galleryCss/phonenav.css'
 import MainLine from "./mainLine";
-import LeftNavBar from '../../apartments/leftNavBar';
+import LeftNavBar from './leftNavBar';
 import {headerData} from '../../data-app/headerData'
 import {Link} from "react-router-dom";
 

@@ -1,6 +1,6 @@
 import React from 'react';
-import {cities} from "../data-app/cities";
-import '../css/loading/loading.css'
+import {cities} from "../../data-app/cities";
+import '../../css/loading/loading.css'
 
 class UnderImage extends React.Component {
     render() {

@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import ProtopyType from "./search component/proptyType";
-import PriceSearch from "./search component/priceSearch";
-import BedSearch from "./search component/bedsSearch";
-import RoomsSearch from "./search component/roomsSearch";
-import TextSearch from "./search component/textSearch";
-import ListingStatus from "./search component/listingSatus";
-import '../../css/undernave.css'
+import ProtopyType from "./searchComponent/proptyType";
+import PriceSearch from "./searchComponent/priceSearch";
+import BedSearch from "./searchComponent/bedsSearch";
+import RoomsSearch from "./searchComponent/roomsSearch";
+import TextSearch from "./searchComponent/textSearch";
+import ListingStatus from "./searchComponent/listingSatus";
+import '../../css/galleryCss/undernave.css'
 
 class SearchNav extends Component {
     constructor(props) {

@@ -2,9 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bb84603b-c383-4314-ba1f-167a0f7b8604" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/Home/home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/Home/home.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Loading/searchPageLoading.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Loading/searchPageLoading.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchNav/searchNav.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchNav/searchNav.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/card/UnderImage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/card/UnderImage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/css/homePageCss/homePage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/homePageCss/homePage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data-app/headerData.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data-app/headerData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data-app/popular-section links.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data-app/popular-section links.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/cities/citiesGallery.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/cities/citiesGallery.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/home/home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/home/home.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/home/mainPageCards.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/home/mainPageCards.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/home/mainPageCities.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/home/mainPageCities.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/search/gallery.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/search/gallery.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/search/mainApartments.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/search/mainApartments.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/singleApartment/carousel.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/singleApartment/carousel.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/singleApartment/singleApartment.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/singleApartment/singleApartment.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/singleApartment/singleApartmentForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/singleApartment/singleApartmentForm.jsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,8 +31,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -33,8 +49,11 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="editing.templates" />
@@ -42,11 +61,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\eylon\Desktop\new-real\src\component\Loading" />
-      <recent name="C:\Users\eylon\Desktop\new-real\src\component\Home" />
-      <recent name="C:\Users\eylon\Desktop\new-real\src\apartments" />
-      <recent name="C:\Users\eylon\Desktop\new-real\src\component" />
-      <recent name="C:\Users\eylon\Desktop\new-real\src\component\Header" />
+      <recent name="$PROJECT_DIR$/src/css/galleryCss" />
+      <recent name="$PROJECT_DIR$/src/pages/home" />
+      <recent name="$PROJECT_DIR$/src/pages/search" />
+      <recent name="$PROJECT_DIR$/src/components/Footer" />
+      <recent name="$PROJECT_DIR$/src/pages/cities" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -254,6 +273,21 @@
       <workItem from="1578214818386" duration="900000" />
       <workItem from="1578216898468" duration="7000" />
       <workItem from="1578228133012" duration="183000" />
+      <workItem from="1578581495950" duration="435000" />
+      <workItem from="1578702749596" duration="1786000" />
+      <workItem from="1578704667745" duration="560000" />
+      <workItem from="1578747335191" duration="979000" />
+      <workItem from="1578749621385" duration="1759000" />
+      <workItem from="1578751680774" duration="1785000" />
+      <workItem from="1578753495433" duration="498000" />
+      <workItem from="1578756353033" duration="1709000" />
+      <workItem from="1578758168970" duration="1824000" />
+      <workItem from="1578760025353" duration="1682000" />
+      <workItem from="1578761840913" duration="1263000" />
+      <workItem from="1578763656266" duration="1606000" />
+      <workItem from="1578812264198" duration="1463000" />
+      <workItem from="1578814162257" duration="906000" />
+      <workItem from="1578826748804" duration="865000" />
     </task>
     <task id="LOCAL‎00001" summary="commit">
       <created>1573402317950</created>
@@ -283,16 +317,5 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="commit" />
     <option name="LAST_COMMIT_MESSAGE" value="commit" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/component/Search/search component/textSearch.jsx</url>
-          <line>4</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
