@@ -4,7 +4,6 @@ import axios from "axios";
 import SearchNav from "../../components/SearchNav/searchNav";
 import Card from "../../components/card/Card";
 import SortResults from "./sortResults";
-import {getDataFromServer} from "../../data-app/server-action";
 import {searchLoadingData} from "../../data-app/searchLoadingData";
 import {cities} from "../../data-app/cities";
 import '../../css/galleryCss/search-line.css';
@@ -239,10 +238,8 @@ class Gallery extends React.Component {
         }
     }
     async getdata(){
-        await axios.get(`http://localhost:5000/apartments`)
-            .then(res => {
-                this.setState({allApartments:res.data.apartments,loading:false});
-            });
+        const data = await axios.get(`http://localhost:5000/apartments`);
+        this.setState({allApartments:data.data.apartments,loading:false});
     }
 
     getCitiesDataById = (id) => {

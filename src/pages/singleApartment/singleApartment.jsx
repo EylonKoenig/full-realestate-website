@@ -17,16 +17,10 @@ class singleApartment extends React.Component {
         this.getdata();
     }
     async getdata(){
-        await axios.get(`http://localhost:5000/apartments/${this.props.aprId}`)
-            .then(res => {
-                this.setState({apartment:res.data[0],loading:false});
-            });
+        const data = await axios.get(`http://localhost:5000/apartments/${this.props.aprId}`);
+        this.setState({apartment:data.data[0],loading:false});
         this.setState({images:this.state.apartment.images.toString().split(',')})
     }
-    setData(){
-
-    }
-    // need to add axios for each single
     render() {
         const {apartment} = this.state;
         let carouselItems = [];
@@ -43,7 +37,7 @@ class singleApartment extends React.Component {
         carouselItems.push(this.state.images.map((item,i) =>  {
             return (
                 <div className='carousel-item' key={i}>
-                    <img src={`/${this.state.images[i]}`} className="d-block w-100" alt="..."/>
+                    <img src={`http://localhost:5000/${this.state.images[i]}`} className="d-block w-100" alt="..."/>
                 </div>
             )
         }));
@@ -63,7 +57,7 @@ class singleApartment extends React.Component {
                             <div id="carouselExampleFade" className="carousel slide carousel-fade" data-ride="carousel">
                                 <div className="carousel-inner">
                                     <div className="carousel-item active">
-                                        <img src={`/${apartment.main_image}`} className="d-block w-100" alt="..." data-interval="10000" ref={'cpDev1'}/>
+                                        <img src={`http://localhost:5000/${apartment.main_image}`} className="d-block w-100" alt="..." data-interval="10000" ref={'cpDev1'}/>
                                     </div>
                                     {carouselItems}
                                 </div>

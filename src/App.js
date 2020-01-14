@@ -6,7 +6,6 @@ import Home from "./pages/home/home";
 import CitiesGallery from "./pages/cities/citiesGallery";
 import SingleApartment from "./pages/singleApartment/singleApartment";
 import SearchPageLoading from "./components/Loading/searchPageLoading";
-import {getDataFromServer} from "./data-app/server-action";
 import {searchLoadingData} from "./data-app/searchLoadingData";
 import Footer from "./components/Footer/footer";
 import {
