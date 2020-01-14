@@ -1,6 +1,14 @@
 import React from 'react';
 
 class LeftNavBar extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+
+        };
+
+    }
+
     render() {
         return (
             <div className="topright align-center ml-auto">
@@ -45,6 +53,7 @@ class LeftNavBar extends React.Component{
                             </ul>
                         </div>
                     </li>
+                    <li className="navigation"><a href="/">Log In</a></li>
                     <li className="navigation"><a href="/">Sing Up</a></li>
                     <li style={{borderBottom:'none'}}><span>|</span></li>
                     <li className="navigation"><a href="/">Advertise</a></li>
