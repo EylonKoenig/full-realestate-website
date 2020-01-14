@@ -25,10 +25,8 @@ class Home extends React.Component {
         this.getData();
     };
     async getData(){
-        await axios.get(`http://localhost:5000/apartments/four/bydate`)
-            .then(res => {
-                this.setState({apartments:res.data,loading: false});
-            });
+        const data = await axios.get(`http://localhost:5000/apartments/four/bydate`);
+        this.setState({apartments:data.data,loading: false});
     }
 
     render () {
