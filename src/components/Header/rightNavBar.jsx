@@ -1,6 +1,6 @@
 import React from 'react';
 
-class rightNavBar extends React.Component{
+class RightNavBar extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
@@ -52,8 +52,9 @@ class rightNavBar extends React.Component{
                             </ul>
                         </div>
                     </li>
-                    <li className="navigation"><a href="/">Log In</a></li>
-                    <li className="navigation"><a href="/">Sing Up</a></li>
+                    <li className="navigation"><button onClick={this.props.loginHandelClick()}>Log In</button></li>
+                    <li className="navigation"><button onClick={this.props.singUpHandelClick()}>Sing Up</button></li>
+
                     <li style={{borderBottom:'none'}}><span>|</span></li>
                     <li className="navigation"><a href="/">Advertise</a></li>
                 </ul>
@@ -62,4 +63,4 @@ class rightNavBar extends React.Component{
     }
 }
 
-export default rightNavBar;
+export default RightNavBar;
