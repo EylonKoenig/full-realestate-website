@@ -11,10 +11,22 @@ import FamilyImagesAndForm from "./familyImagesAndForm";
 import LinksNAR from "./linksNAR";
 import FooterAD from "./footerAD";
 import '../../css/homePageCss/homePage.css'
+import axios from "axios";
 
 class Home extends React.Component {
     constructor(props){
         super(props);
+        this.state = {
+            apartments:{},
+            loading:true,
+        }
+    }
+    componentDidMount(){
+        this.getData();
+    };
+    async getData(){
+        const data = await axios.get(`http://localhost:5000/apartments/four/bydate`);
+        this.setState({apartments:data.data,loading: false});
     }
 
     render () {
@@ -22,7 +34,7 @@ class Home extends React.Component {
             <div style={{overflow:'hidden'}}>
                 <UnderNavMain/>
                 <HomeMainImage/>
-                <MainPageCards apartments={this.props.apartments} loading={this.props.loading}/>
+                <MainPageCards apartments={this.state.apartments} loading={this.state.loading}/>
                 {/*<MainPageCities cities={this.props.cities} loading={this.props.loading}/>*/}
                 <StatisticsData/>
                 <BuyingInsidersGuide/>

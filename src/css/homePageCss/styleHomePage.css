@@ -3,7 +3,7 @@ h2 {
 
 #main {
   height: 412px;
-  background-image: url("https://imgur.com/j26zOVe.png");
+  background-image: url("http://localhost:5000/images/general/main_image.png");
   background-size: cover;
   background-position: center center; }
 
@@ -206,7 +206,7 @@ button.myButton {
 
 #hero-image {
   height: 350px;
-  background-image: url("https://imgur.com/j26zOVe.png");
+  background-image: url("http://localhost:5000/images/general/main_image.png");
   background-size: cover;
   background-position: center center; }
 

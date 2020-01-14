@@ -4,7 +4,7 @@ import axios from "axios";
 import SearchNav from "../../components/SearchNav/searchNav";
 import Card from "../../components/card/Card";
 import SortResults from "./sortResults";
-import {getDataFromServer} from "../../data-app/server-action";
+import {searchLoadingData} from "../../data-app/searchLoadingData";
 import {cities} from "../../data-app/cities";
 import '../../css/galleryCss/search-line.css';
 import '../../css/galleryCss/undernave.css';
@@ -13,6 +13,7 @@ import '../../css/galleryCss/phonenav.css';
 import '../../css/galleryCss/styletopnav.css';
 import '../../css/galleryCss/filterResults.css';
 import '../../App.css';
+import SearchPageLoading from "../../components/Loading/searchPageLoading";
 
 class Gallery extends React.Component {
     constructor(props){
@@ -23,24 +24,13 @@ class Gallery extends React.Component {
             allApartments: this.props.apartments,
             filterArray: this.props.apartments,
             isFilted:false,
+            loading:true,
         }
     }
 
     handleInputChange = (event) => {
         const {name, value} = event.target;
         const {filterObj} = this.state;
-        // if (name === 'propetyCheckBox') {
-        //     if (value === 'any') {
-        //         this.setState({filterList: []})
-        //     } else if (this.state.filterList.includes(value)) {
-        //         let curArray = this.state.filterList;
-        //         let index = curArray.indexOf(value);
-        //         curArray.splice(index, 1);
-        //         this.setState({filterList: curArray});
-        //     } else {
-        //         this.setState({filterList: [...this.state.filterList, value]})
-        //     }
-        // }
         this.setState({
             [name]: value
         });
@@ -238,10 +228,7 @@ class Gallery extends React.Component {
             (curCity.country.toLowerCase()+" "+curCity.label.toLowerCase()).indexOf(value.toLowerCase()) !== -1 ;
     }
     componentDidMount(){
-        axios.get(`http://localhost:5000/apartments`)
-            .then(res => {
-                this.setState({filterArray:res.data,allApartments:res.data});
-            });
+        this.getdata();
         if (this.props.routerData){
             let cur = this.state.filterObj;
             cur.cityFilter = this.props.routerData;
@@ -249,6 +236,10 @@ class Gallery extends React.Component {
             document.getElementById('searchInput').value = this.props.routerData;
             this.filter();
         }
+    }
+    async getdata(){
+        const data = await axios.get(`http://localhost:5000/apartments`);
+        this.setState({allApartments:data.data.apartments,loading:false});
     }
 
     getCitiesDataById = (id) => {
@@ -274,19 +265,21 @@ class Gallery extends React.Component {
 
     render() {
         let resultsArray = this.state.isFilted ? this.state.filterList : this.state.allApartments;
+        console.log(this.state);
         return (
             <div>
                 <SearchNav handleInputChange={this.handleInputChange}/>
+                {this.state.loading ? <SearchPageLoading array={searchLoadingData} /> :
                 <div className={'container-fluid'}>
-                    <SortResults resultsLength={resultsArray.length} handleInputChange={this.handleInputChange}/>
+                    <SortResults resultsLength={this.state.allApartments.length} handleInputChange={this.handleInputChange}/>
                     <div id={'apartment_row'} className={'row'}>
-                        {resultsArray.map((item,i) => {
+                            {this.state.allApartments.map((item,i) => {
                             return (
                                 <Card {...item} cardType={'apartment'}  key = {i}/>
                             )})
                         }
                     </div>
-                </div>
+                </div>}
             </div>
 
 

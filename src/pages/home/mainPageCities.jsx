@@ -12,7 +12,6 @@ import SearchPageLoading from "../../components/Loading/searchPageLoading";
 
 class MainPageCities extends React.Component{
     render() {
-        console.log(searchLoadingData)
         return (
             <div className={'container-fluid my-5'}>
                 <div className="top-image-page my-3 d-flex">

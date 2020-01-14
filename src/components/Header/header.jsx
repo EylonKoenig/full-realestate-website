@@ -21,7 +21,6 @@ class Header extends React.Component{
 
     };
     render() {
-        // const handle = document.getElementsByClassName('navbar-collapse collapse show');
         if (!this.state.isOpen){
             document.getElementById('navbarNav').onclick = function() {
                document.getElementById('header-button').click()
@@ -35,7 +34,7 @@ class Header extends React.Component{
                     </button>
                     <div className="flex">
                         <div id="logo" className="navbar-brand ">
-                            <Link to={'/'}><img src="../images/logo.png" width="150px" alt={''}/></Link>
+                            <Link to={'/'}><img src="http://localhost:5000/images/general/logo.png" width="150px" alt={''}/></Link>
                         </div>
                         <div id="navbarNav" className="collapse navbar-collapse">
                             <ul className={"navigation navbar-nav order-lg-3 navbar-items"}>

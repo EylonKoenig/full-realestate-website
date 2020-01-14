@@ -4,9 +4,7 @@ import '../../css/loading/loading.css'
 
 class UnderImage extends React.Component {
     render() {
-        const item = this.props.item;
-        // const obj = this.props.cardType === 'apartment' ? cities.find(o => o.id === item.cityId) : item;
-        const obj = item;
+        const apartment = this.props.item;
         return (
             <div>
                 {this.props.cardType === 'loading' ?
@@ -20,22 +18,22 @@ class UnderImage extends React.Component {
                 </div>
                     :
                 <div className={'underpicuercontent'}>
-                    {item.cardType === 'apartment' &&
+                    {apartment.cardType === 'apartment' &&
                     <ul className={'pictuerdetails'}>
-                        <li>bed :<b>{item.number_of_bath}</b></li>
-                        <li>bath :<b>{item.number_of_room}</b></li>
+                        <li>bed :<b>{apartment.number_of_bath}</b></li>
+                        <li>bath :<b>{apartment.number_of_room}</b></li>
 
                     </ul>
                     }
                     <div className={'underpicuercontentLast'}>
-                        Country: {obj.country} {`  City: ${obj.city_name}`}
+                        Country: {apartment.country} {`  City: ${apartment.city_name}`}
                     </div>
-                    {item.cardType === 'apartment' ? (
+                    {apartment.cardType === 'apartment' ? (
                         <div className={'email-agent'}>
                             {/*need to add email agent as  obj.email_agent*/}
                             <button>Email Agent</button>
                         </div>
-                    ) : (<div>Description : {obj.description} </div>)}
+                    ) : (<div>Description : {apartment.description} </div>)}
                 </div>}
             </div>
 
