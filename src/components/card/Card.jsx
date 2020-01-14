@@ -1,7 +1,9 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
+
 import InsideImage from "./InsideImage";
 import UnderImage from "./UnderImage";
-import {Link} from 'react-router-dom';
+
 class Card extends React.Component {
     constructor(props) {
         super(props);
@@ -16,7 +18,7 @@ class Card extends React.Component {
         if (this.props.cardType === 'city'){
              insideImg = null;
              underImg = <UnderImage item={this.props} cardType={'city'}/>;
-             srcImg = `/images/cities/${this.props.image}`;
+             srcImg = `http://localhost:5000/${this.props.image}`;
         }
         else if (this.props.cardType === 'apartment'){
              insideImg = <InsideImage item={this.props} cardType={'apartment'}/>;
@@ -28,7 +30,9 @@ class Card extends React.Component {
              underImg = <UnderImage item={this.props} cardType={'loading'}/>;
              srcImg = this.props.main_image
         }
-        const images =this.props.images ? this.props.images.toString().split(',') : '';
+        const images = this.props.images.toString().split(',')
+            .map(image => "http://localhost:5000/"+image);
+        console.log(images);
         return (
             <div className={"cell col-12 col-sm-6 col-md-4 col-lg-3"}>
                 <div className={'text-above-picter'} id={"picter"}>{this.props.title}</div>
