@@ -53,8 +53,10 @@ font-weight: 400;
     padding:0;
     border:none;
 }
-.flex {
-    display: contents;
+.navbar-position {
+    justify-content:space-between;
+    display:flex;
+    width:100%;
 }
 
 .header  li:hover{

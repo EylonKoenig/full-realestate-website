@@ -12,9 +12,7 @@ class Card extends React.Component {
         }
     }
     render() {
-        let insideImg = null;
-        let underImg = null;
-        let srcImg =null;
+        let insideImg , underImg , srcImg = null;
         if (this.props.cardType === 'city'){
              insideImg = null;
              underImg = <UnderImage item={this.props} cardType={'city'}/>;
