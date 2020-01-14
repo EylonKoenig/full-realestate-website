@@ -22,14 +22,17 @@
     list-style: none;
     background-color:white;
     font-size: 12px;
-font-weight: 400;
+    font-weight: 400;
 }
+.navigation button {
+    border: none;
+}
+
 #logo {
     height: 35px;
     display: flex;
     align-items: center;
 }
-
 
 .nav-item {
     padding: 15px 10px;
@@ -53,8 +56,10 @@ font-weight: 400;
     padding:0;
     border:none;
 }
-.flex {
-    display: contents;
+.navbar-position {
+    justify-content:space-between;
+    display:flex;
+    width:100%;
 }
 
 .header  li:hover{

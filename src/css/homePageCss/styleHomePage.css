@@ -2,8 +2,8 @@ h2 {
   font-weight: bold; }
 
 #main {
-  height: 412px;
-  background-image: url("http://localhost:5000/images/general/main_image.png");
+  height: 500px;
+  background-image: url("http://localhost:5000/images/general/takeover-desktop.jpg");
   background-size: cover;
   background-position: center center; }
 
@@ -178,7 +178,6 @@ button.myButton {
   display: flex;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
-  justify-content: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center; }

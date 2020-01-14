@@ -1,0 +1,63 @@
+.login_or_singUp_page{
+  padding-top:4.2rem;
+  padding-bottom:4.2rem;
+  background:rgba(0,0,0,0.5);
+  position: fixed;
+  z-index: 99;
+  height: 100vh;
+  a{
+    text-decoration:none !important;
+  }
+  h1,h2,h3{
+    font-family: 'Kaushan Script', cursive;
+  }
+}
+
+.myform{
+  position: absolute;
+  transform: translate(-50%,0%);
+  top: 80px;
+  left: 50%;
+  z-index: 100;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 1rem;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  pointer-events: auto;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0,0,0,.2);
+  border-radius: 1.1rem;
+  outline: 0;
+  max-width: 500px;
+}
+.tx-tfm{
+  text-transform:uppercase;
+}
+.mybtn{
+  color: white;
+  border: none;
+  border-radius:50px;
+  background: #b32827;
+  &:hover{
+    background: #912422;
+    color: white;
+  }
+}
+
+.form_link{
+  color: red;
+  border: none;
+  &:hover{
+    color: #b32827;
+
+  }
+}
+
+form .error {
+  color: #ff0000;
+}
+
+

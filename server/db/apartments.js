@@ -58,8 +58,7 @@ function getbyId(apartmentId) {
 
 function getLastFourApartment() {
     return new Promise((resolve, reject) => {
-        connection.query(`
-        call getApartmentsByCreateTime()`, (error, results, fields) => {
+        connection.query(`call getApartmentsByCreateTime()`, (error, results, fields) => {
             if (error) {
                 reject(error);
                 return;
