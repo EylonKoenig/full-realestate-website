@@ -6,7 +6,7 @@ class Footer  extends React.Component{
         let curentWindow = this.props.location.pathname;
         const homePage = "/";
         return (
-            <footer>
+            <footer className={curentWindow !== homePage && 'pushBottom'}  style={{bottom:curentWindow == "/apartments" && "unset"}}>
                 <div className={`container-fluid social-media p-0`}>
                     <div style={{background: `#333`}}>
                         <div className="top-social-media">

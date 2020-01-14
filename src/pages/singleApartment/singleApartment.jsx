@@ -2,6 +2,7 @@ import React from 'react';
 import '../../css/apratmentCss/apratment.css'
 import ApartmentFrom from "./singleApartmentForm";
 import axios from "axios";
+import GoogleMap from "../../components/GoogleMap/googleMap";
 
 
 class singleApartment extends React.Component {
@@ -135,12 +136,7 @@ class singleApartment extends React.Component {
                             </div>
                         </div>
                         {!this.state.loading &&
-                        <div id="map-container-google-1" className="z-depth-1-half map-container" style={{height: "200px", width:"50%"}}>
-                            <iframe title={'googleMaps'} src={`https://maps.google.com/maps?q=${(apartment.country).replace(/\s/g, '')}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
-                                    frameBorder="0"
-                                    style={{border:"0"}} allowFullScreen>
-                            </iframe>
-                        </div>
+                        <GoogleMap address={apartment.city_name}/>
                         }
                     </div>
                 </div>
