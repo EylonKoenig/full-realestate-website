@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Header from "./components/Header/header";
 import Gallery from "./pages/search/gallery";
 import Home from "./pages/home/home";
@@ -15,39 +16,15 @@ import {
 } from "react-router-dom";
 
 
-import axios from 'axios';
+
 class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            apartments:[],
             cities:[],
-            loading: true
         }
     }
-    componentDidMount(){
-        getDataFromServer('apartments-rt.json',this.handleSuccess);
-        this.test();
-
-    };
-    async test(){
-      await axios.get(`http://localhost:5000/users`)
-            .then(res => {
-                console.log(res.data);
-                this.setState({apartments:res.data});
-            });
-    }
-    handleSuccess = (data) => {
-        this.setState({
-            cities:data.cities,
-        });
-        setTimeout(() => {
-            this.setState({loading: false});
-        }, 2000)
-    };
-
     render() {
-        console.log(this.state);
         return (
             <Router>
                 <Header/>
@@ -56,7 +33,7 @@ class App extends React.Component {
                     <Route path='/apartments'  component=
                         {(props) => (this.state.loading ?
                                 <SearchPageLoading array={searchLoadingData} page={'filter'}/> :
-                                <Gallery routerData={props.location.state.test} apartments={this.state.apartments} cities={this.state.cities}/>
+                                <Gallery routerData={props.location.state.test}/>
                         )}/>
 
                         <Route path="/cities">
@@ -65,11 +42,11 @@ class App extends React.Component {
                             }
                         </Route>
                             <Route path={"/singleApartment/:id"}
-                                   component={(props)  => (this.state.loading ? <p>LOADING</p> : <SingleApartment apartments={this.state.apartments}
-                                                                          aprId={props.match.params.id}
-                                                                          cities={this.state.cities}/>)}/>
+                                   component={(props)  => (<SingleApartment apartments={this.state.apartments}
+                                                                            aprId={props.match.params.id}
+                                                                            cities={this.state.cities}/>)}/>
                         <Route path="/">
-                            <Home apartments={this.state.apartments} cities={this.state.cities} loading={this.state.loading}/>
+                            <Home  cities={this.state.cities}/>
                         </Route>
                     </Switch>
             <Footer {...this.props}/>
