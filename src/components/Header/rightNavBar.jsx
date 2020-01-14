@@ -1,12 +1,11 @@
 import React from 'react';
 
-class LeftNavBar extends React.Component{
+class rightNavBar extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
 
         };
-
     }
 
     render() {
@@ -63,4 +62,4 @@ class LeftNavBar extends React.Component{
     }
 }
 
-export default LeftNavBar;
+export default rightNavBar;

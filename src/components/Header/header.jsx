@@ -2,7 +2,7 @@ import React from 'react';
 import '../../css/galleryCss/styletopnav.css';
 import '../../css/galleryCss/phonenav.css'
 import MainLine from "./mainLine";
-import LeftNavBar from './leftNavBar';
+import RightNavBar from './rightNavBar';
 import {headerData} from '../../data-app/headerData'
 import {Link} from "react-router-dom";
 
@@ -45,7 +45,7 @@ class Header extends React.Component{
                                 })}
                             </ul>
                         </div>
-                        <LeftNavBar/>
+                        <RightNavBar/>
                     </div>
                 </nav>
             </div>
