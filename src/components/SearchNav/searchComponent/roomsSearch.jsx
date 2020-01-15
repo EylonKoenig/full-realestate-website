@@ -10,7 +10,7 @@ class RoomsSearch extends React.Component{
                     </div>
                     <div className="filter-btn-group">
                         <input id="Baths-any-desktop"
-                               name="roomfilter"
+                               name="minRooms"
                                type="radio"
                                value="0"
                                checked="checked"
@@ -19,23 +19,23 @@ class RoomsSearch extends React.Component{
                         <label htmlFor="Baths-any-desktop" className="filter-btn-group-text-sm"
                                style={{padding: '8px'}}>Any</label>
 
-                        <input id="Baths-1-desktop" name="roomfilter" type="radio" value="1"
+                        <input id="Baths-1-desktop" name="minRooms" type="radio" value="1"
                                onChange={handleInputChange}/>
                         <label htmlFor="Baths-1-desktop">1+</label>
 
-                        <input id="Baths-2-desktop" name="roomfilter" type="radio" value="2"
+                        <input id="Baths-2-desktop" name="minRooms" type="radio" value="2"
                                onChange={handleInputChange}/>
                         <label htmlFor="Baths-2-desktop">2+</label>
 
-                        <input id="Baths-3-desktop" name="roomfilter" type="radio" value="3"
+                        <input id="Baths-3-desktop" name="minRooms" type="radio" value="3"
                                onChange={handleInputChange}/>
                         <label htmlFor="Baths-3-desktop">3+</label>
 
-                        <input id="Baths-4-desktop" name="roomfilter" type="radio" value="4"
+                        <input id="Baths-4-desktop" name="minRooms" type="radio" value="4"
                                onChange={handleInputChange}/>
                         <label htmlFor="Baths-4-desktop">4+</label>
 
-                        <input id="Baths-5-desktop" name="roomfilter" type="radio" value="5"
+                        <input id="Baths-5-desktop" name="minRooms" type="radio" value="5"
                                onChange={handleInputChange}/>
                         <label htmlFor="Baths-5-desktop">5+</label>
 
@@ -45,8 +45,8 @@ class RoomsSearch extends React.Component{
                         <div className="row filter-range-input justify-content-around">
                             <div className="col-5">
                                 <div className="filter-select-wrapper">
-                                    <input list={'roomfilter'} type={'text'} name={'roomfilter'} className="form-control" placeholder={'From'}  onChange={handleInputChange}/>
-                                    <datalist id={'roomfilter'}>
+                                    <input list={'minRooms'} type={'text'} name={'minRooms'} className="form-control" placeholder={'From'}  onChange={handleInputChange}/>
+                                    <datalist id={'minRooms'}>
                                         <option value="0"/>
                                         <option value="1"/>
                                         <option value="2"/>

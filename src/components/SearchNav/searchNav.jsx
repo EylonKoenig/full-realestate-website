@@ -37,13 +37,13 @@ class SearchNav extends Component {
                             </div>
                         </div>
                         <div className="dropdown">
-                            <button className="btn btn-default dropdown-toggle dropdown-button-menu" type="button" id="menu1" data-toggle="dropdown">Beds
-                            </button>
-                            <BedSearch handleInputChange={handleInputChange}/>
-                        </div>
-                        <div className="dropdown">
                             <button className="btn btn-default dropdown-toggle dropdown-button-menu" type="button" id="menu1" data-toggle="dropdown">Rooms</button>
                             <RoomsSearch handleInputChange={handleInputChange}/>
+                        </div>
+                        <div className="dropdown">
+                            <button className="btn btn-default dropdown-toggle dropdown-button-menu" type="button" id="menu1" data-toggle="dropdown">Baths
+                            </button>
+                            <BedSearch handleInputChange={handleInputChange}/>
                         </div>
                         <div className="dropdown">
                             <button className="btn btn-default dropdown-toggle dropdown-button-menu" type="button" id="menu1" data-toggle="dropdown">Listing Satus</button>

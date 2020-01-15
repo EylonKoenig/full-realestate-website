@@ -8,7 +8,7 @@ class TextSearch extends React.Component{
                 <input id="searchInput"
                        className="form-control my-0 py-1 search-input"
                        type="text"
-                       name={"city"}
+                       name={"address"}
                        placeholder="Manhattan, NY"
                        aria-label="Search"
                        onChange={handleInputChange}/>
