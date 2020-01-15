@@ -12,7 +12,6 @@ import SearchPageLoading from "../../components/Loading/searchPageLoading";
 
 class MainPageCards extends React.Component{
     render() {
-        console.log(this.props);
         return (
             <div>
                 {this.props.loading ? <SearchPageLoading array={searchLoadingData.slice(0,4)}/> :
