@@ -90,7 +90,7 @@ class Gallery extends React.Component {
         console.log(this.state.filterObj);
         return (
             <div>
-                <SearchNav handleInputChange={this.handleInputChange}/>
+                <SearchNav handleInputChange={this.handleInputChange} filtes={this.state.filterObj}/>
                 {this.state.loading ? <SearchPageLoading array={searchLoadingData} /> :
                 <div className={'container-fluid'}>
                     <SortResults resultsLength={this.state.allApartments.length} handleInputChange={this.handleInputChange}/>
