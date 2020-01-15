@@ -90,6 +90,7 @@ class CustomersBuilder {
     build() {
         this.query += `GROUP BY ap.id\
                        LIMIT ${(this.page-1)*this.size}, ${this.size};`
+        console.log(this.query, this.params);
         return { query: this.query, params: this.params };
     }
 

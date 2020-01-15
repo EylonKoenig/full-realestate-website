@@ -1,4 +1,6 @@
 import React from 'react';
+import axios from "axios";
+
 import MainPageCities from "./mainPageCities";
 import MainPageCards from "./mainPageCards";
 import LinksFooter from "../../components/Footer/linksFooter";
@@ -11,7 +13,7 @@ import FamilyImagesAndForm from "./familyImagesAndForm";
 import LinksNAR from "./linksNAR";
 import FooterAD from "./footerAD";
 import '../../css/homePageCss/homePage.css'
-import axios from "axios";
+
 
 class Home extends React.Component {
     constructor(props){
@@ -35,7 +37,7 @@ class Home extends React.Component {
                 <UnderNavMain/>
                 <HomeMainImage/>
                 <MainPageCards apartments={this.state.apartments} loading={this.state.loading}/>
-                {/*<MainPageCities cities={this.props.cities} loading={this.props.loading}/>*/}
+                <MainPageCities cities={this.props.cities} loading={this.props.loading}/>
                 <StatisticsData/>
                 <BuyingInsidersGuide/>
                 <RentingInsidersGuide/>

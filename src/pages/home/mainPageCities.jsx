@@ -24,7 +24,7 @@ class MainPageCities extends React.Component{
                     </div>
                 </div>
                 <div id={'apartment_row'} className={'row'}>
-                    {this.props.loading ? <SearchPageLoading array={searchLoadingData.filter(apartment => apartment.id <= 4)}/> :
+                    {this.props.loading ? <SearchPageLoading array={searchLoadingData.slice(0,4)}/> :
                     this.props.cities.filter(city => city.id <= 4  ).map((item,i) => {
                         return (
                             <Card {...item} cardType={'city'}  key = {i}/>

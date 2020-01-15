@@ -17,6 +17,9 @@ class MainPageCards extends React.Component{
             <div>
                 {this.props.loading ? <SearchPageLoading array={searchLoadingData.slice(0,4)}/> :
                     <div className={'container-fluid'}>
+                        <div className="warperdetails">
+                                <h2>Latest Real Estate Update</h2>
+                        </div>
                         <div id={'apartment_row'} className={'row'}>
                             {this.props.apartments.map((item,i) => {
                                 return (
