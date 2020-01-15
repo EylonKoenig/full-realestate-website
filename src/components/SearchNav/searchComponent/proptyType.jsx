@@ -11,11 +11,10 @@ class ProtopyType extends React.Component{
                     <div id={''} className="row" onClick={this.disbleCloseingError}>
                         <div className="col-6 checkbox">
                             <input type="checkbox"
-                                   name="propetyCheckBox"
-                                   value="any"
+                                   name="property_type"
+                                   value=""
                                    id="any"
                                 // checked="checked"
-                                   data-val="any"
                                    onChange={this.props.handleInputChange}/>
                             <label className="" htmlFor="any">
                                 <div className="cover-svg d-inline-block">
@@ -39,7 +38,7 @@ class ProtopyType extends React.Component{
                         </div>
                         <div className="col-6 checkbox">
                             <input type="checkbox"
-                                   name="propetyCheckBox"
+                                   name="property_type"
                                    value="house"
                                    id="house"
                                    onChange={this.props.handleInputChange}/>
@@ -60,7 +59,7 @@ class ProtopyType extends React.Component{
                         </div>
                         <div className="col-6 checkbox">
                             <input type="checkbox"
-                                   name="propetyCheckBox"
+                                   name="property_type"
                                    value="Farm Rance"
                                    id="farmRance"
                                    onChange={this.props.handleInputChange}/>
@@ -85,7 +84,7 @@ class ProtopyType extends React.Component{
                         </div>
                         <div className="col-6 checkbox">
                             <input type="checkbox"
-                                   name="propetyCheckBox"
+                                   name="property_type"
                                    value="Multi Family"
                                    id="multiFamily"
                                    onChange={this.props.handleInputChange}/>
@@ -107,7 +106,7 @@ class ProtopyType extends React.Component{
                         </div>
                         <div className="col-6 checkbox">
                             <input type="checkbox"
-                                   name="propetyCheckBox"
+                                   name="property_type"
                                    value="land"
                                    id="Land"
                                    onChange={this.props.handleInputChange}/>
@@ -128,7 +127,7 @@ class ProtopyType extends React.Component{
                         </div>
                         <div className="col-6 checkbox">
                             <input type="checkbox"
-                                   name="propetyCheckBox"
+                                   name="property_type"
                                    value="condo"
                                    id="Condo"
                                    onChange={this.props.handleInputChange}/>
@@ -149,7 +148,7 @@ class ProtopyType extends React.Component{
                         </div>
                         <div className="col-6 checkbox">
                             <input type="checkbox"
-                                   name="propetyCheckBox"
+                                   name="property_type"
                                    value="Co-op"
                                    id="coOp"
                                    onChange={this.props.handleInputChange}/>
@@ -175,7 +174,7 @@ class ProtopyType extends React.Component{
                         </div>
                         <div className="col-6 checkbox">
                             <input type="checkbox"
-                                   name="propetyCheckBox"
+                                   name="property_type"
                                    value="tomnhome"
                                    id="Tomnhome"
                                    onChange={this.props.handleInputChange}/>

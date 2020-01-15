@@ -1,20 +1,19 @@
 const connection = require('./config');
 const Builder = require('./builders/apartmentsBuilder');
 
-function getAllapartments({ apartmentId, property_type, city, country, minPrice, maxPrice, minRoom, maxRoom, minBath, maxBath, sale_status, page = 1, size = 12 }) {
+function getAllapartments({ property_type, city, country, minPrice, maxPrice, minRooms, maxRooms, minBath, maxBath, sale_status, page = 1, size = 12 }) {
     return new Promise((resolve, reject) => {
         try {
             const { query, params } = Builder.allApartments(page, size)
-                .apartmentId(apartmentId)
-                .property_type(property_type)
                 .city(city)
                 .country(country)
                 .minPrice(minPrice)
                 .maxPrice(maxPrice)
-                .minRoom(minRoom)
-                .maxRoom(maxRoom)
+                .minRooms(minRooms)
+                .maxRooms(maxRooms)
                 .minBath(minBath)
                 .maxBath(maxBath)
+                .property_type(property_type)
                 .sale_status(sale_status)
                 .build();
             connection.query(query, params, (error, results, fields) => {

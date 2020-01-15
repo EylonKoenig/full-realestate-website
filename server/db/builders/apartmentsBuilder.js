@@ -14,77 +14,77 @@ class CustomersBuilder {
     apartmentId(aparId) {
         if (aparId) {
             this.params.push(aparId)
-            this.query += 'AND ap.id = ?'
+            this.query += 'AND ap.id = ? '
         }
         return this;
     }
     property_type(property) {
         if (property) {
             this.params.push(property)
-            this.query += 'AND property = ap.address'
+            this.query += 'AND property_type = ? '
         }
         return this;
     }
     city(cityId) {
         if (cityId) {
             this.params.push(cityId)
-            this.query += 'AND city_id = ?'
+            this.query += 'AND city_id = ? '
         }
         return this;
     }
     country(countryId) {
         if (countryId) {
             this.params.push(countryId)
-            this.query += 'AND countries.id = ?'
+            this.query += 'AND countries.id = ? '
         }
         return this;
     }
     minPrice(minimumPrice) {
         if (minimumPrice) {
             this.params.push(minimumPrice)
-            this.query += 'AND ap.price > ?'
+            this.query += 'AND ap.price > ? '
         }
         return this;
     }
     maxPrice(maximumPrice) {
         if (maximumPrice) {
             this.params.push(maximumPrice)
-            this.query += 'AND ap.price < ?'
+            this.query += 'AND ap.price < ? '
         }
         return this;
     }
-    minRoom(minimumRoom) {
+    minRooms(minimumRoom) {
         if (minimumRoom) {
             this.params.push(minimumRoom)
-            this.query += 'AND number_of_room < ?'
+            this.query += 'AND number_of_room > ? '
         }
         return this;
     }
-    maxRoom(maximumRoom) {
+    maxRooms(maximumRoom) {
         if (maximumRoom) {
             this.params.push(maximumRoom)
-            this.query += 'AND number_of_room > ?'
+            this.query += 'AND number_of_room < ? '
         }
         return this;
     }
     minBath(minimumBath) {
         if (minimumBath) {
             this.params.push(minimumBath)
-            this.query += 'AND number_of_bath < ?'
+            this.query += 'AND number_of_bath > ? '
         }
         return this;
     }
     maxBath(maximumBath) {
         if (maximumBath) {
             this.params.push(maximumBath)
-            this.query += 'AND number_of_bath > ?'
+            this.query += 'AND number_of_bath < ? '
         }
         return this;
     }
     sale_status(sale_status) {
         if (sale_status) {
             this.params.push(sale_status)
-            this.query += 'AND sale_status = ?'
+            this.query += 'AND sale_status = ? '
         }
         return this;
     }

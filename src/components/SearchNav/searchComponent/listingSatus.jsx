@@ -10,14 +10,14 @@ class ListingStatus extends React.Component {
                     <div>
                         <div className={'check'}>For Sale</div>
                         <label className="switch">
-                            <input type="checkbox" name={'for_sell'}  onChange={handleInputChange}/>
+                            <input type="checkbox" name={'for_sale'}  onChange={handleInputChange}/>
                                 <span className="slider round"></span>
                         </label>
                     </div>
                     <div>
                         <div>For Rent</div>
                         <label className="switch">
-                            <input type="checkbox" name={'for_rent'} value={true} onChange={handleInputChange}/>
+                            <input type="checkbox" name={'for_rent'} onChange={handleInputChange}/>
                             <span className="slider round"></span>
                         </label>
                     </div>
