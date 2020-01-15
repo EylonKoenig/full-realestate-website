@@ -6,12 +6,12 @@ class Footer  extends React.Component{
         let curentWindow = this.props.location.pathname;
         const homePage = "/";
         return (
-            <footer className={curentWindow !== homePage && 'pushBottom'}  style={{bottom:curentWindow == "/apartments" && "unset"}}>
+            <footer className={curentWindow !== homePage ? 'pushBottom' : undefined}  style={{bottom:curentWindow == "/apartments" && "unset"}}>
                 <div className={`container-fluid social-media p-0`}>
                     <div style={{background: `#333`}}>
                         <div className="top-social-media">
                             <div className="social-media-icon">
-                                <ul className="px-3">
+                                <ul className="px-3 justify-content-center">
                                     <li className="btn btn-li btn-light"><a href="https://www.facebook.com/realtor.com"
                                                                             title="Like us on Facebook">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="13" height="24">

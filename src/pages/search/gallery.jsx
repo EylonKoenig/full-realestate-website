@@ -264,8 +264,6 @@ class Gallery extends React.Component {
 
 
     render() {
-        let resultsArray = this.state.isFilted ? this.state.filterList : this.state.allApartments;
-        console.log(this.state);
         return (
             <div>
                 <SearchNav handleInputChange={this.handleInputChange}/>

@@ -2,7 +2,7 @@ h2 {
   font-weight: bold; }
 
 #main {
-  height: 500px;
+  height: 570px;
   background-image: url("http://localhost:5000/images/general/takeover-desktop.jpg");
   background-size: cover;
   background-position: center center; }
@@ -173,10 +173,10 @@ button.myButton {
     text-decoration: none; }
 
 .ohio {
+  margin-bottom: 5px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
   -ms-flex-pack: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
