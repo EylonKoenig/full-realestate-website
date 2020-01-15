@@ -1,5 +1,6 @@
 class CustomersBuilder {
     constructor(page, size) {
+        // eslint-disable-next-line no-multi-str
         this.query = 'SELECT ap.* ,ap.id,c.name `city_name`,countries.`name` country,group_concat(images.url) images,concat(u.first_name,u.last_name) onwer,u.email\
                             FROM apartments ap join cities c ON ap.city_id = c.id\
                             JOIN countries  ON c.country_id = countries.id \
@@ -90,6 +91,7 @@ class CustomersBuilder {
     build() {
         this.query += `GROUP BY ap.id\
                        LIMIT ${(this.page-1)*this.size}, ${this.size};`
+        console.log(this.query, this.params);
         return { query: this.query, params: this.params };
     }
 

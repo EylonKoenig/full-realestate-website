@@ -1,21 +1,7 @@
 const connection = require('./config');
 const Builder = require('./builders/apartmentsBuilder');
 
-function getAllapartments({
-    apartmentId,
-    property_type,
-    city,
-    country,
-    minPrice,
-    maxPrice,
-    minRoom,
-    maxRoom,
-    minBath,
-    maxBath,
-    sale_status,
-    page = 1,
-    size = 12
-}) {
+function getAllapartments({ apartmentId, property_type, city, country, minPrice, maxPrice, minRoom, maxRoom, minBath, maxBath, sale_status, page = 1, size = 12 }) {
     return new Promise((resolve, reject) => {
         try {
             const { query, params } = Builder.allApartments(page, size)

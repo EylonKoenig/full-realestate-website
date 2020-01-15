@@ -1,17 +1,19 @@
 #wraper {
-    margin:0 auto;
+    margin: 0 auto;
 }
+
 .header {
     display: flex;
     justify-content: space-between;
     align-items: stretch;
     padding: 0 20px;
     border-bottom: 1px solid #e6e6e6;
-
 }
+
 .align-center {
     display: flex;
 }
+
 .align-center img {
     height: 25px;
     margin: 3px 0;
@@ -20,11 +22,13 @@
 .navigation {
     display: flex;
     list-style: none;
-    background-color:white;
+    background-color: white;
     font-size: 12px;
     font-weight: 400;
 }
+
 .navigation button {
+    background: transparent;
     border: none;
 }
 
@@ -43,106 +47,114 @@
     padding: 9px 5px;
     border-bottom: 2px solid transparent;
 }
+
 .navigation li a {
     color: #000;
     text-decoration: none;
-    font-size:12px;
-}
-#navbarNav > ul > li a {
-    display: block;
-}
-.burger-button {
-    transition: 1s;
-    padding:0;
-    border:none;
-}
-.navbar-position {
-    justify-content:space-between;
-    display:flex;
-    width:100%;
+    font-size: 12px;
 }
 
-.header  li:hover{
+#navbarNav>ul>li a {
+    display: block;
+}
+
+.burger-button {
+    transition: 1s;
+    padding: 0;
+    border: none;
+}
+
+.navbar-position {
+    justify-content: space-between;
+    display: flex;
+    width: 100%;
+}
+
+.header li:hover {
     border-bottom: 2px solid red;
 }
-.navbar-items{
+
+.navbar-items {
     height: 100%;
 }
-.insidenav{
-        position: absolute;
-        display: none;
-        justify-content: space-around;
-        background-color: #ffffff;
-        padding: 10px 50px;
-        top:37px;
-        left: 0px;
-        right: 0px;
-        animation: fade-in 1s;
-        z-index: 999;
-        box-shadow: 0 1px 3px rgba(0,0,0,.25);
+
+.insidenav {
+    position: absolute;
+    display: none;
+    justify-content: space-around;
+    background-color: #ffffff;
+    padding: 10px 50px;
+    top: 37px;
+    left: 0px;
+    right: 0px;
+    animation: fade-in 1s;
+    z-index: 999;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .25);
 }
-.insidenav h3{
+
+.insidenav h3 {
     font-size: 10px;
     color: black;
     margin-bottom: 5px;
     font-weight: 700;
     text-align: left;
 }
-.insidenav ul{
+
+.insidenav ul {
     list-style-type: none;
 }
-.insidenav li{
+
+.insidenav li {
     list-style-type: none;
-
 }
 
-#second-nav li{
-        padding: 5px 0;
-        margin: 0;
-        bottom-border:none;
+#second-nav li {
+    padding: 5px 0;
+    margin: 0;
+    bottom-border: none;
 }
 
-#second-nav li:hover{
+#second-nav li:hover {
     border-bottom: none;
-
 }
 
-#second-nav a:hover{
+#second-nav a:hover {
     color: red;
     text-decoration: underline;
 }
+
 @keyframes fade-in {
-    0%{opacity:0}
-    100%{opacity: 1}
+    0% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1
+    }
 }
+
 @media (max-width: 991.98px) {
     .header {
         z-index: 999;
         width: 100%;
         background-color: white;
-
     }
     #navbarNav {
         animation: fade-in 1s!important;
-        background-color: rgba(0,0,0,0.8);
+        background-color: rgba(0, 0, 0, 0.8);
         position: fixed;
-        z-index:999;
-        top:38px;
-        left:0;
+        z-index: 999;
+        top: 38px;
+        left: 0;
         height: 100vh;
         width: 100vw;
-
     }
-    .navigation  {
-        max-width:150px;
+    .navigation {
+        max-width: 150px;
     }
 }
-@media (min-width: 991.98px){
-    .nav-item:hover  .insidenav {
+
+@media (min-width: 991.98px) {
+    .nav-item:hover .insidenav {
         display: flex;
     }
 }
-
-
-
-
