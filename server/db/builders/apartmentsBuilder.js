@@ -32,10 +32,10 @@ class CustomersBuilder {
         }
         return this;
     }
-    country(countryId) {
-        if (countryId) {
-            this.params.push(countryId)
-            this.query += 'AND countries.id = ? '
+    country(coutry_name) {
+        if (coutry_name) {
+            this.params.push('%' + coutry_name + '%')
+            this.query += 'AND countries.`name` like ? '
         }
         return this;
     }

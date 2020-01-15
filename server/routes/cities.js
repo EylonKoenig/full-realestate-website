@@ -9,7 +9,6 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/:cities', function(req, res, next) {
-    console.log(req.params.cities);
     getCitiesByName(req.params.cities)
         .then(customer => res.status(200).json(customer))
         .catch(error => res.status(500).json({ error: error.message }));

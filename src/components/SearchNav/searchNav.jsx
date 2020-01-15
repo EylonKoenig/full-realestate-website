@@ -6,6 +6,7 @@ import RoomsSearch from "./searchComponent/roomsSearch";
 import TextSearch from "./searchComponent/textSearch";
 import ListingStatus from "./searchComponent/listingSatus";
 import '../../css/galleryCss/undernave.css'
+import CountrySearch from './searchComponent/countrySearch';
 
 class SearchNav extends Component {
     constructor(props) {
@@ -19,13 +20,19 @@ class SearchNav extends Component {
     };
     render() {
         const handleInputChange = this.props.handleInputChange;
+        const {filtes} = this.props;
+
         return (
             <form>
                 <div id="undernav">
-                    <div className="search">
+                    {/* <div className="search">
                         <TextSearch handleInputChange={handleInputChange}/>
-                    </div>
+                    </div> */}
                     <div className=" cover-serach-input container-fluid d-none d-lg-flex">
+                        <div className="dropdown d-flex">
+    <button className="btn btn-default dropdown-toggle dropdown-button-menu" type="button" id="menu11" data-toggle="dropdown">{filtes.country ? filtes.country :"Country"  }</button>
+                        <CountrySearch handleInputChange={handleInputChange}/>
+                        </div>
                         <div className="dropdown d-flex">
                             <button className="btn btn-default dropdown-toggle dropdown-button-menu" type="button" id="menu1" data-toggle="dropdown">Price</button>
                         <PriceSearch handleInputChange={handleInputChange}/>
@@ -37,13 +44,13 @@ class SearchNav extends Component {
                             </div>
                         </div>
                         <div className="dropdown">
-                            <button className="btn btn-default dropdown-toggle dropdown-button-menu" type="button" id="menu1" data-toggle="dropdown">Rooms</button>
-                            <RoomsSearch handleInputChange={handleInputChange}/>
-                        </div>
-                        <div className="dropdown">
-                            <button className="btn btn-default dropdown-toggle dropdown-button-menu" type="button" id="menu1" data-toggle="dropdown">Baths
+                            <button className="btn btn-default dropdown-toggle dropdown-button-menu" type="button" id="menu1" data-toggle="dropdown">Beds
                             </button>
                             <BedSearch handleInputChange={handleInputChange}/>
+                        </div>
+                        <div className="dropdown">
+                            <button className="btn btn-default dropdown-toggle dropdown-button-menu" type="button" id="menu1" data-toggle="dropdown">Rooms</button>
+                            <RoomsSearch handleInputChange={handleInputChange}/>
                         </div>
                         <div className="dropdown">
                             <button className="btn btn-default dropdown-toggle dropdown-button-menu" type="button" id="menu1" data-toggle="dropdown">Listing Satus</button>

@@ -53,10 +53,44 @@ function getLastFourApartment() {
     });
 }
 
+function getCountriesApartment() {
+    return new Promise((resolve, reject) => {
+        connection.query(`CALL getCountriesApratments()`, (error, results, fields) => {
+            if (error) {
+                reject(error);
+                return;
+            }
+            resolve(convertData(results[0]));
+        });
+    });
+}
+
+function getCitiesApartment() {
+    return new Promise((resolve, reject) => {
+        connection.query(`CALL getCitiesApratments()`, (error, results, fields) => {
+            if (error) {
+                reject(error);
+                return;
+            }
+
+            resolve(convertData(results[0]));
+        });
+    });
+}
+const convertData = function(data) {
+    let result = [];
+    for (let prop in data) {
+        result.push(Object.values(data[prop])[0])
+    }
+    console.log(result);
+    return result;
+}
 
 module.exports = {
     getAllapartments,
     getbyId,
-    getLastFourApartment
+    getLastFourApartment,
+    getCountriesApartment,
+    getCitiesApartment
 
 };
