@@ -53,7 +53,7 @@ class RightNavBar extends React.Component{
                         </div>
                     </li>
                     <li className="navigation"><button onClick={this.props.loginHandelClick()}>Log In</button></li>
-                    <li className="navigation"><button onClick={this.props.singUpHandelClick()}>Sing Up</button></li>
+                    <li className="navigation"><button onClick={this.props.signUpHandelClick()}>Sign Up</button></li>
 
                     <li style={{borderBottom:'none'}}><span>|</span></li>
                     <li className="navigation"><a href="/">Advertise</a></li>

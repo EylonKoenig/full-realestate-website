@@ -25,15 +25,19 @@ class Header extends React.Component{
         })
     };
 
-    singUpHandelClick = () => {
+    signUpHandelClick = () => {
         this.setState({
             singUp: !this.state.singUp,
-        })
+        });
     };
 
-    activateSingupAndLogin = () =>{
+    activateSignupAndLogin = () =>{
         this.loginHandelClick();
-        this.singUpHandelClick();
+        this.signUpHandelClick();
+    };
+
+    handleChildClick = (e) => {
+        e.stopPropagation();
     };
 
     handelClick = () => {
@@ -46,7 +50,6 @@ class Header extends React.Component{
 
     };
     render() {
-        // const handle = document.getElementsByClassName('navbar-collapse collapse show');
         if (!this.state.isOpen){
             document.getElementById('navbarNav').onclick = function() {
                 document.getElementById('header-button').click()
@@ -71,23 +74,23 @@ class Header extends React.Component{
                                 })}
                             </ul>
                         </div>
-                        <RightNavBar loginHandelClick={() => this.loginHandelClick} singUpHandelClick={() =>this.singUpHandelClick}/>
+                        <RightNavBar loginHandelClick={() => this.loginHandelClick} signUpHandelClick={() =>this.signUpHandelClick}/>
                     </div>
                 </nav>
 
                 {this.state.login ?
                     <div style={{position:'absolute', top:'0'}} onClick={() => this.loginHandelClick()} >
-                        <div className="container-fluid login_or_singUp_page">
-                            <LogIn activateSingupAndLogin={() => this.activateSingupAndLogin}/>
+                        <div id={"login"} className="container-fluid login_or_singUp_page">
+                            <LogIn handleChildClick={() => this.handleChildClick} activateSignupAndLogin={() => this.activateSignupAndLogin}/>
                         </div>
                     </div>
                     : null
                 }
 
                 {this.state.singUp ?
-                    <div style={{position:'absolute', top:'0'}} onClick={() =>this.singUpHandelClick()}>
-                        <div className="container-fluid login_or_singUp_page">
-                            <SignUp activateSingupAndLogin={() => this.activateSingupAndLogin}/>
+                    <div style={{position:'absolute', top:'0'}} onClick={this.signUpHandelClick}>
+                        <div className="container-fluid login_or_singUp_page"  >
+                            <SignUp handleChildClick={() => this.handleChildClick} activateSignupAndLogin={() => this.activateSignupAndLogin}/>
                         </div>
                     </div>
                     : null
@@ -96,6 +99,5 @@ class Header extends React.Component{
         )
     }
 }
-
 
 export default Header;

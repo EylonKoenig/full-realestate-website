@@ -32,7 +32,7 @@ class LogIn extends React.Component{
     render() {
         console.log((this.props));
         return (
-            <div class="row">
+            <div className={"row"} onClick={ this.props.handleChildClick()}>
                 <div class="col-md-5 mx-auto">
                     <div class="myform form ">
                         <div class="logo mb-3">
@@ -59,7 +59,7 @@ class LogIn extends React.Component{
                                 <hr/>
                             </div>
                             <div class="form-group">
-                                <p class="text-center">Don't have account? <button className={"form_link"} id="signup" onClick={this.props.activateSingupAndLogin()}>Sign up here</button></p>
+                                <p class="text-center">Don't have account? <button className={"form_link"} id="signup" onClick={this.props.activateSignupAndLogin()}>Sign up here</button></p>
                             </div>
                         </form>
                     </div>

@@ -40,7 +40,7 @@ class SignUp extends React.Component{
 
     render() {
         return (
-            <div class="container">
+            <div class="container" onClick={ this.props.handleChildClick()}>
                 <div class="row">
                     <div class="col-md-5 mx-auto">
                         <div class="myform form ">
@@ -71,7 +71,7 @@ class SignUp extends React.Component{
                                 </div>
                                 <div class="col-md-12 ">
                                     <div class="form-group">
-                                        <p class="text-center"><button className={"form_link"}  onClick={this.props.activateSingupAndLogin()}>Already have an account?</button></p>
+                                        <p class="text-center"><button className={"form_link"}  onClick={this.props.activateSignupAndLogin()}>Already have an account?</button></p>
                                     </div>
                                 </div>
                             </form>
