@@ -61,7 +61,7 @@ class Header extends React.Component{
                     <button id={'header-button'} className="navbar-toggler burger-button" type="button" onClick={this.handelClick} data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
-                    <div className="d-flex">
+                    <div className="naverbar-position">
                         <div id="logo" className="navbar-brand ">
                             <Link to={'/'}><img src="../images/logo.png" width="150px" alt={''}/></Link>
                         </div>

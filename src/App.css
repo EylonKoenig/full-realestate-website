@@ -408,3 +408,8 @@ input:checked + .slider:before {
   right:0;
   left:0;
 }
+.naverbar-position{
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}

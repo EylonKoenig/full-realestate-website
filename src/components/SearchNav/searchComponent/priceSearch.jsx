@@ -9,7 +9,7 @@ class PriceSearch extends React.Component{
                         <h6>Price range</h6>
                     </div>
                     <div className="d-flex">
-                        <div className={'d-flex'}>
+                        <div className={'flex'}>
                             <div className="price-row">
                                 <input id="minPrice"
                                        className="price-box"
