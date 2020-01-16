@@ -22,7 +22,7 @@ class SearchNav extends Component {
     render() {
         const handleInputChange = this.props.handleInputChange;
         const { filters } = this.props;
-
+        
         return (
             <form>
                 <div id="undernav">
@@ -46,33 +46,33 @@ class SearchNav extends Component {
                         </div>
                         <div className="dropdown propetyType">
                             <div>
-                                <button onClick={this.state.handleShow} className="btn btn-default dropdown-toggle dropdown-button-menu" type="button" id="menu2" data-toggle="dropdown" >Propetry Type</button>
+                                <button onClick={this.state.handleShow} className="btn btn-default dropdown-toggle dropdown-button-menu" type="button" id="menu2" data-toggle="dropdown" >{filters.property_type ? filters.property_type : "Protopy Type"}</button>
                                 {this.state.isOpen && <ProtopyType handleInputChange={handleInputChange} handleShow={this.handleShow} />}
                             </div>
                         </div>
                         <div className="dropdown">
-                            <button className="btn btn-default dropdown-toggle dropdown-button-menu" type="button" id="menu1" data-toggle="dropdown">Beds
+                            <button className="btn btn-default dropdown-toggle dropdown-button-menu" type="button" id="menu1" data-toggle="dropdown">{filters.minBath  ? `Beds ${filters.minBath}+` : "Beds"}
                             </button>
                             <BedSearch handleInputChange={handleInputChange} />
                         </div>
                         <div className="dropdown">
-                            <button className="btn btn-default dropdown-toggle dropdown-button-menu" type="button" id="menu1" data-toggle="dropdown">Rooms</button>
+                            <button className="btn btn-default dropdown-toggle dropdown-button-menu" type="button" id="menu1" data-toggle="dropdown">{filters.minRooms  ? `Rooms ${filters.minRooms}+` : "Rooms"}</button>
                             <RoomsSearch handleInputChange={handleInputChange} />
                         </div>
                         <div className="dropdown">
-                            <button className="btn btn-default dropdown-toggle dropdown-button-menu" type="button" id="menu1" data-toggle="dropdown">Listing Satus</button>
+                            <button className="btn btn-default dropdown-toggle dropdown-button-menu" type="button" id="menu1" data-toggle="dropdown">{filters.sale_status === 'sale'  ? `For Sale` : filters.sale_status === 'rent' ? " For Rent" : 'Listing Satus'}</button>
                             <div className="dropdown-menu inside-search-button" role="menu" aria-labelledby="menu1">
                                 <ListingStatus handleInputChange={handleInputChange} />
                             </div>
                         </div>
                         <div className="dropdown">
-                            <button className="btn btn-default dropdown-toggle dropdown-button-menu" type="button" id="menu1" data-toggle="dropdown">More Filters</button>
+                            {/* <button className="btn btn-default dropdown-toggle dropdown-button-menu" type="button" id="menu1" data-toggle="dropdown">More Filters</button>
                             <ul className="dropdown-menu" role="menu" aria-labelledby="menpx;">
-                                <li role="presentation">
+                                <li role="presentation"> */}
                                     {/*<a role="menuitem" tabIndex="-1" href="#">*/}
                                     {/*</a>*/}
-                                </li>
-                            </ul>
+                                {/* </li> */}
+                            {/* </ul> */}
                         </div>
                         <button type="submit" className="btn btn-outline-danger end-btn-search">Search</button>
                         <button type="reset" className="btn btn-outline-danger end-btn-search mx-2" name={'restArray'} onClick={handleInputChange}>Reset Search</button>

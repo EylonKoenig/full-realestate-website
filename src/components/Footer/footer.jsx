@@ -3,10 +3,9 @@ import IconBrand from "./icon-brand";
 import {withRouter} from 'react-router-dom';
 class Footer  extends React.Component{
     render() {
-        let curentWindow = this.props.location.pathname;
-        const homePage = "/";
+
         return (
-            <footer className={curentWindow !== homePage ? 'pushBottom' : undefined}  style={{bottom:curentWindow == "/apartments" && "unset"}}>
+            <footer className={window.location.pathname.length > 1 ? 'pushBottom' : undefined}  style={{bottom:window.location.pathname === "/apartments" && "unset"}}>
                 <div className={`container-fluid social-media p-0`}>
                     <div style={{background: `#333`}}>
                         <div className="top-social-media">
@@ -99,7 +98,7 @@ class Footer  extends React.Component{
                             <li><a href="https://www.realtor.com/sitemap" title="Realtor.com site map"
                                    data-omtag="footer:corp:sitemap">Sitemap</a></li>
                         </ul>
-                        {curentWindow === homePage && <div>
+                        {window.location.pathname.length === 1 && <div>
                             <h6>Products</h6>
                             <ul className="list-group list-group-horizontal">
                                 <li><a href="https://marketing.realtor.com" title=""
