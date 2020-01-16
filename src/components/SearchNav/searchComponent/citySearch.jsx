@@ -1,19 +1,19 @@
 import React from 'react';
 import axios from "axios";
 
-class CountrySearch extends React.Component {
+class CitySearch extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            counties: [],
+            cities: [],
         }
     }
     componentDidMount() {
-        this.getdata();
+        this.getdata(this.props.country);
     }
-    async getdata(query = "") {
-        const data = await axios.get(`http://localhost:5000/apartments/all/countries`);
-        this.setState({ counties: data.data });
+    async getdata(query) {
+        const data = await axios.get(`http://localhost:5000/apartments/all/cities/${query}`);
+        this.setState({ cities: data.data });
     }
     render() {
         const handleInputChange = this.props.handleInputChange;
@@ -25,16 +25,16 @@ class CountrySearch extends React.Component {
                 <div className="d-flex">
                     <div className={'d-flex'}>
                         <div className="price-row">
-                            {this.state.counties &&
+                            {this.state.cities &&
                                 <div>
-                                    <label htmlFor="allCountry">Select Country</label>
-                                    <input id="allCountry" name="country" type="radio" value=""
+                                    <label htmlFor="allCities">Select  City</label>
+                                    <input id="allCities" name="city" type="radio" value=""
                                         onChange={handleInputChange} />
-                                    {this.state.counties.map((country, index) => {
+                                    {this.state.cities.map((country, index) => {
                                         return (
                                             <div key={index} className="">
                                                 <label htmlFor={country}>{country}</label>
-                                                <input id={`${country}`} name="country" type="radio" value={country}
+                                                <input id={`${country}`} name="city" type="radio" value={country}
                                                     onChange={handleInputChange} />
                                             </div>
                                         );
@@ -48,7 +48,7 @@ class CountrySearch extends React.Component {
         )
     }
 }
-export default CountrySearch;
+export default CitySearch;
 
 
 

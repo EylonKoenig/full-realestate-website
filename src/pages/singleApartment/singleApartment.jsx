@@ -26,7 +26,7 @@ class singleApartment extends React.Component {
         const {apartment} = this.state;
         let carouselItems = [];
         let detailsArr = ['number_of_bath','number_of_room','sqft'];
-        let detailsArrLabel = ['Beds','Rooms','sqft'];
+        let detailsArrLabel = ['Bath','Rooms','sqft'];
         let status = null;
         if(apartment.sale_status === 'both'){
             status = ' sale or rent'

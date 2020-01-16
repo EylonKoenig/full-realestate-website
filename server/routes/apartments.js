@@ -18,8 +18,9 @@ router.get('/all/countries', function(req, res, next) {
         .then(countries => res.status(200).json(countries))
         .catch(error => res.status(500).json({ error: error.message }));
 });
-router.get('/all/cities', function(req, res, next) {
-    getCitiesApartment()
+router.get('/all/cities/:country', function(req, res, next) {
+    console.log(req.params.country)
+    getCitiesApartment(req.params.country)
         .then(cities => res.status(200).json(cities))
         .catch(error => res.status(500).json({ error: error.message }));
 });

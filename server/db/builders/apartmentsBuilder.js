@@ -25,17 +25,17 @@ class CustomersBuilder {
         }
         return this;
     }
-    city(cityId) {
-        if (cityId) {
-            this.params.push(cityId)
-            this.query += 'AND city_id = ? '
-        }
-        return this;
-    }
     country(coutry_name) {
         if (coutry_name) {
             this.params.push('%' + coutry_name + '%')
             this.query += 'AND countries.`name` like ? '
+        }
+        return this;
+    }
+    city(city_name) {
+        if (city_name) {
+            this.params.push(city_name)
+            this.query += 'AND c.name = ? '
         }
         return this;
     }

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import ProtopyType from "./searchComponent/proptyType";
 import PriceSearch from "./searchComponent/priceSearch";
 import BedSearch from "./searchComponent/bedsSearch";
@@ -7,20 +7,21 @@ import TextSearch from "./searchComponent/textSearch";
 import ListingStatus from "./searchComponent/listingSatus";
 import '../../css/galleryCss/undernave.css'
 import CountrySearch from './searchComponent/countrySearch';
+import CitySearch from './searchComponent/citySearch';
 
 class SearchNav extends Component {
     constructor(props) {
         super(props);
-        this.state = {isOpen: true};
+        this.state = { isOpen: true };
     }
-    handleShow = () =>{
+    handleShow = () => {
         if (this.state.isOpen === true) {
-            this.setState({isOpen: false})
-        } else {this.setState({isOpen:true})}
+            this.setState({ isOpen: false })
+        } else { this.setState({ isOpen: true }) }
     };
     render() {
         const handleInputChange = this.props.handleInputChange;
-        const {filtes} = this.props;
+        const { filters } = this.props;
 
         return (
             <form>
@@ -30,32 +31,38 @@ class SearchNav extends Component {
                     </div> */}
                     <div className=" cover-serach-input container-fluid d-none d-lg-flex">
                         <div className="dropdown d-flex">
-    <button className="btn btn-default dropdown-toggle dropdown-button-menu" type="button" id="menu11" data-toggle="dropdown">{filtes.country ? filtes.country :"Country"  }</button>
-                        <CountrySearch handleInputChange={handleInputChange}/>
+                            <button className="btn btn-default dropdown-toggle dropdown-button-menu" type="button" id="menu11" data-toggle="dropdown">{filters.country ? filters.country : "Country"}</button>
+                            <CountrySearch handleInputChange={handleInputChange} />
                         </div>
+                        {filters.country &&
+                            <div className="dropdown d-flex">
+                                <button className="btn btn-default dropdown-toggle dropdown-button-menu" type="button" id="menu1" data-toggle="dropdown">{filters.city ? filters.city : "City"}</button>
+                                <CitySearch handleInputChange={handleInputChange} country={filters.country}/>
+                            </div>
+                        }
                         <div className="dropdown d-flex">
                             <button className="btn btn-default dropdown-toggle dropdown-button-menu" type="button" id="menu1" data-toggle="dropdown">Price</button>
-                        <PriceSearch handleInputChange={handleInputChange}/>
+                            <PriceSearch handleInputChange={handleInputChange} />
                         </div>
                         <div className="dropdown propetyType">
                             <div>
-                            <button onClick={this.state.handleShow} className="btn btn-default dropdown-toggle dropdown-button-menu" type="button" id="menu2" data-toggle="dropdown" >Propetry Type</button>
+                                <button onClick={this.state.handleShow} className="btn btn-default dropdown-toggle dropdown-button-menu" type="button" id="menu2" data-toggle="dropdown" >Propetry Type</button>
                                 {this.state.isOpen && <ProtopyType handleInputChange={handleInputChange} handleShow={this.handleShow} />}
                             </div>
                         </div>
                         <div className="dropdown">
                             <button className="btn btn-default dropdown-toggle dropdown-button-menu" type="button" id="menu1" data-toggle="dropdown">Beds
                             </button>
-                            <BedSearch handleInputChange={handleInputChange}/>
+                            <BedSearch handleInputChange={handleInputChange} />
                         </div>
                         <div className="dropdown">
                             <button className="btn btn-default dropdown-toggle dropdown-button-menu" type="button" id="menu1" data-toggle="dropdown">Rooms</button>
-                            <RoomsSearch handleInputChange={handleInputChange}/>
+                            <RoomsSearch handleInputChange={handleInputChange} />
                         </div>
                         <div className="dropdown">
                             <button className="btn btn-default dropdown-toggle dropdown-button-menu" type="button" id="menu1" data-toggle="dropdown">Listing Satus</button>
                             <div className="dropdown-menu inside-search-button" role="menu" aria-labelledby="menu1">
-                                <ListingStatus handleInputChange={handleInputChange}/>
+                                <ListingStatus handleInputChange={handleInputChange} />
                             </div>
                         </div>
                         <div className="dropdown">
@@ -81,7 +88,7 @@ class SearchNav extends Component {
                     </div>
                     <div className="dropdown d-block d-lg-none">
                         <button className="btn btn-default dropdown-toggle dropdown-button-menu" type="button" id="menu1"
-                                data-toggle="dropdown">Filter
+                            data-toggle="dropdown">Filter
                         </button>
                     </div>
                 </div>

@@ -5,8 +5,8 @@ function getAllapartments({ property_type, city, country, minPrice, maxPrice, mi
     return new Promise((resolve, reject) => {
         try {
             const { query, params } = Builder.allApartments(page, size)
-                .city(city)
                 .country(country)
+                .city(city)
                 .minPrice(minPrice)
                 .maxPrice(maxPrice)
                 .minRooms(minRooms)
@@ -65,9 +65,9 @@ function getCountriesApartment() {
     });
 }
 
-function getCitiesApartment() {
+function getCitiesApartment(country) {
     return new Promise((resolve, reject) => {
-        connection.query(`CALL getCitiesApratments()`, (error, results, fields) => {
+        connection.query(`CALL getAvailableCityByCountry("${country}")`, (error, results, fields) => {
             if (error) {
                 reject(error);
                 return;
@@ -82,7 +82,6 @@ const convertData = function(data) {
     for (let prop in data) {
         result.push(Object.values(data[prop])[0])
     }
-    console.log(result);
     return result;
 }
 
