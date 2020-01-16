@@ -10,27 +10,27 @@ class BedSearch extends React.Component{
                 </div>
                 <div className="filter-btn-group">
                     <input id="bed-any-desktop"
-                           className={'chkBeds'}
+                           className={'checkButton'}
                            name="minBath"
                            type="radio"
-                           value="0"
+                           value=""
                            // checked={"checked"}
                            onChange={this.props.handleInputChange}/>
                     <label htmlFor="bed-any-desktop" className="filter-btn-group-text-sm" style={{padding:'8px'}}>Any</label>
 
-                    <input id="bed-1-desktop" className={'chkBeds'} name="minBath" type="radio" value="1" onChange={this.props.handleInputChange}/>
+                    <input id="bed-1-desktop" className={'checkButton'} name="minBath" type="radio" value="1" onChange={this.props.handleInputChange}/>
                     <label htmlFor="bed-1-desktop">1+</label>
 
-                    <input id="bed-2-desktop" className={'chkBeds'} name="minBath" type="radio" value="2" onChange={this.props.handleInputChange}/>
+                    <input id="bed-2-desktop" className={'checkButton'} name="minBath" type="radio" value="2" onChange={this.props.handleInputChange}/>
                     <label htmlFor="bed-2-desktop">2+</label>
 
-                    <input id="bed-3-desktop" className={'chkBeds'} name="minBath" type="radio" value="3" onChange={this.props.handleInputChange}/>
+                    <input id="bed-3-desktop" className={'checkButton'} name="minBath" type="radio" value="3" onChange={this.props.handleInputChange}/>
                     <label htmlFor="bed-3-desktop">3+</label>
 
-                    <input id="bed-4-desktop" className={'chkBeds'} name="minBath" type="radio" value="4" onChange={this.props.handleInputChange}/>
+                    <input id="bed-4-desktop" className={'checkButton'} name="minBath" type="radio" value="4" onChange={this.props.handleInputChange}/>
                     <label htmlFor="bed-4-desktop">4+</label>
 
-                    <input id="bed-5-desktop" className={'chkBeds'} name="minBath" type="radio" value="5" onChange={this.props.handleInputChange}/>
+                    <input id="bed-5-desktop" className={'checkButton'} name="minBath" type="radio" value="5" onChange={this.props.handleInputChange}/>
                     <label htmlFor="bed-5-desktop">5+</label>
 
                     <div className="bed-filter-divider text-center margin-top margin-bottom">

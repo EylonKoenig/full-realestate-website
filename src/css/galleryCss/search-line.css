@@ -1,132 +1,136 @@
  input[type=checkbox] {
-    opacity: 0;
-}
+     opacity: 0;
+ }
+ 
  input[type=radio] {
      display: none;
  }
-
-.inside-search-button {
-    transform: translate3d(5px,45px,0px)!important;
-    padding-top: 0;
-    margin-top: 10px;
-}
-
-.head-sub-main h6 {
-    background-color: #f7f7f7;
-    font-size: 14px;
-    padding: 10px;
-    color: #333;
-    margin-top: 0;
-    margin-bottom: 16px;
-}
-
-div.dropdown.propetyType > div > div {
-    transform: translate3d(-73px, -40px, 0px) scale(0.7)!important;
+ 
+ .inside-search-button {
+     transform: translate3d(5px, 45px, 0px)!important;
+     padding-top: 0;
+     margin-top: 10px;
+ }
+ 
+ .head-sub-main h6 {
+     background-color: #f7f7f7;
+     font-size: 14px;
+     padding: 10px;
+     color: #333;
+     margin-top: 0;
+     margin-bottom: 16px;
+ }
+ 
+ div.dropdown.propetyType>div>div {
+     transform: translate3d(-73px, -40px, 0px) scale(0.7)!important;
      height: 520px;
-
-}
-.propetyType-dropdown {
-    width: 500px;
-    height:530px;
-}
-
-.price-row {
-    margin: 0 15px;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-}
-
-
-.price-box {
-    width: 120px;
-    border: 1px solid #c4c4c4;
-    font-size: 16px;
-    border-radius: 4px;
-    padding-left: 10px;
-    margin-bottom: 10px;
-    height: 35px;
-}
-
-#price-input {
-    list-style-type: none;
-}
-
-.inside-beds-search {
-    padding-top: 0;
-    width: 400px;
-    transform: translate3d(5px,45px,0px)!important;
-}
-
-/*.filter-btn-group input {*/
-/*    display: none;*/
-/*}*/
-
-.filter-btn-group label {
-    height: 50px;
-    width: 50px;
-    margin: 0 8px;
-    font-size: 20px;
-    padding: 9px 13px;
-    cursor: pointer;
-    border-radius: 50%;
-    border: 1px solid transparent;
-}
-
-.filter-btn-group label:hover {
-    border: 1px solid red;
-    color: red;
-    cursor: pointer;
-}
-input.chkBeds[type="radio"]:checked + label {
- border: 1px solid red;
- color: red;
- cursor: pointer;
-}
-.container-fluid label:hover {
-    cursor: pointer;
-}
-
-.container-fluid label:hover .cover-svg.d-inline-block>svg>path {
-    fill: red;
-}
-
-.filter-select-wrapper label {
-    padding: 10px;
-}
-
-input[type=checkbox]:checked+label>div.cover-svg.d-inline-block {
-    border: 2px solid red;
-}
-
-input[type=checkbox]:checked+label>div.cover-svg.d-inline-block>svg {
-    fill: red;
-}
-
-input[type=checkbox]:checked+label>div.cover-svg.d-inline-block>svg>path {
-    fill: red;
-}
-
-input[type=checkbox]:checked+label.filter-btn-group label {
-    border: 1px solid red;
-    color: red;
-}
-.end-btn-search{
+ }
+ 
+ .propetyType-dropdown {
+     width: 500px;
+     height: 530px;
+ }
+ 
+ .price-row {
+     margin: 0 15px;
+     align-items: center;
+     display: flex;
+     flex-direction: column;
+ }
+ 
+ .price-box {
+     width: 120px;
+     border: 1px solid #c4c4c4;
+     font-size: 16px;
+     border-radius: 4px;
+     padding-left: 10px;
+     margin-bottom: 10px;
+     height: 35px;
+ }
+ 
+ #price-input {
+     list-style-type: none;
+ }
+ 
+ .inside-beds-search {
+     padding-top: 0;
+     width: 400px;
+     transform: translate3d(5px, 45px, 0px)!important;
+ }
+ /*.filter-btn-group input {*/
+ /*    display: none;*/
+ /*}*/
+ 
+ .filter-btn-group label {
+     height: 50px;
+     width: 50px;
+     margin: 0 8px;
+     font-size: 20px;
+     padding: 9px 13px;
+     cursor: pointer;
+     border-radius: 50%;
+     border: 1px solid transparent;
+ }
+ 
+ .filter-btn-group label:hover {
+     border: 1px solid red;
+     color: red;
+     cursor: pointer;
+ }
+ 
+ input.checkButton[type="radio"]:checked+label {
+     border: 1px solid red;
+     color: red;
+     cursor: pointer;
+ }
+ 
+ .container-fluid label:hover {
+     cursor: pointer;
+ }
+ 
+ .container-fluid label:hover .cover-svg.d-inline-block>svg>path {
+     fill: red;
+ }
+ 
+ .filter-select-wrapper label {
+     padding: 10px;
+ }
+ 
+ input[type=radio]:checked+label>div.cover-svg.d-inline-block {
+     border: 2px solid red;
+ }
+ 
+ input[type=radio]:checked+label>div.cover-svg.d-inline-block>svg {
+     fill: red;
+ }
+ 
+ input[type=radio]:checked+label>div.cover-svg.d-inline-block>svg>path {
+     fill: red;
+ }
+ 
+ input[type=radio]:checked+label.filter-btn-group label {
+     border: 1px solid red;
+     color: red;
+ }
+ 
+ .end-btn-search {
      height: fit-content;
      white-space: nowrap;
-}
-.closePropetry {
-    position: absolute;
-    bottom: 5px;
-    right: 15px;
-    width: 75px;
-}
-.listingStatusCover {
-    display: flex;
-    flex-direction: column;
-}
-.listingStatusCover > div {
-    display: flex;
-    justify-content: space-around;
-}
-
+ }
+ 
+ .closePropetry {
+     position: absolute;
+     bottom: 5px;
+     right: 15px;
+     width: 75px;
+ }
+ 
+ .listingStatusCover {
+     display: flex;
+     flex-direction: column;
+ }
+ 
+ .listingStatusCover>div {
+     display: flex;
+     justify-content: space-around;
+ }

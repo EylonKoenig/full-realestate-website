@@ -4,11 +4,11 @@ import Gallery from "./gallery";
 
 
 class MainApartments extends React.Component {
-    render () {
-        return(
+    render() {
+        return (
             <div>
-                <Header/>
-                <Gallery/>
+                <Header />
+                <Gallery />
             </div>
         );
     }
