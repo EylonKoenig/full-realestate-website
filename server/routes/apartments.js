@@ -1,6 +1,13 @@
 var express = require('express');
 var router = express.Router();
-var { getAllapartments, getbyId, getLastFourApartment, getCountriesApartment, getCitiesApartment } = require('../db/apartments')
+var {
+    getAllapartments,
+    getbyId,
+    getLastFourApartment,
+    getCountriesApartment,
+    getCitiesApartment,
+    postApartment
+} = require('../db/apartments')
 
 router.get('/', function(req, res, next) {
     getAllapartments(req.query)
@@ -26,11 +33,24 @@ router.get('/all/cities/:country', function(req, res, next) {
 });
 router.get('/four/bydate', function(req, res, next) {
     getLastFourApartment()
-        .then(customer => res.status(200).json(customer))
+        .then(apartments => res.status(200).json(apartments))
         .catch(error => res.status(500).json({ error: error.message }));
 });
+router.post('/upload', function(req, res, next) {
+    if (req.files === null) {
+        return res.status(400).json({ msg: 'no file uploaded' });
+    }
+    const file = req.files.file;
+    const dir = "C:/Users/eylon/Desktop/realtour"
+    file.mv(`${dir}/server/public/images/apartment/${file.name}`, err => {
+        if (err) {
+            console.error(err);
+            return res.status(500).send(err);
+        }
+        res.json({ fileName: file.name, filePath: `/uploads/${file.name}` });
+    });
 
-
+});
 
 
 module.exports = router;

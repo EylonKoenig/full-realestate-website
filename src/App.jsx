@@ -9,6 +9,7 @@ import SearchPageLoading from "./components/Loading/searchPageLoading";
 import { searchLoadingData } from "./data-app/searchLoadingData";
 import Footer from "./components/Footer/footer";
 import { BrowserRouter as Router, Switch, Route, } from "react-router-dom";
+import ApartmentForm from './components/Forms/apartmentForm';
 
 
 
@@ -24,13 +25,14 @@ class App extends React.Component {
             <Router>
                 <Header />
                 <Switch>
-
-
                     <Route path='/apartments' component=
                         {(props) => (this.state.loading ?
                             <SearchPageLoading array={searchLoadingData} page={'filter'} /> :
                             <Gallery {...props} />
                         )} />
+                    <Route path="/postApartment">
+                            <ApartmentForm/>
+                    </Route>
                     <Route path="/cities">
                         {this.state.loading ? <SearchPageLoading array={searchLoadingData} /> :
                             <CitiesGallery cities={this.state.cities} />
