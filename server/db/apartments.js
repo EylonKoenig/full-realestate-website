@@ -77,6 +77,24 @@ function getCitiesApartment(country) {
         });
     });
 }
+
+function postApartment(country) {
+    return new Promise((resolve, reject) => {
+        connection.query(`CALL getAvailableCityByCountry("${country}")`, (error, results, fields) => {
+            if (error) {
+                reject(error);
+                return;
+            }
+
+            resolve(convertData(results[0]));
+        });
+    });
+}
+
+
+
+
+
 const convertData = function(data) {
     let result = [];
     for (let prop in data) {
@@ -90,6 +108,6 @@ module.exports = {
     getbyId,
     getLastFourApartment,
     getCountriesApartment,
-    getCitiesApartment
-
+    getCitiesApartment,
+    postApartment,
 };

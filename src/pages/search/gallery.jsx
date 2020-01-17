@@ -58,7 +58,8 @@ class Gallery extends React.Component {
         } else {
             obj[name] = value;
         }
-        this.setState({ filterObj: obj }, () => {this.getdata(this.setQuery(this.state.filterObj));this.props.history.push(this.setQuery(this.state.filterObj))});
+        this.setState({ filterObj: obj }, () => {this.getdata(this.setQuery(this.state.filterObj));
+                                                 this.props.history.push(this.setQuery(this.state.filterObj))});
         
         if (name === 'sortby') {
             let checkState = this.state.filterObj;
