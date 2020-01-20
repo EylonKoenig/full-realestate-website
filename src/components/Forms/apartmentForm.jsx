@@ -90,19 +90,36 @@ class ApartmentForm extends React.Component {
                         <Form onSubmit={this.onSubmit}>
                             <Form.Row>
                                 <Form.Group as={Col} controlId="formGridCountry">
-                                    <Form.Label>Country</Form.Label>
-                                    <Form.Control name='country' placeholder="Enter Country" onBlur={this.inputChange} />
+                                <Form.Label>Country</Form.Label>
+                                    <input list={'country'} type={'text'} name={'country'} className="form-control" onChange={this.inputChange} />
+                                    <datalist id={'country'}>
+                                        <option value="0" />
+                                        <option value="1" />
+                                        <option value="2" />
+                                        <option value="3" />
+                                        <option value="4" />
+                                        <option value="5" />
+                                    </datalist>
                                     <InputErrors errors={this.state.country.errors}></InputErrors>
                                 </Form.Group>
                                 <Form.Group as={Col} controlId="formGridCity">
                                     <Form.Label>City</Form.Label>
-                                    <Form.Control name='city' placeholder="Enter City" onBlur={this.inputChange} />
+                                    {/* <Form.Control name='city'onBlur={this.inputChange} /> */}
+                                    <input list={'city'} type={'text'} name={'city'} className="form-control" onChange={this.inputChange} />
+                                    <datalist id={'city'}>
+                                        <option value="0" />
+                                        <option value="1" />
+                                        <option value="2" />
+                                        <option value="3" />
+                                        <option value="4" />
+                                        <option value="5" />
+                                    </datalist>
                                     <InputErrors errors={this.state.city.errors}></InputErrors>
                                 </Form.Group>
                             </Form.Row>
                             <Form.Group controlId="formGridAddress1">
                                 <Form.Label>Address</Form.Label>
-                                <Form.Control name='address' placeholder="1234 Main St" onBlur={this.inputChange} />
+                                <Form.Control name='address'  onBlur={this.inputChange} />
                                 <InputErrors errors={this.state.address.errors}></InputErrors>
                             </Form.Group>
                             <Form.Row>
@@ -127,11 +144,11 @@ class ApartmentForm extends React.Component {
                                 <Form.Group as={Col} controlId="formGridProperty_type-">
                                     <Form.Label>Property Type</Form.Label>
                                     <Form.Control name='property_type' as="select" onBlur={this.inputChange}>
-                                        <option>House</option>
-                                        <option>reanch</option>
-                                        <option>land</option>
-                                        <option>multi family</option>
-                                        <option>co-op</option>
+                                        <option value='house'>House</option>
+                                        <option value='ranch'>Ranch</option>
+                                        <option value='land'>Land</option>
+                                        <option value='multi_family'>multi family</option>
+                                        <option value='coop'>Co-Op</option>
                                     </Form.Control>
                                     <InputErrors errors={this.state.property_type.errors}></InputErrors>
                                 </Form.Group>

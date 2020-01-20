@@ -143,12 +143,17 @@
     flex-direction: column;
 }
 
-#submissionMenu a {
+#submissionMenu a,
+#submissionMenu button {
     text-align: center;
     padding: 20px 0;
 }
 
 #submissionMenu a:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+#submissionMenu button:hover {
     background: rgba(0, 0, 0, 0.1);
 }
 
