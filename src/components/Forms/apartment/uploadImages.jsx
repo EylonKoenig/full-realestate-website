@@ -1,6 +1,6 @@
 import React from 'react';
-import { Form, Col, Button } from 'react-bootstrap';
-import { Label, Input, FormText } from 'reactstrap';
+import { Form, Col } from 'react-bootstrap';
+import { Label, Input } from 'reactstrap';
 
 
 class UploadImages extends React.Component {

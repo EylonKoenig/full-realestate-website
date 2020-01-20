@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from "axios";
 import cookie from 'react-cookies'
 import { Form, Col, Button } from 'react-bootstrap';
 import { Label, Input, FormText } from 'reactstrap';
@@ -15,15 +14,16 @@ class ApartmentForm extends React.Component {
         super(props);
         this.state = {
             formDetails: {
-                country: field({ name: 'country', isRequired: true,checklist:{list:[],status:false} }),
-                city: field({ name: 'city', isRequired: true }),
+                country: field({ name: 'country', isRequired: true, checklist: { list: [], status: true } }),
+                city: field({ name: 'city', isRequired: true, checklist: { list: [], status: true } }),
                 address: field({ name: 'address', isRequired: false }),
                 sqft: field({ name: 'sqft', isRequired: true }),
                 number_of_baths: field({ name: 'number_of_baths', isRequired: (false) }),
                 number_of_rooms: field({ name: 'number_of_rooms', isRequired: (false) }),
-                for_sale: field({ name: 'for_sale', isRequired: (false) }),
-                for_rent: field({ name: 'for_rent', isRequired: (false) }),
+                for_sale: field({ name: 'for_sale', value: false, isRequired: (false) }),
+                for_rent: field({ name: 'for_rent', value: false, isRequired: (false) }),
                 property_type: field({ name: 'property_type', isRequired: (false) }),
+                main_image: field({ name: 'mian_image', isRequired: (false) }),
             },
             files: [],
             imagesVisbilte: false,
@@ -36,31 +36,46 @@ class ApartmentForm extends React.Component {
         let data = await api.getAllCountries();
         const curFormDetails = this.state.formDetails;
         curFormDetails.country.validations.checklist.list = data.data.countries;
-        this.setState({ countries: data.data.countries,formDetails: curFormDetails});
+        this.setState({ countries: data.data.countries, formDetails: curFormDetails });
     }
 
     inputChange({ target: { name, value } }) {
-        if(name === 'country') {
+        if (name === 'country' && value) {
             this.setCities(value);
         }
+        if (name === 'for_sale' || name === 'for_rent') {
+            this.setStatus(name);
+            return;
+
+        }
         const errors = validate(name, value, this.state.formDetails[name].validations);
-        this.setState({
-            [name]: {
-                ...this.state.formDetails[name],
-                value,
-                errors
-            }
-        });
+        const obj = this.state.formDetails;
+        obj[name] = { ...this.state.formDetails[name], value, errors }
+        this.setState({ formDetails: obj });
     }
     imageChange = (event) => {
         this.setState({ files: [...this.state.formDetails.files, ...event.target.files] })
         var output = document.getElementById(`image-preview-${event.target.id}`);
         output.src = URL.createObjectURL(event.target.files[0]);
     }
-    async setCities(conutry){
+    async setCities(conutry) {
+        const obj = this.state.formDetails
         let data = await api.getAllCitiesByCountry(conutry);
-        this.setState({ cities: data.data});
+        let dataList = data.data.map(city => city.name);
+        obj.city.validations.checklist.list = dataList
+        this.setState({ cities: data.data,formDetails:obj });
     }
+
+    setStatus = (name) => {
+        const value = !this.state.formDetails[name].value
+        console.log(value)
+        const errors = validate(name, value, this.state.formDetails[name].validations);
+        const obj = this.state.formDetails;
+        obj[name] = { ...this.state.formDetails[name], value, errors }
+        this.setState({ formDetails: obj });
+
+    }
+
     onSubmit = e => {
         e.preventDefault();
         let isOK = true;
@@ -95,7 +110,6 @@ class ApartmentForm extends React.Component {
     };
 
     render() {
-        console.log(this.state);
         return (
             <div id={'wraper'} style={{ margin: '50px auto', width: '500px' }}>
                 {cookie.load('auth') ?
@@ -112,7 +126,7 @@ class ApartmentForm extends React.Component {
                                     <datalist id={'country'}>
                                         {this.state.countries.map((country, index) => {
                                             return (
-                                                <option id={index} value={country}>{country}</option>
+                                                <option key={index} id={index} value={country}>{country}</option>
                                             );
                                         })}
                                     </datalist>
@@ -123,9 +137,9 @@ class ApartmentForm extends React.Component {
                                     {/* <Form.Control name='city'onBlur={this.inputChange} /> */}
                                     <input list={'city'} type={'text'} name={'city'} className="form-control" onChange={this.inputChange} />
                                     <datalist id={'city'}>
-                                    {this.state.cities.map((city, index) => {
+                                        {this.state.cities.map((city, index) => {
                                             return (
-                                                <option id={index} data-value={city.id}>{city.name}</option>
+                                                <option key={index} id={index} data-value={city.id}>{city.name}</option>
                                             );
                                         })}
                                     </datalist>

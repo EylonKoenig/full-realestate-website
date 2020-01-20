@@ -37,8 +37,11 @@ export default (name, value, validations) => {
         errors.push(`${convertedName} invalid`);
     }
     if (validations.checklist && checkinlist(value, validations.checklist.list, validations.checklist.status)) {
-        console.log(checkinlist(value, validations.checklist.list, validations.checklist.status))
-        errors.push(`Email has already been use`);
+        if (validations.checklist.status) {
+            errors.push(`Please Select from the list`);
+        } else {
+            errors.push(`Email has already been use`);
+        }
     }
 
     return errors;
