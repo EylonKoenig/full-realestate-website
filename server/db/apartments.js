@@ -1,5 +1,6 @@
 const connection = require('./config');
 const Builder = require('./builders/apartmentsBuilder');
+const convertData = require('./setData')
 
 function getAllapartments({ property_type, city, country, minPrice, maxPrice, minRooms, maxRooms, minBath, maxBath, sale_status, page = 1, size = 12 }) {
     return new Promise((resolve, reject) => {
@@ -91,17 +92,6 @@ function postApartment(country) {
     });
 }
 
-
-
-
-
-const convertData = function(data) {
-    let result = [];
-    for (let prop in data) {
-        result.push(Object.values(data[prop])[0])
-    }
-    return result;
-}
 
 module.exports = {
     getAllapartments,

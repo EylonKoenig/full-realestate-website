@@ -2,11 +2,16 @@ var express = require('express');
 var router = express.Router();
 var { getUser } = require('../db/login')
 
+
+
 router.post('/', function(req, res, next) {
     getUser(req.body)
         .then(user => {
-            res.cookie("my-cookie", { user })
-            res.status(200).json({ user })
+            if (user) {
+                const UserDetails = { user: user.email, password: user.password, first_name: user.first_name, role_id: user.role_id }
+                res.cookie("auth", JSON.stringify(UserDetails), { maxAge: 1000 * 60 * 60 * 24 })
+                res.status(200).send({ user })
+            } else { res.status(401).json({ error: "worng user or password" }) }
         })
         .catch(error => res.status(401).json({ error: error.message }));
 });

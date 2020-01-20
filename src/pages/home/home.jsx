@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from "axios";
+import cookie from 'react-cookies'
 
 import MainPageCities from "./mainPageCities";
 import MainPageCards from "./mainPageCards";
@@ -23,7 +24,7 @@ class Home extends React.Component {
             loading:true,
         }
     }
-    componentDidMount(){
+    componentDidMount(){        
         this.getData();
     };
     async getData(){
