@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from "axios";
 
 import SearchNav from "../../components/SearchNav/searchNav";
 import Card from "../../components/card/Card";
@@ -52,16 +51,17 @@ class Gallery extends React.Component {
     }
     handleInputChange = (event) => {
         const { name, value } = event.target;
-        const { filterObj } = this.state;
         const obj = this.state.filterObj;
         if (name === 'for_sale' || name === 'for_rent') {
             obj[name] = !obj[name]
         } else {
             obj[name] = value;
         }
-        this.setState({ filterObj: obj }, () => {this.getdata(this.setQuery(this.state.filterObj));
-                                                 this.props.history.push(this.setQuery(this.state.filterObj))});
-        
+        this.setState({ filterObj: obj }, () => {
+            this.getdata(this.setQuery(this.state.filterObj));
+            this.props.history.push(this.setQuery(this.state.filterObj))
+        });
+
         if (name === 'sortby') {
             let checkState = this.state.filterObj;
             checkState.sort_by = value;
@@ -75,14 +75,14 @@ class Gallery extends React.Component {
     };
 
     componentDidMount() {
-        const query  = this.props.location.search ? this.props.location.search : ""; 
+        const query = this.props.location.search ? this.props.location.search : "";
         this.getdata(query);
         // if (this.props.routerData) {
-            // let cur = this.state.filterObj;
-            // cur.cityFilter = this.props.routerData;
-            // this.setState({ filterObj: cur });
-            // document.getElementById('searchInput').value = this.props.routerData;
-            // this.filter();
+        // let cur = this.state.filterObj;
+        // cur.cityFilter = this.props.routerData;
+        // this.setState({ filterObj: cur });
+        // document.getElementById('searchInput').value = this.props.routerData;
+        // this.filter();
         // }
     }
     async getdata(query = "") {

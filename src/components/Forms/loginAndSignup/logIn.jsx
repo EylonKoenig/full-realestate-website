@@ -29,7 +29,6 @@ class LogIn extends React.Component{
     }
     handleSubmit = e => {
         e.preventDefault();
-        
         let isOK =  true;
 
         for(let prop in this.state){
@@ -45,7 +44,6 @@ class LogIn extends React.Component{
 
             for(let prop in this.state){
                 result[prop] = this.state[prop].value;
-
             }
             api.login(result)
               .then(response => {
@@ -54,13 +52,9 @@ class LogIn extends React.Component{
                     this.props.loginHandelClick();
                     window.location.reload();
                   }
-                console.log(response);
-              })
-            
+              })        
         }
     }
-
-
     render() {
         return (
             <div className={"row"} onClick={ this.props.handleChildClick()}>

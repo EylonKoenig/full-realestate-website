@@ -1,19 +1,19 @@
 import React from 'react';
 import axios from "axios";
 
-import validate, {field} from '../validator';
+import validate, { field } from '../validator';
 import InputErrors from '../inputErrors';
 
 class SignUp extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            first_name:field({name:'first name',isRequired:true}),
-            last_name: field({name:'last name',isRequired:false}),
-            user: field({name:'user',isRequired:true,checklist:{list:[],status:false}}),
-            password: field({name:'password',isRequired:true,minLength: 6}),
-            phone: field({name:'phone',isRequired:true,minLength: 6}),
-            list:[]
+            first_name: field({ name: 'first name', isRequired: true }),
+            last_name: field({ name: 'last name', isRequired: false }),
+            user: field({ name: 'user', isRequired: true, pattern: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/, checklist: { list: [], status: false } }),
+            password: field({ name: 'password', isRequired: true, minLength: 6 }),
+            phone: field({ name: 'phone', isRequired: true, minLength: 6 }),
+            list: []
         };
 
         this.inputChange = this.inputChange.bind(this);
@@ -21,19 +21,19 @@ class SignUp extends React.Component {
     }
     componentDidMount() {
         this.getUser();
-        
+
     }
     async getUser() {
         const data = await axios.get(`http://localhost:5000/register`);
         const userData = this.state.user;
         userData.validations.checklist.list = data.data;
-        this.setState({ user:userData });
+        this.setState({ user: userData });
     }
 
-    inputChange({target:{name,value}}){
-        const errors = validate(name,value,this.state[name].validations);
+    inputChange({ target: { name, value } }) {
+        const errors = validate(name, value, this.state[name].validations);
         this.setState({
-            [name]:{
+            [name]: {
                 ...this.state[name],
                 value,
                 errors
@@ -43,21 +43,21 @@ class SignUp extends React.Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        
-        let isOK =  true;
 
-        for(let prop in this.state){
+        let isOK = true;
+
+        for (let prop in this.state) {
             const field = this.state[prop];
-            const errors = validate(prop,field.value,field.validations);
-            if(errors.length){
+            const errors = validate(prop, field.value, field.validations);
+            if (errors.length) {
                 isOK = false;
-                this.setState({[prop]:{...this.state[prop],errors}})
+                this.setState({ [prop]: { ...this.state[prop], errors } })
             }
         }
-        if(isOK){
+        if (isOK) {
             const result = {};
 
-            for(let prop in this.state){
+            for (let prop in this.state) {
                 result[prop] = this.state[prop].value;
             }
 
@@ -96,12 +96,12 @@ class SignUp extends React.Component {
                                 <div className="form-group">
                                     <label htmlFor="exampleInputEmail1">Last Name</label>
                                     <input type="text" name="last_name" className="form-control" id="last_name" aria-describedby="emailHelp" placeholder="Enter last name" onBlur={this.inputChange} />
-                                     <InputErrors errors={this.state.last_name.errors}></InputErrors>
+                                    <InputErrors errors={this.state.last_name.errors}></InputErrors>
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="exampleInputEmail1">Phone</label>
                                     <input type="text" name="phone" className="form-control" id="phone" aria-describedby="emailHelp" placeholder="Enter phone number" onBlur={this.inputChange} />
-                                     <InputErrors errors={this.state.phone.errors}></InputErrors>
+                                    <InputErrors errors={this.state.phone.errors}></InputErrors>
                                 </div>
                                 <div className="col-md-12 text-center mb-3">
                                     <button type="submit" className=" btn btn-block mybtn tx-tfm">Get Started For Free</button>

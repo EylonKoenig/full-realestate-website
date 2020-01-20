@@ -18,13 +18,14 @@ class Header extends React.Component {
             isOpen: true,
             login: false,
             singUp: false,
+            user: cookie.load('auth')
         };
         this.onLogin = this.onLogin.bind(this)
         this.onLogout = this.onLogout.bind(this)
     }
-    componentWillMount() {
-        this.state = { user: cookie.load('auth') }
-    }
+    // componentWillMount() {
+    //     this.state = { user: cookie.load('auth') }
+    // }
 
     onLogin(user) {
         this.setState({ user })
@@ -99,8 +100,8 @@ class Header extends React.Component {
                             </ul>
                         </div>
                         <RightNavBar loginHandelClick={() => this.loginHandelClick}
-                         signUpHandelClick={() => this.signUpHandelClick}
-                         user={this.state.user} />
+                            signUpHandelClick={() => this.signUpHandelClick}
+                            user={this.state.user} />
                     </div>
                 </nav>
                 {this.state.login ?

@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from "axios";
-import cookie from 'react-cookies'
 
 import MainPageCities from "./mainPageCities";
 import MainPageCards from "./mainPageCards";

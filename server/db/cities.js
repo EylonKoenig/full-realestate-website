@@ -1,4 +1,5 @@
 const connection = require('./config');
+const convertData = require('./setData')
 
 
 function getAllCities() {
@@ -25,7 +26,21 @@ function getCitiesByName(cities) {
     });
 }
 
+function getAllCitiesByApartment(country) {
+    console.log(country)
+    return new Promise((resolve, reject) => {
+        connection.query(`call getAllCityByCountry("${country}")`, (error, results, fields) => {
+            if (error) {
+                reject(error);
+                return;
+            }
+            resolve(results[0]);
+        });
+    });
+}
+
 module.exports = {
     getAllCities,
     getCitiesByName,
+    getAllCitiesByApartment
 };
