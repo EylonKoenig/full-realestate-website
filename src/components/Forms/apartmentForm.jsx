@@ -54,7 +54,8 @@ class ApartmentForm extends React.Component {
         this.setState({ formDetails: obj });
     }
     imageChange = (event) => {
-        this.setState({ files: [...this.state.formDetails.files, ...event.target.files] })
+        const data =  [...this.state.files, ...event.target.files]
+        this.setState({ files:data})
         var output = document.getElementById(`image-preview-${event.target.id}`);
         output.src = URL.createObjectURL(event.target.files[0]);
     }
