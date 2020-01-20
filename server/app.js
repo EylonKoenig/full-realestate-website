@@ -6,6 +6,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var apartmentsRouter = require('./routes/apartments');
+var countriesRouter = require('./routes/countries');
 var citiesRouter = require('./routes/cities');
 var loginRouter = require('./routes/login');
 var registerRouter = require('./routes/register');
@@ -24,9 +25,11 @@ app.use(fileUpload());
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/apartments', apartmentsRouter);
+app.use('/countries', countriesRouter);
 app.use('/cities', citiesRouter);
 app.use('/login', loginRouter);
 app.use('/register', registerRouter)
+
 
 
 app.listen(80);

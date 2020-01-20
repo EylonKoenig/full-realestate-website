@@ -18,7 +18,26 @@ const api = {
         catch (error) {
             console.log(error);
         }
+    },
+    async getAllCountries() {
+        try {
+            const data = await fecther.get('/countries');
+            return data;
+        }
+        catch (error) {
+            console.log(error);
+        }
+    },
+    async getAllCitiesByCountry(country) {
+        try {
+            const data = await fecther.get(`/cities/${country}/all`);
+            return data;
+        }
+        catch (error) {
+            console.log(error);
+        }
     }
+
 }
 
 export default api;

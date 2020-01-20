@@ -10,7 +10,7 @@ class SignUp extends React.Component {
         this.state = {
             first_name:field({name:'first name',isRequired:true}),
             last_name: field({name:'last name',isRequired:false}),
-            user: field({name:'user',isRequired:true,checklist:{list:[],status:false}}),
+            user: field({name:'user',isRequired:true, pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,checklist:{list:[],status:false}}),
             password: field({name:'password',isRequired:true,minLength: 6}),
             phone: field({name:'phone',isRequired:true,minLength: 6}),
             list:[]
