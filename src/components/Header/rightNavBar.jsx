@@ -1,4 +1,5 @@
 import React from 'react';
+import cookie from 'react-cookies'
 import { Link } from "react-router-dom";
 
 class RightNavBar extends React.Component {
@@ -7,6 +8,10 @@ class RightNavBar extends React.Component {
         this.state = {
 
         };
+    }
+    logout(){
+        cookie.remove('auth', { path: '/' })
+        window.location.reload();
     }
 
     render() {
@@ -68,7 +73,7 @@ class RightNavBar extends React.Component {
                                 <Link to={'/'}>Wish List</Link>
                                 <Link to={'/'}>Edit Property</Link>
                                 <Link to={'/'}>Edit Profile</Link>
-                                <Link to={'/'}>LOGOUT</Link>
+                                <button onClick={this.logout}>LOGOUT</button>
                                 </div>
                             </li>
                         </div>

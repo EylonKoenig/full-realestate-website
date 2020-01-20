@@ -38,7 +38,7 @@ export default (name, value, validations) => {
     }
     if (validations.checklist && checkinlist(value, validations.checklist.list, validations.checklist.status)) {
         console.log(checkinlist(value, validations.checklist.list, validations.checklist.status))
-        errors.push(` invalid`);
+        errors.push(`Email has already been use`);
     }
 
     return errors;
@@ -53,9 +53,8 @@ const pattern = (value, pattern) => !pattern.test(value);
 const checkinlist = function(value, list, status) {
     const isInclude = list.includes(value);
     if (status) {
-        return isInclude
-    } else {
         return !isInclude
+    } else {
+        return isInclude
     }
-
 }

@@ -59,7 +59,6 @@ class SignUp extends React.Component {
 
             for(let prop in this.state){
                 result[prop] = this.state[prop].value;
-
             }
 
             // need to send the parameters
