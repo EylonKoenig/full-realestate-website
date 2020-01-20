@@ -23,7 +23,7 @@ class App extends React.Component {
     render() {
         return (
             <Router>
-                <Header />
+                <Header/>
                 <Switch>
                     <Route path='/apartments' component=
                         {(props) => (this.state.loading ?
@@ -46,7 +46,7 @@ class App extends React.Component {
                         <Home cities={this.state.cities} />
                     </Route>
                 </Switch>
-                <Footer />
+                {/* <Footer /> */}
             </Router>
         );
     }

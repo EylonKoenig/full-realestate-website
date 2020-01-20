@@ -1,0 +1,23 @@
+.image-preview {
+    height: 150px;
+    width: 200px;
+    position: absolute;
+    right: 0;
+}
+
+.images-cover {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: auto;
+    z-index: 9999;
+}
+
+#image-form {
+    max-width: unset;
+    width: 550px;
+    min-height: max-content;
+}

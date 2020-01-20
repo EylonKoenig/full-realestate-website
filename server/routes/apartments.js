@@ -9,7 +9,10 @@ var {
     postApartment
 } = require('../db/apartments')
 
+const { isUser } = require('../middlewares/authentication');
+
 router.get('/', function(req, res, next) {
+    console.log('cookies', req.cookies);
     getAllapartments(req.query)
         .then(apartments => res.status(200).json({ apartments }))
         .catch(error => res.status(500).json({ error: error.message }));
@@ -36,12 +39,13 @@ router.get('/four/bydate', function(req, res, next) {
         .then(apartments => res.status(200).json(apartments))
         .catch(error => res.status(500).json({ error: error.message }));
 });
-router.post('/upload', function(req, res, next) {
+router.post('/upload', isUser, function(req, res, next) {
     if (req.files === null) {
         return res.status(400).json({ msg: 'no file uploaded' });
     }
     const file = req.files.file;
     const dir = "C:/Users/eylon/Desktop/realtour"
+    console.log(dir + '/server/public/images/apartment/' + file.name)
     file.mv(`${dir}/server/public/images/apartment/${file.name}`, err => {
         if (err) {
             console.error(err);

@@ -13,6 +13,7 @@ import '../../css/galleryCss/styletopnav.css';
 import '../../css/galleryCss/filterResults.css';
 import '../../App.css';
 import SearchPageLoading from "../../components/Loading/searchPageLoading";
+import api from '../../server-api/api';
 
 class Gallery extends React.Component {
     constructor(props) {
@@ -75,7 +76,6 @@ class Gallery extends React.Component {
 
     componentDidMount() {
         const query  = this.props.location.search ? this.props.location.search : ""; 
-        console.log(query);
         this.getdata(query);
         // if (this.props.routerData) {
             // let cur = this.state.filterObj;
@@ -86,7 +86,7 @@ class Gallery extends React.Component {
         // }
     }
     async getdata(query = "") {
-        const data = await axios.get(`http://localhost:5000/apartments${query}`);
+        let data = await api.getApartments(query)
         this.setState({ allApartments: data.data.apartments, loading: false });
     }
     render() {
