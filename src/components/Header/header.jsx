@@ -54,7 +54,6 @@ class Header extends React.Component {
         this.setState({ isOpen: !this.state.isOpen });
     };
     render() {
-        (this.state);
         return (
             <div id={'wraper'}>
                 <nav className={'header navbar-expand-lg navbar-light'} id={'header'}>

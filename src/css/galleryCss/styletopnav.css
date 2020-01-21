@@ -148,6 +148,7 @@
 #submissionMenu button {
     text-align: center;
     padding: 20px 0;
+    width: 100%;
 }
 
 #submissionMenu a:hover {
