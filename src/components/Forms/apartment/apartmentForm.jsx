@@ -8,7 +8,7 @@ import validate, { field } from '../validator';
 import InputErrors from '../inputErrors';
 import UploadImages from './uploadImages';
 import '../../../css/apartmentForm/aprtment.css'
-import setData from './setFormData';
+import setData from './setApartmentForm';
 
 class ApartmentForm extends React.Component {
     constructor(props) {
@@ -22,7 +22,7 @@ class ApartmentForm extends React.Component {
                 sqft: field({ name: 'sqft', isRequired: true }),
                 number_of_bath: field({ name: 'number_of_bath', isRequired: (false) }),
                 number_of_room: field({ name: 'number_of_room', isRequired: (false) }),
-                for_sale: field({ name: 'for_sale', value: false, isRequired: (false) }),
+                for_sale: field({ name: 'for_sale', value: false, isRequired: (false), checkstatus: true }),
                 for_rent: field({ name: 'for_rent', value: false, isRequired: (false) }),
                 property_type: field({ name: 'property_type', isRequired: (true) }),
                 main_image: field({ name: 'main_image', isRequired: (false) }),
@@ -33,6 +33,8 @@ class ApartmentForm extends React.Component {
             cities: [],
         };
         this.inputChange = this.inputChange.bind(this);
+        this.setStatus = this.setStatus.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
     }
     async componentDidMount() {
         let data = await api.getAllCountries();
@@ -48,7 +50,6 @@ class ApartmentForm extends React.Component {
         if (name === 'for_sale' || name === 'for_rent') {
             this.setStatus(name);
             return;
-
         }
         const errors = validate(name, value, this.state.formDetails[name].validations);
         const obj = this.state.formDetails;
@@ -76,35 +77,44 @@ class ApartmentForm extends React.Component {
     }
 
     setStatus = (name) => {
-        const value = !this.state.formDetails[name].value
-        const errors = validate(name, value, this.state.formDetails[name].validations);
-        const obj = this.state.formDetails;
-        obj[name] = { ...this.state.formDetails[name], value, errors }
+        const {formDetails} = this.state;
+        const value = !formDetails[name].value
+        const obj = formDetails;
+        obj[name] = { ...formDetails[name], value }
         this.setState({ formDetails: obj });
-
+        const values = [formDetails.for_sale.value,formDetails.for_rent.value];
+        const errors = validate(name, values,formDetails[name].validations);
+        obj[name] = {...formDetails[name],errors}
+        this.setState({ formDetails: obj});
     }
 
     onSubmit = e => {
         e.preventDefault();
+        const {formDetails} = this.state;
         let isOK = true;
-        for (let prop in this.state.formDetails) {
-            const field = this.state.formDetails[prop];
-            const errors = validate(prop, field.value, field.validations);
-            const obj = this.state.formDetails;
+        let errors = undefined;
+        for (let prop in formDetails) {
+            const field = formDetails[prop];
+            if(prop === 'for_sale') {
+                const values = [formDetails.for_sale.value,formDetails.for_rent.value];
+                errors = validate(prop, values, field.validations);
+            } else {
+                 errors = validate(prop, field.value, field.validations);
+            }
+            const obj = formDetails;
             if (errors.length) {
                 isOK = false;
-                obj[prop] = { ...this.state.formDetails[prop], errors }
+                obj[prop] = { ...formDetails[prop], errors }
             }
             this.setState({ formDetails: obj })
         }
         if (isOK) {
             const result = {};
-            for (let prop in this.state.formDetails) {
-                result[prop] = this.state.formDetails[prop].value;
+            for (let prop in formDetails) {
+                result[prop] = formDetails[prop].value;
             }
-            const data = setData(result,cookie.load('auth').userId,this.state.files,this.state.cities);
+            const data = setData(result, cookie.load('auth').userId, this.state.files, this.state.cities);
             api.sendDataToServer(data);
-            // need to send the parameters
         }
     }
     handelImagesClick = (event) => {
@@ -147,7 +157,7 @@ class ApartmentForm extends React.Component {
                                         {this.state.cities.map((city, index) => {
                                             return (
                                                 // <option key={index} id={index} value={city.id}>{city.name}</option>
-                                                <option  key={index} id={index}>{city.name}</option>
+                                                <option key={index} id={index}>{city.name}</option>
 
                                             );
                                         })}
@@ -156,17 +166,17 @@ class ApartmentForm extends React.Component {
                                 </Form.Group>
                             </Form.Row>
                             <Form.Row>
-                            <Form.Group as={Col} controlId="formGridAddress">
-                                <Form.Label>Address</Form.Label>
-                                <Form.Control name='address' onBlur={this.inputChange} />
-                                <InputErrors errors={this.state.formDetails.address.errors}></InputErrors>
-                            </Form.Group>
-                            <Form.Group as={Col} controlId="formGridPrice">
-                                <Form.Label >Price</Form.Label>
-                                <span class="input-group-addon">$</span>
-                                <Form.Control name='price' onBlur={this.inputChange} />
-                                <InputErrors errors={this.state.formDetails.price.errors}></InputErrors>
-                            </Form.Group>
+                                <Form.Group as={Col} controlId="formGridAddress">
+                                    <Form.Label>Address</Form.Label>
+                                    <Form.Control name='address' onBlur={this.inputChange} />
+                                    <InputErrors errors={this.state.formDetails.address.errors}></InputErrors>
+                                </Form.Group>
+                                <Form.Group as={Col} controlId="formGridPrice">
+                                    <Form.Label >Price</Form.Label>
+                                    <span className="input-group-addon">$</span>
+                                    <Form.Control name='price' onBlur={this.inputChange} />
+                                    <InputErrors errors={this.state.formDetails.price.errors}></InputErrors>
+                                </Form.Group>
                             </Form.Row>
                             <Form.Row>
                                 <Form.Group as={Col} controlId="formGridRoom">

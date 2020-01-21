@@ -12,7 +12,6 @@ var { addImages } = require('../db/images.js')
 const { isUser } = require('../middlewares/authentication');
 
 router.get('/', function(req, res, next) {
-    console.log('cookies', req.cookies);
     getAllapartments(req.query)
         .then(apartments => res.status(200).json({ apartments }))
         .catch(error => res.status(500).json({ error: error.message }));
@@ -29,7 +28,6 @@ router.get('/all/countries', function(req, res, next) {
         .catch(error => res.status(500).json({ error: error.message }));
 });
 router.get('/all/cities/:country', function(req, res, next) {
-    console.log(req.params.country)
     getCitiesApartment(req.params.country)
         .then(cities => res.status(200).json(cities))
         .catch(error => res.status(500).json({ error: error.message }));

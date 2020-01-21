@@ -1,6 +1,6 @@
 import React from 'react';
-import axios from "axios";
 
+import api from '../../server-api/api'
 import MainPageCities from "./mainPageCities";
 import MainPageCards from "./mainPageCards";
 import LinksFooter from "../../components/Footer/linksFooter";
@@ -27,7 +27,7 @@ class Home extends React.Component {
         this.getData();
     };
     async getData(){
-        const data = await axios.get(`http://localhost:5000/apartments/four/bydate`);
+        const data = await api.getRecentApartment();
         this.setState({apartments:data.data,loading: false});
     }
 

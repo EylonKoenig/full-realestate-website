@@ -1,5 +1,6 @@
 import React from 'react';
-import axios from "axios";
+
+import api from '../../../server-api/api';
 
 class CountrySearch extends React.Component {
     constructor(props) {
@@ -11,8 +12,8 @@ class CountrySearch extends React.Component {
     componentDidMount() {
         this.getdata();
     }
-    async getdata(query = "") {
-        const data = await axios.get(`http://localhost:5000/apartments/all/countries`);
+    async getdata() {
+        const data = await api.getRelevantCountries()
         this.setState({ counties: data.data });
     }
     render() {

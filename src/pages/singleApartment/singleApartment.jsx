@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../css/apratmentCss/apratment.css'
 import ApartmentFrom from "./singleApartmentForm";
-import axios from "axios";
+import api from '../../server-api/api'
 import GoogleMap from "../../components/GoogleMap/googleMap";
 
 
@@ -18,7 +18,7 @@ class singleApartment extends React.Component {
         this.getdata();
     }
     async getdata(){
-        const data = await axios.get(`http://localhost:5000/apartments/${this.props.aprId}`);
+        const data = await api.getApartmentById(this.props.aprId);
         this.setState({apartment:data.data[0],loading:false});
         this.setState({images:this.state.apartment.images.toString().split(',')})
     }

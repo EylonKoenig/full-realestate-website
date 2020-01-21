@@ -1,6 +1,3 @@
-import api from '../../../server-api/api';
-
-
 export default (data, userId, images, cities) => {
     const formData = new FormData();
     formData.append('user_id', userId)
@@ -25,9 +22,6 @@ export default (data, userId, images, cities) => {
         for (let image in images) {
             formData.append("images", images[image]);
         }
-    }
-    for (var key of formData.entries()) {
-        console.log(key);
     }
     return formData;
 }

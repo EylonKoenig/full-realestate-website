@@ -3,18 +3,8 @@ import cookie from 'react-cookies'
 import { Link } from "react-router-dom";
 
 class RightNavBar extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-
-        };
-    }
-    logout(){
-        cookie.remove('auth', { path: '/' })
-        window.location.reload();
-    }
-
     render() {
+        console.log(this.props);
         return (
             <div className="topright align-center ml-auto">
                 <ul className="navigation">
@@ -60,7 +50,7 @@ class RightNavBar extends React.Component {
                     </li>
                     {!this.props.user ?
                         <div className={'d-flex'}>
-                            <li className="navigation"><button  id={"loginButton"} onClick={this.props.loginHandelClick()}>Log In</button></li>
+                            <li className="navigation"><button id={"loginButton"} onClick={this.props.loginHandelClick()}>Log In</button></li>
                             <li className="navigation"><button onClick={this.props.signUpHandelClick()}>Sign Up</button></li>
                             <li style={{ borderBottom: 'none' }}><span>|</span></li>
                             <li className="navigation"><a href="/">Advertise</a></li>
@@ -69,11 +59,11 @@ class RightNavBar extends React.Component {
                             <li className="navigation"><a href="/">Hello {this.props.user.first_name}</a></li>
                             <li className="navigation" id='submission'><a href="/">Submission</a>
                                 <div className={'submissionMenu'} id='submissionMenu'>
-                                <Link to={'/postApartment'}>Add Property</Link>
-                                <Link to={'/'}>Wish List</Link>
-                                <Link to={'/'}>Edit Property</Link>
-                                <Link to={'/'}>Edit Profile</Link>
-                                <button onClick={this.logout}>LOGOUT</button>
+                                    <Link to={'/postApartment'}>Add Property</Link>
+                                    <Link to={'/'}>Wish List</Link>
+                                    <Link to={'/'}>Edit Property</Link>
+                                    <Link to={'/'}>Edit Profile</Link>
+                                    <button onClick={this.props.logout}>LOGOUT</button>
                                 </div>
                             </li>
                         </div>

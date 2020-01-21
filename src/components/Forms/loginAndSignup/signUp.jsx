@@ -1,8 +1,9 @@
 import React from 'react';
-import axios from "axios";
 
+import api from '../../../server-api/api'
 import validate, { field } from '../validator';
 import InputErrors from '../inputErrors';
+import setFormData from './setRegistrationData'
 
 class SignUp extends React.Component {
     constructor(props) {
@@ -13,7 +14,6 @@ class SignUp extends React.Component {
             user: field({ name: 'user', isRequired: true, pattern: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/, checklist: { list: [], status: false } }),
             password: field({ name: 'password', isRequired: true, minLength: 6 }),
             phone: field({ name: 'phone', isRequired: true, minLength: 6 }),
-            list: []
         };
 
         this.inputChange = this.inputChange.bind(this);
@@ -24,7 +24,7 @@ class SignUp extends React.Component {
 
     }
     async getUser() {
-        const data = await axios.get(`http://localhost:5000/register`);
+        const data = await api.getUsers()
         const userData = this.state.user;
         userData.validations.checklist.list = data.data;
         this.setState({ user: userData });
@@ -43,7 +43,6 @@ class SignUp extends React.Component {
 
     handleSubmit = e => {
         e.preventDefault();
-
         let isOK = true;
 
         for (let prop in this.state) {
@@ -55,29 +54,24 @@ class SignUp extends React.Component {
             }
         }
         if (isOK) {
-            const result = {};
+            const data = setFormData(this.state);
+            api.addUser(data).then(result => { if (result) { console.log(this.state); this.props.signUpHandelClick() } })
 
-            for (let prop in this.state) {
-                result[prop] = this.state[prop].value;
-            }
-
-            // need to send the parameters
         }
     }
 
     render() {
-        console.log(this.state);
         return (
             <div className="container" onClick={this.props.handleChildClick()}>
                 <div className="row">
                     <div className="col-md-5 mx-auto">
-                        <div className="myform form ">
+                        <div className="myform singUpform">
                             <div className="logo mb-3">
                                 <div className="col-md-12 text-center">
                                     <h1 >Sign up</h1>
                                 </div>
                             </div>
-                            <form action="#" name="registration" onSubmit={this.onSubmit}>
+                            <form action="#" name="registration" onSubmit={this.handleSubmit}>
                                 <div className="form-group">
                                     <label htmlFor="exampleInputEmail1">User/Email address</label>
                                     <input type="email" name="user" className="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" onBlur={this.inputChange} />

@@ -1,4 +1,4 @@
-export const field = ({ name, value = '', isRequired = false, minLength = 0, pattern = '', checklist }) => {
+export const field = ({ name, value = '', isRequired = false, minLength = 0, pattern = '', checklist, checkstatus }) => {
     const settings = {
         name,
         value,
@@ -17,6 +17,9 @@ export const field = ({ name, value = '', isRequired = false, minLength = 0, pat
     }
     if (checklist) {
         settings.validations.checklist = checklist
+    }
+    if (checkstatus) {
+        settings.validations.checkstatus = checkstatus
     }
 
     return settings;
@@ -43,6 +46,9 @@ export default (name, value, validations) => {
             errors.push(`Email has already been use`);
         }
     }
+    if (validations.checkstatus && checkStatus(value)) {
+        errors.push(`please select listing status`);
+    }
 
     return errors;
 }
@@ -60,4 +66,11 @@ const checkinlist = function(value, list, status) {
     } else {
         return isInclude
     }
+}
+
+const checkStatus = function(values) {
+    if (!values[0] && !values[1]) {
+        return true
+    }
+    return false
 }
