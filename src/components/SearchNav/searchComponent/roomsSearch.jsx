@@ -15,7 +15,7 @@ class RoomsSearch extends React.Component {
                         value=""
                         //    checked="checked"
                         onChange={handleInputChange} />
-                    {/*<label for="Baths-any-desktop" class="filter-btn-group-text-sm" style="border: 1px solid red; color: red; padding-left:7px;">Any</label>*/}
+                    {/*<label for="Baths-any-desktop" className="filter-btn-group-text-sm" style="border: 1px solid red; color: red; padding-left:7px;">Any</label>*/}
                     <label htmlFor="Baths-any-desktop" className="filter-btn-group-text-sm"
                         style={{ padding: '8px' }}>Any</label>
 

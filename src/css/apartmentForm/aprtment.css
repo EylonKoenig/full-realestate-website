@@ -27,3 +27,8 @@
     top: 38px;
     left: 18px;
 }
+
+.singUpform {
+    position: fixed;
+    top: 0;
+}

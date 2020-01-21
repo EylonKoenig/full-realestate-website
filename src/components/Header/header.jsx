@@ -20,32 +20,25 @@ class Header extends React.Component {
             singUp: false,
             user: cookie.load('auth')
         };
-        this.onLogin = this.onLogin.bind(this)
-        this.onLogout = this.onLogout.bind(this)
-    }
-    // componentWillMount() {
-    //     this.state = { user: cookie.load('auth') }
-    // }
-
-    onLogin(user) {
-        this.setState({ user })
-        cookie.save('user', user, { path: '/' })
-    }
-
-    onLogout() {
-        cookie.remove('user', { path: '/' })
     }
 
     loginHandelClick = () => {
         this.setState({
             login: !this.state.login,
+            user: cookie.load('auth')
         })
     };
+    logout = () => {
+        cookie.remove('auth', { path: '/' })
+        this.setState({ user: "" });
+    }
 
     signUpHandelClick = () => {
         this.setState({
             singUp: !this.state.singUp,
+            user: cookie.load('auth')
         });
+
     };
 
     activateSignupAndLogin = () => {
@@ -59,22 +52,11 @@ class Header extends React.Component {
 
     handelClick = () => {
         this.setState({ isOpen: !this.state.isOpen });
-        if (this.state.isOpen) {
-            document.getElementById("header").style.position = 'fixed'
-        } else {
-            document.getElementById("header").style.position = 'relative'
-        }
-
     };
     render() {
-        // if (!this.state.isOpen){
-        //     document.getElementById('navbarNav').onclick = function() {
-        //         document.getElementById('header-button').click()
-        //     };
-        // }
         return (
             <div id={'wraper'}>
-                <nav className={'header navbar navbar-expand-lg navbar-light'} id={'header'}>
+                <nav className={'header navbar-expand-lg navbar-light'} id={'header'}>
                     <button id={'header-button'}
                         className="navbar-toggler burger-button"
                         type="button"
@@ -101,13 +83,16 @@ class Header extends React.Component {
                         </div>
                         <RightNavBar loginHandelClick={() => this.loginHandelClick}
                             signUpHandelClick={() => this.signUpHandelClick}
-                            user={this.state.user} />
+                            user={this.state.user}
+                            logout={this.logout} />
                     </div>
                 </nav>
                 {this.state.login ?
                     <div style={{ position: 'absolute', top: '0' }} onClick={() => this.loginHandelClick()} >
                         <div id={"login"} className="container-fluid login_or_singUp_page">
-                            <LogIn handleChildClick={() => this.handleChildClick} activateSignupAndLogin={() => this.activateSignupAndLogin} loginHandelClick={() => this.loginHandelClick()} />
+                            <LogIn handleChildClick={() => this.handleChildClick}
+                                activateSignupAndLogin={() => this.activateSignupAndLogin}
+                                loginHandelClick={() => this.loginHandelClick()} />
                         </div>
                     </div>
                     : null
@@ -115,7 +100,9 @@ class Header extends React.Component {
                 {this.state.singUp ?
                     <div style={{ position: 'absolute', top: '0' }} onClick={this.signUpHandelClick}>
                         <div className="container-fluid login_or_singUp_page"  >
-                            <SignUp handleChildClick={() => this.handleChildClick} activateSignupAndLogin={() => this.activateSignupAndLogin} />
+                            <SignUp handleChildClick={() => this.handleChildClick}
+                                activateSignupAndLogin={() => this.activateSignupAndLogin}
+                                signUpHandelClick={() => this.signUpHandelClick()} />
                         </div>
                     </div>
                     : null

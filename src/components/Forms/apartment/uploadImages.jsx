@@ -33,14 +33,14 @@ class UploadImages extends React.Component {
                                 <Form.Group as={Col} style={{ height: "150px" }}>
                                     <img className={'image-preview'} id={'image-preview-File2'} alt='' />
                                     <Label for="exampleFile">Upload your image</Label>
-                                    <Input type="file" multiple  name="file" id="File2" onChange={this.props.imageChange} />
+                                    <Input type="file"  name="file" id="File2" onChange={this.props.imageChange} />
                                 </Form.Group>
                             </Form.Row>
                             <Form.Row>
                                 <Form.Group as={Col} style={{ height: "150px" }}>
                                     <img className={'image-preview'} id={'image-preview-File3'} alt='' />
                                     <Label for="exampleFile">Upload your image</Label>
-                                    <Input type="file" multiple  name="file" id="File3" onChange={this.props.imageChange} />
+                                    <Input type="file"  name="file" id="File3" onChange={this.props.imageChange} />
                                 </Form.Group>
                             </Form.Row>
                             <Form.Row>
@@ -54,7 +54,7 @@ class UploadImages extends React.Component {
                                 <Form.Group as={Col} style={{ height: "150px" }}>
                                     <img className={'image-preview'} id={'image-preview-File5'} alt='' />
                                     <Label for="exampleFile">Upload your image</Label>
-                                    <Input type="file" multiple  name="file" id="File5" onChange={this.props.imageChange} />
+                                    <Input type="file"  name="file" id="File5" onChange={this.props.imageChange} />
                                 </Form.Group>
                             </Form.Row>
                             <Form.Row>
@@ -65,7 +65,7 @@ class UploadImages extends React.Component {
                                 </Form.Group>
                             </Form.Row>
                             <div className="col-md-12 text-center ">
-                                <button type="submit" multiple  class=" btn btn-block mybtn tx-tfm" onClick={this.props.handleShow}>DONE</button>
+                                <button type="submit"  className=" btn btn-block mybtn tx-tfm" onClick={this.props.handleShow}>DONE</button>
                             </div>
                         </div>
                     </div>

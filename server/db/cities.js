@@ -27,7 +27,6 @@ function getCitiesByName(cities) {
 }
 
 function getAllCitiesByApartment(country) {
-    console.log(country)
     return new Promise((resolve, reject) => {
         connection.query(`call getAllCityByCountry("${country}")`, (error, results, fields) => {
             if (error) {
