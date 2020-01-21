@@ -9,7 +9,7 @@ import SearchPageLoading from "./components/Loading/searchPageLoading";
 import { searchLoadingData } from "./data-app/searchLoadingData";
 import Footer from "./components/Footer/footer";
 import { BrowserRouter as Router, Switch, Route, } from "react-router-dom";
-import ApartmentForm from './components/Forms/apartmentForm';
+import ApartmentForm from './components/Forms/apartment/apartmentForm';
 
 
 

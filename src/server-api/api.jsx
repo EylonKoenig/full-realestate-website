@@ -36,7 +36,18 @@ const api = {
         catch (error) {
             console.log(error);
         }
+    },
+    async sendDataToServer(fromData) {
+        try {
+            const data = await fecther.post(`/apartments/upload`,fromData);
+            return data;
+        }
+        catch (error) {
+            console.log(error);
+        }
     }
+    
+
 
 }
 

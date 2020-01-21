@@ -8,7 +8,7 @@ var {
     getCitiesApartment,
     postApartment
 } = require('../db/apartments')
-
+var { addImages } = require('../db/images.js')
 const { isUser } = require('../middlewares/authentication');
 
 router.get('/', function(req, res, next) {
@@ -39,22 +39,31 @@ router.get('/four/bydate', function(req, res, next) {
         .then(apartments => res.status(200).json(apartments))
         .catch(error => res.status(500).json({ error: error.message }));
 });
-router.post('/upload', isUser, function(req, res, next) {
-    if (req.files === null) {
-        return res.status(400).json({ msg: 'no file uploaded' });
+// router.post('/upload', isUser, function(req, res, next) {
+router.post('/upload', async function(req, res, next) {
+    let data = req.body;
+    let images = [];
+    if (req.files.main_image) {
+        const fileName = await addPhoto(req.files.main_image);
+        data.main_image = `images/apartment/${fileName}`;
     }
-    const file = req.files.file;
-    const dir = "C:/Users/eylon/Desktop/realtour"
-    console.log(dir + '/server/public/images/apartment/' + file.name)
-    file.mv(`${dir}/server/public/images/apartment/${file.name}`, err => {
-        if (err) {
-            console.error(err);
-            return res.status(500).send(err);
+    const apartmentId = await postApartment(data)
+    if (req.files.images) {
+        for (let image in req.files.images) {
+            const fileName = await addPhoto(req.files.images[image]);
+            images.push(`images/apartment/${fileName}`);
         }
-        res.json({ fileName: file.name, filePath: `/uploads/${file.name}` });
-    });
-
+    }
+    await addImages(apartmentId, images);
 });
+
+const addPhoto = async function(file) {
+    let date = new Date().getTime().toString();
+    const name = date + file.name
+    await file.mv(`${__dirname}/../public/images/apartment/${name}`)
+    return name
+
+}
 
 
 module.exports = router;
