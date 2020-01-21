@@ -21,3 +21,9 @@
     width: 550px;
     min-height: max-content;
 }
+
+.input-group-addon {
+    position: absolute;
+    top: 38px;
+    left: 18px;
+}

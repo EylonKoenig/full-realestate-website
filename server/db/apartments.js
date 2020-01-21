@@ -1,6 +1,7 @@
 const connection = require('./config');
 const Builder = require('./builders/apartmentsBuilder');
 const convertData = require('./setData')
+const setQuery = require('./builders/setQuery')
 
 function getAllapartments({ property_type, city, country, minPrice, maxPrice, minRooms, maxRooms, minBath, maxBath, sale_status, page = 1, size = 12 }) {
     return new Promise((resolve, reject) => {
@@ -79,18 +80,19 @@ function getCitiesApartment(country) {
     });
 }
 
-function postApartment(country) {
+function postApartment(formData) {
+    const query = setQuery("apartments", formData);
     return new Promise((resolve, reject) => {
-        connection.query(`CALL getAvailableCityByCountry("${country}")`, (error, results, fields) => {
+        connection.query(query, (error, results, fields) => {
             if (error) {
                 reject(error);
                 return;
             }
-
-            resolve(convertData(results[0]));
+            resolve(results.insertId)
         });
     });
 }
+
 
 
 module.exports = {
