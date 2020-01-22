@@ -1,6 +1,5 @@
 import React from 'react';
 
-import './css/galleryCss/reset.css'
 import Header from "./components/Header/header";
 import SearchGallery from "./pages/search/SearchGallery";
 import Home from "./pages/home/home";
