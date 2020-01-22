@@ -1,15 +1,25 @@
 import React from 'react';
 import { Form, Col } from 'react-bootstrap';
 import { Label, Input } from 'reactstrap';
+import ImageForm from '../imageForm';
 
 
 class UploadImages extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-
-        };
-
+            image:[1,2,3,4,5],
+            images:[],
+    }
+}
+    componentDidMount() {
+        // const result = [];
+        // for(let i = 0; i<5;i++){
+        //     if(this.props.images[i]) 
+        // }
+        if (this.state.images) {
+            this.setState({ images: this.props.images })
+        }
     }
 
     handleSubmit = e => {
@@ -19,6 +29,8 @@ class UploadImages extends React.Component {
 
 
     render() {
+        console.log(this.props)
+        const images = this.state.images
         return (
             <div className={'container-fluid images-cover'}>
                 <div className={"row "} onClick={this.props.handleChildClick()}>
@@ -26,46 +38,15 @@ class UploadImages extends React.Component {
                         <div id={'image-form'} className="myform form ">
                             <div className="logo mb-3">
                                 <div className="col-md-12 text-center">
-                                    <h1>upload images</h1>
+                                    <h1>Upload Images</h1>
                                 </div>
                             </div>
-                            <Form.Row>
-                                <Form.Group as={Col} style={{ height: "150px" }}>
-                                    <img className={'image-preview'} id={'image-preview-File2'} alt='' />
-                                    <Label for="exampleFile">Upload your image</Label>
-                                    <Input type="file"  name="file" id="File2" onChange={this.props.imageChange} />
-                                </Form.Group>
-                            </Form.Row>
-                            <Form.Row>
-                                <Form.Group as={Col} style={{ height: "150px" }}>
-                                    <img className={'image-preview'} id={'image-preview-File3'} alt='' />
-                                    <Label for="exampleFile">Upload your image</Label>
-                                    <Input type="file"  name="file" id="File3" onChange={this.props.imageChange} />
-                                </Form.Group>
-                            </Form.Row>
-                            <Form.Row>
-                                <Form.Group as={Col} style={{ height: "150px" }}>
-                                    <img className={'image-preview'} id={'image-preview-File4'} alt='' />
-                                    <Label for="exampleFile">Upload your image</Label>
-                                    <Input type="file" name="file" id="File4"  onChange={this.props.imageChange} />
-                                </Form.Group>
-                            </Form.Row>
-                            <Form.Row>
-                                <Form.Group as={Col} style={{ height: "150px" }}>
-                                    <img className={'image-preview'} id={'image-preview-File5'} alt='' />
-                                    <Label for="exampleFile">Upload your image</Label>
-                                    <Input type="file"  name="file" id="File5" onChange={this.props.imageChange} />
-                                </Form.Group>
-                            </Form.Row>
-                            <Form.Row>
-                                <Form.Group as={Col} style={{ height: "150px" }}>
-                                    <img className={'image-preview'} id={'image-preview-File6'} alt='' />
-                                    <Label for="exampleFile">Upload your image</Label>
-                                    <Input type="file" multiple  name="file" id="File6"onChange={this.props.imageChange} />
-                                </Form.Group>
-                            </Form.Row>
+                                {this.state.image.map((image, index) => {
+                                    return (
+                                        <ImageForm key={index} imageChange={this.props.imageChange} index={index + 2} imageUrl={this.props.images[index]}/>
+                                    )})}
                             <div className="col-md-12 text-center ">
-                                <button type="submit"  className=" btn btn-block mybtn tx-tfm" onClick={this.props.handleShow}>DONE</button>
+                                <button type="submit" className=" btn btn-block mybtn tx-tfm" onClick={this.props.handleShow}>DONE</button>
                             </div>
                         </div>
                     </div>

@@ -20,12 +20,12 @@ class ApartmentForm extends React.Component {
                 address: field({ name: 'address', isRequired: false }),
                 price: field({ name: 'address', isRequired: false }),
                 sqft: field({ name: 'sqft', isRequired: true }),
-                number_of_bath: field({ name: 'number_of_bath', isRequired: (false) }),
-                number_of_room: field({ name: 'number_of_room', isRequired: (false) }),
-                for_sale: field({ name: 'for_sale', value: false, isRequired: (false), checkstatus: true }),
-                for_rent: field({ name: 'for_rent', value: false, isRequired: (false) }),
-                property_type: field({ name: 'property_type', isRequired: (true) }),
-                main_image: field({ name: 'main_image', isRequired: (false) }),
+                number_of_bath: field({ name: 'number_of_bath', isRequired: false }),
+                number_of_room: field({ name: 'number_of_room', isRequired: false }),
+                for_sale: field({ name: 'for_sale', value: false, isRequired: false, checkstatus: true }),
+                for_rent: field({ name: 'for_rent', value: false, isRequired: false }),
+                property_type: field({ name: 'property_type', isRequired: true }),
+                main_image: field({ name: 'main_image', isRequired: false }),
             },
             files: [],
             imagesVisbilte: false,
@@ -53,38 +53,38 @@ class ApartmentForm extends React.Component {
         }
         const errors = validate(name, value, this.state.formDetails[name].validations);
         const obj = this.state.formDetails;
-        obj[name] = { ...this.state.formDetails[name], value, errors }
+        obj[name] = { ...this.state.formDetails[name], value, errors };
         this.setState({ formDetails: obj });
     }
     imageChange = (event) => {
-        const data = [...this.state.files, ...event.target.files]
+        const data = [...this.state.files, ...event.target.files];
         var output = document.getElementById(`image-preview-${event.target.id}`);
         output.src = URL.createObjectURL(event.target.files[0]);
         if (event.target.id === 'File1') {
-            const obj = this.state.formDetails
-            obj.main_image.value = event.target.files[0]
-            this.setState({ formDetails: obj })
+            const obj = this.state.formDetails;
+            obj.main_image.value = event.target.files[0];
+            this.setState({ formDetails: obj });
             return
         }
         this.setState({ files: data })
-    }
+    };
     async setCities(conutry) {
-        const obj = this.state.formDetails
+        const obj = this.state.formDetails;
         let data = await api.getAllCitiesByCountry(conutry);
         let dataList = data.data.map(city => city.name);
-        obj.city.validations.checklist.list = dataList
+        obj.city.validations.checklist.list = dataList;
         this.setState({ cities: data.data, formDetails: obj });
     }
 
     setStatus = (name) => {
         const {formDetails} = this.state;
-        const value = !formDetails[name].value
+        const value = !formDetails[name].value;
         const obj = formDetails;
-        obj[name] = { ...formDetails[name], value }
+        obj[name] = { ...formDetails[name], value };
         this.setState({ formDetails: obj });
         const values = [formDetails.for_sale.value,formDetails.for_rent.value];
         const errors = validate(name, values,formDetails[name].validations);
-        obj[name] = {...formDetails[name],errors}
+        obj[name] = {...formDetails[name],errors};
         this.setState({ formDetails: obj});
     }
 
@@ -116,22 +116,25 @@ class ApartmentForm extends React.Component {
             const data = setData(result, cookie.load('auth').userId, this.state.files, this.state.cities);
             api.sendDataToServer(data);
         }
-    }
+    };
     handelImagesClick = (event) => {
         event.preventDefault();
         event.stopPropagation();
         this.setState({ imagesVisbilte: !this.state.imagesVisbilte });
-    }
+    };
     handleChildClick = (e) => {
         e.stopPropagation();
     };
 
     render() {
+        console.log(this.state)
         return (
             <div id={'wraper'} style={{ margin: '50px auto', width: '500px' }}>
                 {cookie.load('auth') ?
                     <div>
-                        {this.state.imagesVisbilte && <UploadImages handleChildClick={() => this.handleChildClick}
+                        {this.state.imagesVisbilte && <UploadImages 
+                            images={this.state.files} 
+                            handleChildClick={() => this.handleChildClick}
                             handleChange={this.inputChange}
                             imageChange={this.imageChange}
                             handleShow={this.handelImagesClick} />}
@@ -228,7 +231,7 @@ class ApartmentForm extends React.Component {
                             </Form.Row>
                             <Form.Row>
                                 <Form.Group as={Col} style={{ height: "150px" }}>
-                                    <img className={'image-preview'} multiple id={'image-preview-File1'} alt='' />
+                                    <img className={'image-preview'} src={"http://localhost:5000/images/general/loadingApartment.jpg"} multiple id={'image-preview-File1'} alt='' />
                                     <Label for="exampleFile">Upload your image</Label>
                                     <Input type="file" name="file" id="File1" onChange={this.imageChange} />
                                     <FormText color="muted">
