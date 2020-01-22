@@ -3,7 +3,6 @@ import ProtopyType from "./searchComponent/proptyType";
 import PriceSearch from "./searchComponent/priceSearch";
 import BedSearch from "./searchComponent/bedsSearch";
 import RoomsSearch from "./searchComponent/roomsSearch";
-// import TextSearch from "./searchComponent/textSearch";
 import ListingStatus from "./searchComponent/listingSatus";
 import '../../css/galleryCss/undernave.css'
 import CountrySearch from './searchComponent/countrySearch';

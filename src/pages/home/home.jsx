@@ -1,17 +1,17 @@
 import React from 'react';
 
 import api from '../../server-api/api'
-import MainPageCities from "./mainPageCities";
-import MainPageCards from "./mainPageCards";
+import MainPageCities from "./subHome/mainPageCities";
+import MainPageCards from "./subHome/mainPageCards";
 import LinksFooter from "../../components/Footer/linksFooter";
-import UnderNavMain from "./underNavMain";
-import HomeMainImage from "./homeMainImage";
-import StatisticsData from "./statisticsData";
-import BuyingInsidersGuide from "./buyingInsiderGuide";
-import RentingInsidersGuide from "./rentingInsidersGuide";
-import FamilyImagesAndForm from "./familyImagesAndForm";
-import LinksNAR from "./linksNAR";
-import FooterAD from "./footerAD";
+import UnderNavMain from "./subHome/underNavMain";
+import HomeMainImage from "./subHome/homeMainImage";
+import StatisticsData from "./subHome/statisticsData";
+import BuyingInsidersGuide from "./subHome/buyingInsiderGuide";
+import RentingInsidersGuide from "./subHome/rentingInsidersGuide";
+import FamilyImagesAndForm from "./subHome/familyImagesAndForm";
+import LinksNAR from "./subHome/linksNAR";
+import FooterAD from "./subHome/footerAD";
 import '../../css/homePageCss/homePage.css'
 
 
