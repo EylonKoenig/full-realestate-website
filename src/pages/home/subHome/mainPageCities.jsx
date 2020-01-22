@@ -1,13 +1,10 @@
 import React from 'react';
-import Card from "../../components/card/Card";
-import '../../css/galleryCss/search-line.css';
-import '../../css/galleryCss/undernave.css';
-import '../../css/galleryCss/reset.css';
-import '../../css/galleryCss/phonenav.css';
-import '../../css/galleryCss/styletopnav.css';
-import '../../App.css'
-import {searchLoadingData} from "../../data-app/searchLoadingData";
-import SearchPageLoading from "../../components/Loading/searchPageLoading";
+import Card from "../../../components/card/Card";
+
+import '../../../css/galleryCss/galleryCss.css'
+import {searchLoadingData} from "../../../data-app/searchLoadingData";
+import SearchPageLoading from "../../../components/Loading/searchPageLoading";
+
 
 
 class MainPageCities extends React.Component{
@@ -33,7 +30,7 @@ class MainPageCities extends React.Component{
             //     </div>
             // </div>
             <div>
-            {this.props.loading ? <SearchPageLoading array={searchLoadingData.slice(0,4)}/> :
+            {this.props.loading ? <SearchPageLoading loadingApartments={searchLoadingData.slice(0,4)}/> :
                 <div className={'container-fluid'}>
                     <div id={'apartment_row'} className={'row'}>
                         {this.props.cities.map((item,i) => {

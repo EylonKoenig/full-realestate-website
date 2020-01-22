@@ -1,20 +1,15 @@
 import React from 'react';
 
 import SearchNav from "../../components/SearchNav/searchNav";
-import Card from "../../components/card/Card";
 import SortResults from "./sortResults";
 import { searchLoadingData } from "../../data-app/searchLoadingData";
-import '../../css/galleryCss/search-line.css';
-import '../../css/galleryCss/undernave.css';
-import '../../css/galleryCss/reset.css';
-import '../../css/galleryCss/phonenav.css';
-import '../../css/galleryCss/styletopnav.css';
 import '../../css/galleryCss/filterResults.css';
-import '../../App.css';
+import '../../css/galleryCss/galleryCss.css'
 import SearchPageLoading from "../../components/Loading/searchPageLoading";
 import api from '../../server-api/api';
+import Gallery from '../../components/gallery';
 
-class Gallery extends React.Component {
+class SearchGallery extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -93,26 +88,17 @@ class Gallery extends React.Component {
         return (
             <div>
                 <SearchNav handleInputChange={this.handleInputChange} filters={this.state.filterObj} />
-                {this.state.loading ? <SearchPageLoading array={searchLoadingData} /> :
+                {this.state.loading ? <SearchPageLoading loadingApartments={searchLoadingData} /> :
                     <div className={'container-fluid'}>
                         <SortResults resultsLength={this.state.allApartments.length} handleInputChange={this.handleInputChange} />
-                        <div id={'apartment_row'} className={'row'}>
-                            {this.state.allApartments.map((item, i) => {
-                                return (
-                                    <Card {...item} cardType={'apartment'} key={i} />
-                                )
-                            })
-                            }
-                        </div>
+                        <Gallery apartments={this.state.allApartments} cardType={'apartment'}/>
                     </div>}
             </div>
-
-
         )
     }
 }
 
-export default Gallery;
+export default SearchGallery;
 
 
 

@@ -1,7 +1,8 @@
 import React from 'react';
 
+import './css/galleryCss/reset.css'
 import Header from "./components/Header/header";
-import Gallery from "./pages/search/gallery";
+import SearchGallery from "./pages/search/SearchGallery";
 import Home from "./pages/home/home";
 import CitiesGallery from "./pages/cities/citiesGallery";
 import SingleApartment from "./pages/singleApartment/singleApartment";
@@ -10,6 +11,7 @@ import { searchLoadingData } from "./data-app/searchLoadingData";
 import Footer from "./components/Footer/footer";
 import { BrowserRouter as Router, Switch, Route, } from "react-router-dom";
 import ApartmentForm from './components/Forms/apartment/apartmentForm';
+import WishList from './pages/wishList/wishList';
 
 
 
@@ -23,27 +25,29 @@ class App extends React.Component {
     render() {
         return (
             <Router>
-                <Header/>
+                <Header />
                 <Switch>
                     <Route path='/apartments' component=
                         {(props) => (this.state.loading ?
-                            <SearchPageLoading array={searchLoadingData} page={'filter'} /> :
-                            <Gallery {...props} />
+                            <SearchPageLoading loadingApartments={searchLoadingData} page={'filter'} /> :
+                            <SearchGallery {...props} />
                         )} />
                     <Route path="/postApartment">
-                            <ApartmentForm/>
+                        <ApartmentForm />
                     </Route>
-                    <Route path="/cities">
-                        {this.state.loading ? <SearchPageLoading array={searchLoadingData} /> :
-                            <CitiesGallery cities={this.state.cities} />
+                    {/* <Route path="/cities">
+                        {this.state.loading ? <SearchPageLoading loadingApartments={searchLoadingData} /> :
+                            <CitiesGallery/>
                         }
-                    </Route>
-                    <Route path={"/singleApartment/:id"}
-                        component={(props) => (<SingleApartment apartments={this.state.apartments}
-                            aprId={props.match.params.id}
-                            cities={this.state.cities} />)} />
+                    </Route> */}
+                    <Route path={"/apartment/:id"}
+                           component={(props) => (<SingleApartment aprId={props.match.params.id}/>)}/>
+
+<Route path={"/:id/wishlist"}
+                           component={(props) => (<WishList aprId={props.match.params.id}/>)}/>
+
                     <Route path="/">
-                        <Home cities={this.state.cities} />
+                        <Home />
                     </Route>
                 </Switch>
                 {/* <Footer /> */}

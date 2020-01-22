@@ -127,7 +127,6 @@ class ApartmentForm extends React.Component {
     };
 
     render() {
-        console.log(this.state);
         return (
             <div id={'wraper'} style={{ margin: '50px auto', width: '500px' }}>
                 {cookie.load('auth') ?

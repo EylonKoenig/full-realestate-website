@@ -35,7 +35,7 @@ class Card extends React.Component {
                 <div className={'text-above-picter'} id={"picter"}>{this.props.title}</div>
                 <div className={"card-cover"}>
                     <Link to={this.props.cardType === 'apartment' ?
-                                `/singleApartment/${this.props.id}` : {pathname:'/apartments',state:{test:this.props.country+" "+this.props.label}}}
+                                `/apartment/${this.props.id}` : {pathname:'/apartments',state:{test:this.props.country+" "+this.props.label}}}
                                 className={'pictuerhref'}>
                         <div className={'image-cover'} index={'0'}
                              onMouseLeave={() => this.setState({hover:false})}
