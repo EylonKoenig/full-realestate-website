@@ -1,10 +1,8 @@
 import React from 'react';
-import cookie from 'react-cookies'
-import { Link } from "react-router-dom";
+import {Link} from 'react-router-dom';
 
 class RightNavBar extends React.Component {
     render() {
-        console.log(this.props);
         return (
             <div className="topright align-center ml-auto">
                 <ul className="navigation">
