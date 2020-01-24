@@ -16,7 +16,7 @@ class UnderImage extends React.Component {
                             </div>
                         </div>
                     </div>
-                    : apartment.cardType === 'apartment' &&
+                    : this.props.cardType === 'apartment' &&
                     <div className={'underpicuercontent'}>
                         <ul className={'pictuerdetails'}>
                             <li>room :<b>{apartment.number_of_room}</b></li>

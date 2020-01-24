@@ -6,7 +6,9 @@ var {
     getLastFourApartment,
     getCountriesApartment,
     getCitiesApartment,
-    postApartment
+    postApartment,
+    getAratmentbyUserId,
+    deleteApartmentById
 } = require('../db/apartments')
 var { addImages } = require('../db/images.js')
 const { isUser } = require('../middlewares/authentication');
@@ -41,18 +43,34 @@ router.get('/four/bydate', function(req, res, next) {
 router.post('/upload', async function(req, res, next) {
     let data = req.body;
     let images = [];
-    if (req.files.main_image) {
-        const fileName = await addPhoto(req.files.main_image);
-        data.main_image = `images/apartment/${fileName}`;
-    }
-    const apartmentId = await postApartment(data)
-    if (req.files.images) {
-        for (let image in req.files.images) {
-            const fileName = await addPhoto(req.files.images[image]);
-            images.push(`images/apartment/${fileName}`);
+    if (req.files) {
+        if (req.files.main_image) {
+            const fileName = await addPhoto(req.files.main_image);
+            data.main_image = `images/apartment/${fileName}`;
         }
+        const apartmentId = await postApartment(data)
+        if (req.files.images) {
+            for (let image in req.files.images) {
+                const fileName = await addPhoto(req.files.images[image]);
+                images.push(`images/apartment/${fileName}`);
+            }
+        }
+        await addImages(apartmentId, images);
+    } else {
+        data.main_image = `images/general/loadingApartment.jpg`;
+        await postApartment(data)
+        res.end('apartemnt upload!');
     }
-    await addImages(apartmentId, images);
+});
+router.get('/user/:userId', function(req, res, next) {
+    getAratmentbyUserId(req.params.userId)
+        .then(apartment => res.status(200).json(apartment))
+        .catch(error => res.status(500).json({ error: error.message }));
+});
+router.put('/remove/:apartmentId', function(req, res, next) {
+    deleteApartmentById(req.params.apartmentId)
+        .then(apartment => res.status(200).json(apartment))
+        .catch(error => res.status(500).json({ error: error.message }));
 });
 
 const addPhoto = async function(file) {
@@ -62,6 +80,5 @@ const addPhoto = async function(file) {
     return name
 
 }
-
 
 module.exports = router;

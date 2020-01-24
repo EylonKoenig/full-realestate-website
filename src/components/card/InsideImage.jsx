@@ -16,7 +16,6 @@ class InsideImage extends React.Component {
         } else {
             status = ' rent'
         }
-        //enum('sale','rent','both')  sale_status
         return (
             <div id={'contentImg'} className={'inimagecontent'}>
                 <span className={'topleftimg green-background'}>{item.description}</span>

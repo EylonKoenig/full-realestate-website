@@ -2,6 +2,7 @@ import React from 'react';
 import cookie from 'react-cookies'
 import { Form, Col, Button } from 'react-bootstrap';
 import { Label, Input, FormText } from 'reactstrap';
+import {withRouter} from 'react-router-dom';
 
 import api from '../../../server-api/api';
 import validate, { field } from '../validator';
@@ -88,7 +89,7 @@ class ApartmentForm extends React.Component {
         this.setState({ formDetails: obj});
     }
 
-    onSubmit = e => {
+    onSubmit =async e => {
         e.preventDefault();
         const {formDetails} = this.state;
         let isOK = true;
@@ -113,8 +114,11 @@ class ApartmentForm extends React.Component {
             for (let prop in formDetails) {
                 result[prop] = formDetails[prop].value;
             }
-            const data = setData(result, cookie.load('auth').userId, this.state.files, this.state.cities);
-            api.sendDataToServer(data);
+            const data = setData(result, cookie.load('auth').id, this.state.files, this.state.cities);
+            const isUpload = await api.sendDataToServer(data);
+            if(isUpload.status === 200){
+                    this.redirect()
+            }
         }
     };
     handelImagesClick = (event) => {
@@ -125,6 +129,9 @@ class ApartmentForm extends React.Component {
     handleChildClick = (e) => {
         e.stopPropagation();
     };
+    redirect = () => {
+        this.props.history.push("/my_apartments") 
+     }
 
     render() {
         console.log(this.state)
@@ -251,4 +258,4 @@ class ApartmentForm extends React.Component {
     }
 }
 
-export default ApartmentForm;
+export default withRouter(ApartmentForm);

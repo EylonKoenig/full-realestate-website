@@ -1,6 +1,4 @@
 import React from 'react';
-import { Form, Col } from 'react-bootstrap';
-import { Label, Input } from 'reactstrap';
 import ImageForm from '../imageForm';
 
 
@@ -13,10 +11,7 @@ class UploadImages extends React.Component {
     }
 }
     componentDidMount() {
-        // const result = [];
-        // for(let i = 0; i<5;i++){
-        //     if(this.props.images[i]) 
-        // }
+
         if (this.state.images) {
             this.setState({ images: this.props.images })
         }
@@ -29,8 +24,6 @@ class UploadImages extends React.Component {
 
 
     render() {
-        console.log(this.props)
-        const images = this.state.images
         return (
             <div className={'container-fluid images-cover'}>
                 <div className={"row "} onClick={this.props.handleChildClick()}>

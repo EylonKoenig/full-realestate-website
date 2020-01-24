@@ -1,6 +1,6 @@
-export default (data, userId, images, cities) => {
+export default (data, id, images, cities) => {
     const formData = new FormData();
-    formData.append('user_id', userId)
+    formData.append('user_id', id)
     for (let prop in data) {
         if (prop === 'country' || prop === 'for_sale' || prop === 'for_rent') continue;
         if (prop === 'city') {
