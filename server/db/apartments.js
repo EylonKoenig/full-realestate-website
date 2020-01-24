@@ -93,7 +93,29 @@ function postApartment(formData) {
     });
 }
 
+function getAratmentbyUserId(apartmentId) {
+    return new Promise((resolve, reject) => {
+        connection.query(`CALL getApartmentsByUserID(?)`, [apartmentId], (error, results, fields) => {
+            if (error) {
+                reject(error);
+                return;
+            }
+            resolve(results[0]);
+        });
+    });
+}
 
+function deleteApartmentById(apartmentId) {
+    return new Promise((resolve, reject) => {
+        connection.query(`UPDATE \`realtor\`.\`apartments\` SET \`availability\` = 'removed' WHERE (\`id\` = '${apartmentId}')`, (error, results, fields) => {
+            if (error) {
+                reject(error);
+                return;
+            }
+            resolve(results);
+        });
+    });
+}
 
 module.exports = {
     getAllapartments,
@@ -101,5 +123,7 @@ module.exports = {
     getLastFourApartment,
     getCountriesApartment,
     getCitiesApartment,
+    getAratmentbyUserId,
     postApartment,
+    deleteApartmentById
 };

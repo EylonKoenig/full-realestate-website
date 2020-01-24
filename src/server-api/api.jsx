@@ -100,7 +100,24 @@ const api = {
             console.log(error);
         }
     },
-    
+    async getApartmentByUserId(uesrId) {
+        try {
+            const data = await fecther.get(`http://localhost:5000/apartments/user/${uesrId}`);
+            return data;
+        }
+        catch (error) {
+            console.log(error);
+        }
+    },
+    async removeApartment(apartmentId) {
+        try {
+            const data = await fecther.put(`http://localhost:5000/apartments/remove/${apartmentId}`);
+            return data;
+        }
+        catch (error) {
+            console.log(error);
+        }
+    },
 
 
 }

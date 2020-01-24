@@ -20,7 +20,9 @@ class singleApartment extends React.Component {
     async getdata(){
         const data = await api.getApartmentById(this.props.aprId);
         this.setState({apartment:data.data[0],loading:false});
+        if(this.state.images.length > 0){
         this.setState({images:this.state.apartment.images.toString().split(',')})
+    }
     }
     render() {
         const {apartment} = this.state;
@@ -48,7 +50,6 @@ class singleApartment extends React.Component {
         }
         return (
             <div className={'container-fluid'}>
-
                 <div className={'apartment-wrapper'}>
                     <section className={'agent-details'}>
                         {/*<p><b>Presented by:</b> {agents[apartment.owner].name}</p>*/}
@@ -57,9 +58,10 @@ class singleApartment extends React.Component {
                         <div className={'carousel-cover'}>
                             <div id="carouselExampleFade" className="carousel slide carousel-fade" data-ride="carousel">
                                 <div className="carousel-inner">
+                                    {!this.state.loading &&
                                     <div className="carousel-item active">
                                         <img src={`http://localhost:5000/${apartment.main_image}`} className="d-block w-100" alt="..." data-interval="10000" ref={'cpDev1'}/>
-                                    </div>
+                                    </div>}
                                     {carouselItems}
                                 </div>
                                 <a className="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">

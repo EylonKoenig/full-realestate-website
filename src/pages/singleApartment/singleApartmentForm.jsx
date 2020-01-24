@@ -27,10 +27,10 @@ class ApartmentFrom extends React.Component {
                            autoComplete="tel-national"/>
                 </div>
                 <div className="form-group apartment-input">
-                                    <textarea className="form-control message" rows="2" cols="10"
+                                    <textarea readOnly
+                                    className="form-control message" rows="2" cols="10"
                                               id="primary_lead_message"
                                               style={{paddingLeft:'7px', fontSize:'13px'}}
-                                              defaultValue={"I'm interested in 425 E 13th St Apt 2A."}
                                               value={"I'm interested in 425 E 13th St Apt 2A."}
                                               aria-label="primary-lead-message" name="leads_form_data[message]"/>
                 </div>

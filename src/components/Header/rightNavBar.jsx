@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class RightNavBar extends React.Component {
     render() {
@@ -57,9 +57,9 @@ class RightNavBar extends React.Component {
                             <li className="navigation"><a href="/">Hello {this.props.user.first_name}</a></li>
                             <li className="navigation" id='submission'><a href="/">Submission</a>
                                 <div className={'submissionMenu'} id='submissionMenu'>
+                                    <Link to={'/my_apartments'}>My apartments</Link>
                                     <Link to={'/postApartment'}>Add Property</Link>
                                     <Link to={'/'}>Wish List</Link>
-                                    <Link to={'/'}>Edit Property</Link>
                                     <Link to={'/'}>Edit Profile</Link>
                                     <button onClick={this.props.logout}>LOGOUT</button>
                                 </div>

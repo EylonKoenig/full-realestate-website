@@ -1,7 +1,6 @@
 import React from 'react';
 import { Form, Col } from 'react-bootstrap';
 import { Label, Input } from 'reactstrap';
-import ReactImageFallback from "react-image-fallback";
 
 class ImageForm extends React.Component {
     componentDidMount(){
@@ -11,8 +10,6 @@ class ImageForm extends React.Component {
             }
     }
     render() {
-        // var output = document.getElementById(`image-preview-${event.target.id}`);
-        // output.src = URL.createObjectURL(event.target.files[0]);
 
         return (
             <Form.Row>
