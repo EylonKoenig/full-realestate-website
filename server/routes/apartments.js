@@ -8,7 +8,8 @@ var {
     getCitiesApartment,
     postApartment,
     getAratmentbyUserId,
-    deleteApartmentById
+    deleteApartmentById,
+    editApartment
 } = require('../db/apartments')
 var { addImages } = require('../db/images.js')
 const { isUser } = require('../middlewares/authentication');
@@ -21,6 +22,15 @@ router.get('/', function(req, res, next) {
 
 router.get('/:apartmentId', function(req, res, next) {
     getbyId(req.params.apartmentId)
+        .then(apartment => res.status(200).json(apartment))
+        .catch(error => res.status(500).json({ error: error.message }));
+});
+router.put('/', async function(req, res, next) {
+    if (req.files.main_image) {
+        const fileName = await addPhoto(req.files.main_image);
+        req.body.main_image = `images/apartment/${fileName}`;
+    }
+    editApartment(req.body)
         .then(apartment => res.status(200).json(apartment))
         .catch(error => res.status(500).json({ error: error.message }));
 });

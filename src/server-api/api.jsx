@@ -19,6 +19,33 @@ const api = {
             console.log(error);
         }
     },
+    async getImagesById(apartmentId) {
+        try {
+            const data = await fecther.get(`http://localhost:5000/images/${apartmentId}`);
+            return data;
+        }
+        catch (error) {
+            console.log(error);
+        }
+    },
+    async deleteImagesById(imageId) {
+        try {
+            const data = await fecther.delete(`http://localhost:5000/images/${imageId}`);
+            return data;
+        }
+        catch (error) {
+            console.log(error);
+        }
+    },
+    async editApartment(apartment) {
+        try {
+            const data = await fecther.put('http://localhost:5000/apartments/',apartment);
+            return data;
+        }
+        catch (error) {
+            console.log(error);
+        }
+    },
     async getRecentApartment() {
         try {
             const data = await fecther.get(`http://localhost:5000/apartments/four/bydate`);

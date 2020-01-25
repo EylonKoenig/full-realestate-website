@@ -2,46 +2,78 @@ import React from 'react';
 import cookie from 'react-cookies'
 import { Form, Col, Button } from 'react-bootstrap';
 import { Label, Input, FormText } from 'reactstrap';
-import {withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
-import api from '../../../server-api/api';
-import validate, { field } from '../validator';
-import InputErrors from '../inputErrors';
-import UploadImages from './uploadImages';
-import '../../../css/apartmentForm/aprtment.css'
-import setData from './setApartmentForm';
+import api from '../../server-api/api'
+import validate, { field } from '../../components/Forms/validator';
+import InputErrors from '../../components/Forms/inputErrors';
+import UploadImages from '../../components/Forms/apartment/uploadImages';
+import '../../css/apartmentForm/aprtment.css'
+import setData from '../../components/Forms/apartment/setApartmentForm';
 
-class ApartmentForm extends React.Component {
+class editApartment extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            formDetails: {
-                country: field({ name: 'country', isRequired: true, checklist: { list: [], status: true } }),
-                city: field({ name: 'city', isRequired: true, checklist: { list: [], status: true } }),
-                address: field({ name: 'address', isRequired: false }),
-                price: field({ name: 'price', isRequired: false }),
-                sqft: field({ name: 'sqft', isRequired: true }),
-                number_of_bath: field({ name: 'number_of_bath', isRequired: false }),
-                number_of_room: field({ name: 'number_of_room', isRequired: false }),
-                for_sale: field({ name: 'for_sale', value: false, isRequired: false, checkstatus: true }),
-                for_rent: field({ name: 'for_rent', value: false, isRequired: false }),
-                property_type: field({ name: 'property_type', isRequired: true }),
-                main_image: field({ name: 'main_image', isRequired: false }),
-            },
-            files: [],
-            imagesVisbilte: false,
-            countries: [],
-            cities: [],
-        };
-        this.inputChange = this.inputChange.bind(this);
-        this.setStatus = this.setStatus.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
+        try {
+            const apartment = props.location.apartment
+            this.state = {
+                formDetails: {
+                    country: field({ name: 'country', value: apartment.country, isRequired: true, checklist: { list: [], status: true } }),
+                    city: field({ name: 'city', value: apartment.city_name, isRequired: true, checklist: { list: [], status: true } }),
+                    address: field({ name: 'address', isRequired: false }),
+                    price: field({ name: 'price', isRequired: false }),
+                    sqft: field({ name: 'sqft', value: apartment.sqft, isRequired: true }),
+                    number_of_bath: field({ name: 'number_of_bath', isRequired: false }),
+                    number_of_room: field({ name: 'number_of_room', isRequired: false }),
+                    for_sale: field({ name: 'for_sale', value: false, isRequired: false, checkstatus: true }),
+                    for_rent: field({ name: 'for_rent', value: false, isRequired: false }),
+                    property_type: field({ name: 'property_type', value: apartment.property_type, isRequired: true }),
+                    main_image: field({ name: 'main_image', isRequired: false }),
+                },
+                files: [],
+                imagesVisbilte: false,
+                countries: [],
+                cities: [],
+                hasError: false
+            };
+            this.setCities(apartment.country)
+            this.inputChange = this.inputChange.bind(this);
+            this.setStatus = this.setStatus.bind(this);
+            this.onSubmit = this.onSubmit.bind(this);
+        } catch{
+            this.props.history.push("/my_apartments")
+        }
     }
+
     async componentDidMount() {
-        let data = await api.getAllCountries();
-        const curFormDetails = this.state.formDetails;
-        curFormDetails.country.validations.checklist.list = data.data.countries;
-        this.setState({ countries: data.data.countries, formDetails: curFormDetails });
+        try {
+            let images = undefined;
+            const apartment = this.props.location.apartment
+            const formDetails = this.state.formDetails;
+            if (apartment.sale_status === 'both') {
+                formDetails.for_rent.value = true;
+                formDetails.for_sale.value = true;
+            } else if (apartment.sale_status === 'sale') {
+                formDetails.for_sale.value = true;
+            } else {
+                formDetails.for_rent.value = true;
+            }
+            this.setState({ formDetails })
+
+            images = apartment.images
+
+            if (images) {
+                this.setState({ files: images.toString().split(',') })
+            }
+
+
+            let data = await api.getAllCountries();
+            const curFormDetails = this.state.formDetails;
+            curFormDetails.country.validations.checklist.list = data.data.countries;
+            this.setState({ countries: data.data.countries, formDetails: curFormDetails });
+        } catch {
+            this.props.history.push("/my_apartments")
+        }
     }
 
     inputChange({ target: { name, value } }) {
@@ -78,29 +110,29 @@ class ApartmentForm extends React.Component {
     }
 
     setStatus = (name) => {
-        const {formDetails} = this.state;
+        const { formDetails } = this.state;
         const value = !formDetails[name].value;
         const obj = formDetails;
         obj[name] = { ...formDetails[name], value };
         this.setState({ formDetails: obj });
-        const values = [formDetails.for_sale.value,formDetails.for_rent.value];
-        const errors = validate(name, values,formDetails[name].validations);
-        obj[name] = {...formDetails[name],errors};
-        this.setState({ formDetails: obj});
+        const values = [formDetails.for_sale.value, formDetails.for_rent.value];
+        const errors = validate(name, values, formDetails[name].validations);
+        obj[name] = { ...formDetails[name], errors };
+        this.setState({ formDetails: obj });
     }
 
-    onSubmit =async e => {
+    onSubmit = async e => {
         e.preventDefault();
-        const {formDetails} = this.state;
+        const { formDetails } = this.state;
         let isOK = true;
         let errors = undefined;
         for (let prop in formDetails) {
             const field = formDetails[prop];
-            if(prop === 'for_sale') {
-                const values = [formDetails.for_sale.value,formDetails.for_rent.value];
+            if (prop === 'for_sale') {
+                const values = [formDetails.for_sale.value, formDetails.for_rent.value];
                 errors = validate(prop, values, field.validations);
             } else {
-                 errors = validate(prop, field.value, field.validations);
+                errors = validate(prop, field.value, field.validations);
             }
             const obj = formDetails;
             if (errors.length) {
@@ -111,14 +143,16 @@ class ApartmentForm extends React.Component {
         }
         if (isOK) {
             const result = {};
+            const id = this.props.location.apartment.id
             for (let prop in formDetails) {
-                if(formDetails[prop].value === "") continue
+                if (formDetails[prop].value === "") continue
                 result[prop] = formDetails[prop].value;
             }
+            result.id = id;
             const data = setData(result, cookie.load('auth').id, this.state.files, this.state.cities);
-            const isUpload = await api.sendDataToServer(data);
-            if(isUpload){
-                    this.redirect()
+            const isUpload = await api.editApartment(data, id);
+            if (isUpload) {
+                this.redirect()
             }
         }
     };
@@ -131,26 +165,32 @@ class ApartmentForm extends React.Component {
         e.stopPropagation();
     };
     redirect = () => {
-        this.props.history.push("/my_apartments") 
-     }
+        this.props.history.push("/my_apartments")
+    }
 
     render() {
-        console.log(this.state)
+
+        let apratment_userId = undefined;
+        const apartment = this.props.location.apartment
+        if (apartment) apratment_userId = apartment.user_id;
+        const userCookie = cookie.load('auth')
         return (
             <div id={'wraper'} style={{ margin: '50px auto', width: '500px' }}>
-                {cookie.load('auth') ?
+                {userCookie && userCookie.id === apratment_userId ?
                     <div>
-                        {this.state.imagesVisbilte && <UploadImages 
-                            images={this.state.files} 
-                            handleChildClick={() => this.handleChildClick}
-                            handleChange={this.inputChange}
-                            imageChange={this.imageChange}
-                            handleShow={this.handelImagesClick} />}
+                        {this.state.imagesVisbilte && <UploadImages
+                                                            type={"edit"}
+                                                            apartmentId={apartment.id}
+                                                            images={this.state.files}
+                                                            handleChildClick={() => this.handleChildClick}
+                                                            handleChange={this.inputChange}
+                                                            imageChange={this.imageChange}
+                                                            handleShow={this.handelImagesClick} />}
                         <Form onSubmit={this.onSubmit}>
                             <Form.Row>
                                 <Form.Group as={Col} controlId="formGridCountry">
                                     <Form.Label>Country</Form.Label>
-                                    <input list={'country'} type={'text'} name={'country'} className="form-control" onChange={this.inputChange} />
+                                    <input list={'country'} type={'text'} name={'country'} placeholder={apartment.country} className="form-control" onChange={this.inputChange} />
                                     <datalist id={'country'}>
                                         {this.state.countries.map((country, index) => {
                                             return (
@@ -162,7 +202,7 @@ class ApartmentForm extends React.Component {
                                 </Form.Group>
                                 <Form.Group as={Col} controlId="formGridCity">
                                     <Form.Label>City</Form.Label>
-                                    <input list={'city'} type={'text'} name={'city'} className="form-control" onChange={this.inputChange} />
+                                    <input list={'city'} type={'text'} name={'city'} placeholder={apartment.city_name} className="form-control" onChange={this.inputChange} />
                                     <datalist id={'city'}>
                                         {this.state.cities.map((city, index) => {
                                             return (
@@ -178,31 +218,31 @@ class ApartmentForm extends React.Component {
                             <Form.Row>
                                 <Form.Group as={Col} controlId="formGridAddress">
                                     <Form.Label>Address</Form.Label>
-                                    <Form.Control name='address' onBlur={this.inputChange} />
+                                    <Form.Control name='address' placeholder={apartment.address} onBlur={this.inputChange} />
                                     <InputErrors errors={this.state.formDetails.address.errors}></InputErrors>
                                 </Form.Group>
                                 <Form.Group as={Col} controlId="formGridPrice">
                                     <Form.Label >Price</Form.Label>
                                     <span className="input-group-addon">$</span>
-                                    <Form.Control name='price' onBlur={this.inputChange} />
+                                    <Form.Control name='price' placeholder={apartment.price} onBlur={this.inputChange} />
                                     <InputErrors errors={this.state.formDetails.price.errors}></InputErrors>
                                 </Form.Group>
                             </Form.Row>
                             <Form.Row>
                                 <Form.Group as={Col} controlId="formGridRoom">
                                     <Form.Label>Number of rooms</Form.Label>
-                                    <Form.Control name='number_of_room' onBlur={this.inputChange} />
+                                    <Form.Control name='number_of_room' placeholder={apartment.number_of_room ? apartment.number_of_room : ""} onBlur={this.inputChange} />
                                     <InputErrors errors={this.state.formDetails.number_of_room.errors}></InputErrors>
                                 </Form.Group>
                                 <Form.Group as={Col} controlId="formGridnumber_of_bath">
                                     <Form.Label>Number of bahts</Form.Label>
-                                    <Form.Control name='number_of_bath' onBlur={this.inputChange} />
+                                    <Form.Control name='number_of_bath' placeholder={apartment.number_of_bath ? apartment.number_of_bath : ""} onBlur={this.inputChange} />
                                     <InputErrors errors={this.state.formDetails.number_of_bath.errors}></InputErrors>
                                 </Form.Group>
 
                                 <Form.Group as={Col} controlId="formGridsqft">
                                     <Form.Label>sqft</Form.Label>
-                                    <Form.Control name='sqft' onBlur={this.inputChange} />
+                                    <Form.Control name='sqft' placeholder={apartment.sqft} onBlur={this.inputChange} />
                                     <InputErrors errors={this.state.formDetails.sqft.errors}></InputErrors>
                                 </Form.Group>
                             </Form.Row>
@@ -210,11 +250,11 @@ class ApartmentForm extends React.Component {
                                 <Form.Group as={Col} controlId="formGridProperty_type-">
                                     <Form.Label>Property Type</Form.Label>
                                     <Form.Control name='property_type' as="select" onBlur={this.inputChange}>
-                                        <option value="">Choose here</option>
-                                        <option value='house'>House</option>
-                                        <option value='ranch'>Ranch</option>
+                                        <option value={apartment.property_type}>{apartment.property_type}</option>
+                                        <option value='house' >House</option>
+                                        <option value='ranch' >Ranch</option>
+                                        <option value='land' >Land</option>
                                         <option value='condo'>Condo</option>
-                                        <option value='land'>Land</option>
                                         <option value='multi_family'>multi family</option>
                                         <option value='coop'>Co-Op</option>
                                     </Form.Control>
@@ -225,7 +265,8 @@ class ApartmentForm extends React.Component {
                                         type="switch"
                                         id="for_sale"
                                         label="For Sale"
-                                        onClick={this.inputChange} />
+                                        checked={apartment.sale_status === "both" || apartment.sale_status === "sale" ? true : false}
+                                        onChange={this.inputChange} />
                                     <InputErrors errors={this.state.formDetails.for_sale.errors}></InputErrors>
                                 </Form.Group>
                                 <Form.Group className={"d-flex justify-content-center align-items-center"} as={Col} controlId="formGridRent">
@@ -234,13 +275,14 @@ class ApartmentForm extends React.Component {
                                         type="switch"
                                         id="for_rent"
                                         label="For rent"
-                                        onClick={this.inputChange} />
+                                        checked={apartment.sale_status === "both" || apartment.sale_status === "rent" ? true : false}
+                                        onChange={this.inputChange} />
                                     <InputErrors errors={this.state.formDetails.for_rent.errors}></InputErrors>
                                 </Form.Group>
                             </Form.Row>
                             <Form.Row>
                                 <Form.Group as={Col} style={{ height: "150px" }}>
-                                    <img className={'image-preview'} src={"http://localhost:5000/images/general/loadingApartment.jpg"} multiple id={'image-preview-File1'} alt='' />
+                                    <img className={'image-preview'} src={apartment.main_image ? `http://localhost:5000/${apartment.main_image}` : "http://localhost:5000/images/general/loadingApartment.jpg"} multiple id={'image-preview-File1'} alt='' />
                                     <Label for="exampleFile">Upload your image</Label>
                                     <Input type="file" name="file" id="File1" onChange={this.imageChange} />
                                     <FormText color="muted">
@@ -260,4 +302,4 @@ class ApartmentForm extends React.Component {
     }
 }
 
-export default withRouter(ApartmentForm);
+export default withRouter(editApartment);

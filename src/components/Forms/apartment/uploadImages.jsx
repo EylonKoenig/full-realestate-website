@@ -1,19 +1,25 @@
 import React from 'react';
 import ImageForm from '../imageForm';
 
+import api from '../../../server-api/api'
 
 class UploadImages extends React.Component {
     constructor(props) {
         super(props);
+        const limitImages = 5
         this.state = {
-            image:[1,2,3,4,5],
+            image:Array(limitImages).fill(null),
             images:[],
+            imagesId:[],
     }
 }
-    componentDidMount() {
-
+    async componentDidMount() {
         if (this.state.images) {
             this.setState({ images: this.props.images })
+        }
+        if(this.props.type === 'edit'){
+            const data =await  api.getImagesById(this.props.apartmentId);
+            this.setState({ imagesId: data.data })
         }
     }
 
@@ -36,7 +42,12 @@ class UploadImages extends React.Component {
                             </div>
                                 {this.state.image.map((image, index) => {
                                     return (
-                                        <ImageForm key={index} imageChange={this.props.imageChange} index={index + 2} imageUrl={this.props.images[index]}/>
+                                        <ImageForm key={index}
+                                         imageChange={this.props.imageChange}
+                                         type={this.props.type} 
+                                        index={index + 2} 
+                                        imageUrl={this.props.images[index]}
+                                        imageId={this.state.imagesId[index]}/>
                                     )})}
                             <div className="col-md-12 text-center ">
                                 <button type="submit" className=" btn btn-block mybtn tx-tfm" onClick={this.props.handleShow}>DONE</button>

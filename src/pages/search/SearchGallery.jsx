@@ -89,7 +89,7 @@ class SearchGallery extends React.Component {
             <div>
                 <SearchNav handleInputChange={this.handleInputChange} filters={this.state.filterObj} />
                 {this.state.loading ? <SearchPageLoading loadingApartments={searchLoadingData} /> :
-                    <div className={'container-fluid'}>
+                    <div className={'container-fluid'} style={{height:'100vh'}}>
                         <SortResults resultsLength={this.state.allApartments.length} handleInputChange={this.handleInputChange} />
                         <Gallery apartments={this.state.allApartments} cardType={'apartment'}/>
                     </div>}

@@ -5,7 +5,7 @@ class Footer  extends React.Component{
     render() {
 
         return (
-            <footer className={window.location.pathname.length > 1 ? 'pushBottom' : undefined}  style={{bottom:window.location.pathname === "/apartments" && "unset"}}>
+            <footer className={window.location.pathname.length > 1 ? 'pushBottom' : undefined}>
                 <div className={`container-fluid social-media p-0`}>
                     <div style={{background: `#333`}}>
                         <div className="top-social-media">

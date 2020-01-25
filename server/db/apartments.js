@@ -1,7 +1,8 @@
 const connection = require('./config');
 const Builder = require('./builders/apartmentsBuilder');
 const convertData = require('./setData')
-const setQuery = require('./builders/setQuery')
+const setInsertQuery = require('./builders/setInserQuery')
+const setUpDateQuery = require('./builders/setUpdateQuery')
 
 function getAllapartments({ property_type, city, country, minPrice, maxPrice, minRooms, maxRooms, minBath, maxBath, sale_status, page = 1, size = 12 }) {
     return new Promise((resolve, reject) => {
@@ -81,7 +82,20 @@ function getCitiesApartment(country) {
 }
 
 function postApartment(formData) {
-    const query = setQuery("apartments", formData);
+    const query = setInsertQuery("apartments", formData);
+    return new Promise((resolve, reject) => {
+        connection.query(query, (error, results, fields) => {
+            if (error) {
+                reject(error);
+                return;
+            }
+            resolve(results.insertId)
+        });
+    });
+}
+
+function editApartment(formData) {
+    const query = setUpDateQuery("apartments", formData);
     return new Promise((resolve, reject) => {
         connection.query(query, (error, results, fields) => {
             if (error) {
@@ -125,5 +139,6 @@ module.exports = {
     getCitiesApartment,
     getAratmentbyUserId,
     postApartment,
-    deleteApartmentById
+    deleteApartmentById,
+    editApartment
 };

@@ -1,5 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, } from "react-router-dom";
+import { Router, Switch, Route, } from "react-router-dom";
+import history from './components/history';
 
 import Header from "./components/Header/header";
 import SearchGallery from "./pages/search/SearchGallery";
@@ -8,10 +9,11 @@ import Home from "./pages/home/home";
 import SingleApartment from "./pages/singleApartment/singleApartment";
 import SearchPageLoading from "./components/Loading/searchPageLoading";
 import { searchLoadingData } from "./data-app/searchLoadingData";
-// import Footer from "./components/Footer/footer";
+import Footer from "./components/Footer/footer";
 import ApartmentForm from './components/Forms/apartment/apartmentForm';
 import PersonalApartment from './pages/personal/personal_apartment';
 import WishList from './pages/wishList/wishList';
+import EditApartment from './pages/personal/edit_apartment';
 
 
 
@@ -24,7 +26,7 @@ class App extends React.Component {
     }
     render() {
         return (
-            <Router>
+            <Router history={history}>
                 <Header />
                 <Switch>
                     <Route path='/apartments' component=
@@ -48,13 +50,17 @@ class App extends React.Component {
 
                     <Route path={"/my_apartments"}
                         component={(props) => (<PersonalApartment aprId={props.match.params.id} />)} />
+
+                    <Route path={"/edit_apartments"}
+                    //need to dislabe the :/ id and send at as value 
+                        component={(props) => (<EditApartment aprId={props.match.params.apartmentId} />)} />
                         
 
                     <Route path="/">
                         <Home />
                     </Route>
                 </Switch>
-                {/* <Footer /> */}
+                <Footer />
             </Router>
         );
     }
