@@ -3,7 +3,7 @@ var fileUpload = require('express-fileupload');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var indexRouter = require('./routes/index');
+var imagesRouter = require('./routes/images');
 var usersRouter = require('./routes/users');
 var apartmentsRouter = require('./routes/apartments');
 var countriesRouter = require('./routes/countries');
@@ -22,13 +22,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(fileUpload());
 
 
-app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/apartments', apartmentsRouter);
 app.use('/countries', countriesRouter);
 app.use('/cities', citiesRouter);
 app.use('/login', loginRouter);
 app.use('/register', registerRouter)
+app.use('/images', imagesRouter);
 
 
 

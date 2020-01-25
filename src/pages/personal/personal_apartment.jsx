@@ -34,7 +34,7 @@ class PersonalApartments extends React.Component {
         return (
             <div>
                 {this.state.loading ? <SearchPageLoading loadingApartments={searchLoadingData} /> :
-                    <div className={'container-fluid'}>
+                    <div className={'container-fluid'} style={{height:'100vh'}}>
                         <SortResults resultsLength={this.state.allApartments.length} handleInputChange={this.handleInputChange} />
                         <Gallery apartments={this.state.allApartments} cardType={'personalApartment'} setData={this.getdata}/>
                     </div>}

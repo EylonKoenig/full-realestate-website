@@ -1,4 +1,4 @@
-const setQueryData = function(table, fromData, userId) {
+const setQueryData = function(table, fromData) {
     let query = `INSERT INTO \`realtor\`.\`${table}\` (`;
     for (let data in fromData) {
         query += `\`${data}\`,`

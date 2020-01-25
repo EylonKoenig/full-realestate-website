@@ -1,7 +1,7 @@
 const crypto = require('crypto');
 const connection = require('./config');
 const convertData = require('./setData');
-const setQuery = require('./builders/setQuery')
+const setQuery = require('./builders/setInserQuery')
 
 function getUser() {
     return new Promise((resolve, reject) => {
