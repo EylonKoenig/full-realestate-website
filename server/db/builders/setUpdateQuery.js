@@ -1,7 +1,7 @@
 const setQueryData = function(table, fromData) {
     let query = `UPDATE \`realtor\`.\`${table}\` SET`;
     for (let data in fromData) {
-        if (data === 'id') continue
+        if (data === 'id' || data === 'images') continue
         query += `\`${data}\` = '${fromData[data]}',`
     }
 

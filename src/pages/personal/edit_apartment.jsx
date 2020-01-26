@@ -175,7 +175,7 @@ class editApartment extends React.Component {
         if (apartment) apratment_userId = apartment.user_id;
         const userCookie = cookie.load('auth')
         return (
-            <div id={'wraper'} style={{ margin: '50px auto', width: '500px' }}>
+            <div style={{ margin: '50px auto', width: '500px' ,minHeight:'676px'}}>
                 {userCookie && userCookie.id === apratment_userId ?
                     <div>
                         {this.state.imagesVisbilte && <UploadImages
