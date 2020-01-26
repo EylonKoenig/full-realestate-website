@@ -155,6 +155,16 @@ const api = {
         }
     },
 
+    async getUserDeatils(userId) {
+        try {
+            const data = await fecther.get(`http://localhost:5000/users/${userId}`);
+            return data;
+        }
+        catch (error) {
+            console.log(error);
+        }
+    },
+
 
 }
 
