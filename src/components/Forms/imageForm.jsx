@@ -8,16 +8,16 @@ class ImageForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            showDelete:false,
+            showDelete: false,
             showUpload: true,
         }
     }
     componentDidUpdate(oldProps) {
         const newProps = this.props
-        if(oldProps.imageId !== newProps.imageId) {
-          this.setState({showDelete:true,showUpload:false})
+        if (oldProps.imageId !== newProps.imageId) {
+            this.setState({ showDelete: true, showUpload: false })
         }
-      }
+    }
 
     componentDidMount() {
         const image = this.props.imageUrl
@@ -38,7 +38,7 @@ class ImageForm extends React.Component {
             var output = document.getElementById(`image-preview-File${this.props.index}`);
             output.src = 'http://localhost:5000/images/general/loadingApartment.jpg'
         }
-        this.setState({showDelete:false,showUpload:true})
+        this.setState({ showDelete: false, showUpload: true })
     }
     render() {
         return (
