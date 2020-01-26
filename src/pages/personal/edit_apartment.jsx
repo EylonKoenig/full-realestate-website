@@ -48,32 +48,33 @@ class editApartment extends React.Component {
     async componentDidMount() {
         try {
             let images = undefined;
-            const apartment = this.props.location.apartment
-            const formDetails = this.state.formDetails;
-            if (apartment.sale_status === 'both') {
-                formDetails.for_rent.value = true;
-                formDetails.for_sale.value = true;
-            } else if (apartment.sale_status === 'sale') {
-                formDetails.for_sale.value = true;
-            } else {
-                formDetails.for_rent.value = true;
-            }
-            this.setState({ formDetails })
-
-            images = apartment.images
-
+            const apartment = this.props.location.apartment;
+            const curFormDetails = this.state.formDetails;
+            let data = await api.getAllCountries();
+            images = apartment.images;
+            this.setSaleStatus();
             if (images) {
                 this.setState({ files: images.toString().split(',') })
             }
-
-
-            let data = await api.getAllCountries();
-            const curFormDetails = this.state.formDetails;
             curFormDetails.country.validations.checklist.list = data.data.countries;
             this.setState({ countries: data.data.countries, formDetails: curFormDetails });
         } catch {
             this.props.history.push("/my_apartments")
         }
+    }
+
+    setSaleStatus = () => {
+        const apartment = this.props.location.apartment
+        const formDetails = this.state.formDetails;
+        if (apartment.sale_status === 'both') {
+            formDetails.for_rent.value = true;
+            formDetails.for_sale.value = true;
+        } else if (apartment.sale_status === 'sale') {
+            formDetails.for_sale.value = true;
+        } else {
+            formDetails.for_rent.value = true;
+        }
+        this.setState({ formDetails })
     }
 
     inputChange({ target: { name, value } }) {
@@ -133,6 +134,9 @@ class editApartment extends React.Component {
                 errors = validate(prop, values, field.validations);
             } else {
                 errors = validate(prop, field.value, field.validations);
+            }
+            if(prop === 'country' || prop ==='city'){
+                if(formDetails[prop].value === "") this.setState({prop:this.props.location.apartment[prop]})
             }
             const obj = formDetails;
             if (errors.length) {

@@ -9,7 +9,8 @@ var {
     postApartment,
     getAratmentbyUserId,
     deleteApartmentById,
-    editApartment
+    editApartment,
+    getAllAdminApartments
 } = require('../db/apartments')
 var { addImages } = require('../db/images.js')
 const { isUser } = require('../middlewares/authentication');
@@ -65,6 +66,12 @@ router.get('/all/cities/:country', function(req, res, next) {
 });
 router.get('/four/bydate', function(req, res, next) {
     getLastFourApartment()
+        .then(apartments => res.status(200).json(apartments))
+        .catch(error => res.status(500).json({ error: error.message }));
+});
+router.get('/get/adminAprtments', function(req, res, next) {
+    console.log(req.query)
+    getAllAdminApartments(req.query)
         .then(apartments => res.status(200).json(apartments))
         .catch(error => res.status(500).json({ error: error.message }));
 });

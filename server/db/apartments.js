@@ -18,6 +18,8 @@ function getAllapartments({ property_type, city, country, minPrice, maxPrice, mi
                 .maxBath(maxBath)
                 .property_type(property_type)
                 .sale_status(sale_status)
+                .availability('available')
+                .status('approved')
                 .build();
             connection.query(query, params, (error, results, fields) => {
                 if (error) {
@@ -31,6 +33,35 @@ function getAllapartments({ property_type, city, country, minPrice, maxPrice, mi
         }
     });
 }
+
+function getAllAdminApartments({ property_type, city, country, minPrice, maxPrice, minRooms, maxRooms, minBath, maxBath, sale_status, page = 1, size = 24 }) {
+    return new Promise((resolve, reject) => {
+        try {
+            const { query, params } = Builder.allApartments(page, size)
+                .country(country)
+                .city(city)
+                .minPrice(minPrice)
+                .maxPrice(maxPrice)
+                .minRooms(minRooms)
+                .maxRooms(maxRooms)
+                .minBath(minBath)
+                .maxBath(maxBath)
+                .property_type(property_type)
+                .sale_status(sale_status)
+                .build();
+            connection.query(query, params, (error, results, fields) => {
+                if (error) {
+                    reject(error);
+                    return;
+                }
+                resolve(results);
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    });
+}
+
 
 function getbyId(apartmentId) {
     return new Promise((resolve, reject) => {
@@ -80,6 +111,7 @@ function getCitiesApartment(country) {
         });
     });
 }
+
 
 function postApartment(formData) {
     const query = setInsertQuery("apartments", formData);
@@ -140,5 +172,6 @@ module.exports = {
     getAratmentbyUserId,
     postApartment,
     deleteApartmentById,
-    editApartment
+    editApartment,
+    getAllAdminApartments
 };

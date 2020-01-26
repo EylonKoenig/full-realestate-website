@@ -10,6 +10,15 @@ const api = {
             console.log(error);
         }
     },
+    async getAllAdminApartments() {
+        try {
+            const data = await fecther.get(`/apartments/get/adminAprtments`);
+            return data;
+        }
+        catch (error) {
+            console.log(error);
+        }
+    },
     async getApartmentById(apartmentId) {
         try {
             const data = await fecther.get(`http://localhost:5000/apartments/${apartmentId}`);
@@ -139,6 +148,16 @@ const api = {
     async removeApartment(apartmentId) {
         try {
             const data = await fecther.put(`http://localhost:5000/apartments/remove/${apartmentId}`);
+            return data;
+        }
+        catch (error) {
+            console.log(error);
+        }
+    },
+
+    async getUserDeatils(userId) {
+        try {
+            const data = await fecther.get(`http://localhost:5000/users/${userId}`);
             return data;
         }
         catch (error) {

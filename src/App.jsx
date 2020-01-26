@@ -14,6 +14,7 @@ import ApartmentForm from './components/Forms/apartment/apartmentForm';
 import PersonalApartment from './pages/personal/personal_apartment';
 import WishList from './pages/wishList/wishList';
 import EditApartment from './pages/personal/edit_apartment';
+import EditUser from './pages/personal/edit_user';
 
 
 
@@ -51,10 +52,11 @@ class App extends React.Component {
                     <Route path={"/my_apartments"}
                         component={(props) => (<PersonalApartment aprId={props.match.params.id} />)} />
 
-                    <Route path={"/edit_apartments"}
-                    //need to dislabe the :/ id and send at as value 
-                        component={(props) => (<EditApartment aprId={props.match.params.apartmentId} />)} />
-                        
+                    <Route path={"/edit_apartments"} component={(props) => (<EditApartment />)} />
+
+                    <Route path="/edit_user">
+                        <EditUser/>
+                    </Route>
 
                     <Route path="/">
                         <Home />
