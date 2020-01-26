@@ -21,6 +21,7 @@ class UnderImage extends React.Component {
                         <ul className={'pictuerdetails'}>
                             <li>room :<b>{apartment.number_of_room}</b></li>
                             <li>bath :<b>{apartment.number_of_bath}</b></li>
+                            <li>sqft :<b>{apartment.sqft}</b></li>
                         </ul>
 
                         <div className={'underpicuercontentLast'}>

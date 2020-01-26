@@ -135,9 +135,8 @@ class ApartmentForm extends React.Component {
      }
 
     render() {
-        console.log(this.state)
         return (
-            <div id={'wraper'} style={{ margin: '50px auto', width: '500px' }}>
+            <div id={'wraper'} style={{ margin: '50px auto', width: '500px' ,minHeight:'676px'}}>
                 {cookie.load('auth') ?
                     <div>
                         {this.state.imagesVisbilte && <UploadImages 

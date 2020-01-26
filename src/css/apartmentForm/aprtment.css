@@ -39,6 +39,6 @@ input[type='file'] {
 
 #delete-image {
     position: absolute;
-    bottom: 30px;
+    top: 60px;
     font-size: 13.3333px;
 }
