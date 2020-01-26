@@ -60,6 +60,7 @@ const minLength = (value, min) => value.length < min;
 const pattern = (value, pattern) => !pattern.test(value);
 
 const checkinlist = function(value, list, status) {
+
     const isInclude = list.includes(value);
     if (status) {
         return !isInclude

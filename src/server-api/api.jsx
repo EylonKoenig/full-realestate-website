@@ -10,6 +10,15 @@ const api = {
             console.log(error);
         }
     },
+    async getAllAdminApartments() {
+        try {
+            const data = await fecther.get(`/apartments/get/adminAprtments`);
+            return data;
+        }
+        catch (error) {
+            console.log(error);
+        }
+    },
     async getApartmentById(apartmentId) {
         try {
             const data = await fecther.get(`http://localhost:5000/apartments/${apartmentId}`);

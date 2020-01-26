@@ -14,23 +14,32 @@ class PersonalApartments extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            allApartments: this.props.apartments,
+            allApartments: [],
             loading: true,
             user: cookie.load('auth')
         }
     };
 
-    async componentDidMount() {
+    componentDidMount() {
         if(this.state.user){
-        this.getdata(this.state.user.id);
+            if(this.state.user.role_id === 1){
+                this.getAdminApartments();
+                return
+            }
+        this.getAprtments(this.state.user.id);
     }
 
     }
-    getdata = async userId => {
+    getAprtments = async userId => {
         let data = await api.getApartmentByUserId(userId)
         this.setState({ allApartments: data.data, loading: false });
     }
+    getAdminApartments = async userId => {
+        let data = await api.getAllAdminApartments(userId)
+        this.setState({ allApartments: data.data, loading: false });
+    }
     render() {
+        console.log(this.state)
         return (
             <div>
                 {this.state.loading ? <SearchPageLoading loadingApartments={searchLoadingData} /> :
