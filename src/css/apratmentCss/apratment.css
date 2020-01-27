@@ -2,3 +2,169 @@
     width: min-content;
     margin: auto;
 }
+
+.container-fluid {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.carousel-cover {
+    width: 70%;
+}
+
+.apartment-wrapper {
+    width: 100%;
+    margin: auto;
+}
+
+.agent-details {
+    padding-top: 30px;
+    font-size: 12px;
+}
+
+.carousel-item img {
+    height: 300px;
+    max-height: 300px;
+    object-fit: cover;
+}
+
+#carouselExampleFade {
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+.from-wrapper {
+    width: 25%;
+    display: table-row;
+    position: relative;
+    top: 35px;
+    right: 5px;
+    background-color: #eaeaea;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    visibility: hidden;
+}
+
+.apartment-input {
+    position: relative;
+}
+
+.form-control {
+    padding-left: 30px;
+}
+
+.form-icon {
+    position: absolute;
+    top: 12px;
+    left: 5px;
+}
+
+.carousel-overlay {
+    position: absolute;
+    left: 5px;
+    bottom: 5px;
+    top: unset;
+    z-index: 9;
+    margin: 5px;
+}
+
+.apartment-summary {
+    display: flex;
+    justify-content: space-between;
+}
+
+.apartment-summary p {
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.details-wrapper {
+    width: 80%;
+    padding-right: 20px;
+}
+
+.SubDetails {
+    margin-top: 20px;
+    position: relative;
+}
+
+.SubDetails ul {
+    padding: 0;
+    list-style: none;
+    font-size: 14px;
+    margin-bottom: 10px;
+    border-top: solid 1px #c4c4c4;
+}
+
+.indicator,
+.key {
+    color: #999;
+    float: left;
+    font-weight: 400;
+}
+
+.key {
+    width: 100px;
+}
+
+.value {
+    color: #000;
+    font-weight: 400;
+    float: left;
+    text-align: left;
+}
+
+.map-container {
+    overflow: hidden;
+    position: relative;
+    height: 0;
+}
+
+.map-container iframe {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+#mapDiv>div>div>div:nth-child(10)>div>div>div {
+    width: 115px!important;
+}
+
+#mapDiv>div>div>div.gmnoprint.gm-bundled-control.gm-bundled-control-on-bottom>div> {
+    transform: scale(0.7)!important;
+}
+
+@media (min-width: 576px) {
+    .container-fluid {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .carousel-inner {
+        border-radius: 20px;
+    }
+    .apartment-wrapper {
+        width: 80%;
+    }
+}
+
+@media (min-width: 768px) {
+    #carouselExampleFade {
+        position: relative;
+    }
+    .carousel-item img {
+        max-height: 400px;
+        height: 400px;
+    }
+    .from-wrapper {
+        position: absolute;
+        visibility: visible;
+    }
+}
+
+@media (min-width: 992px) {}
+
+@media (min-width: 1200px) {}

@@ -1,5 +1,6 @@
 import React from 'react';
 import cookie from 'react-cookies'
+import { withRouter } from 'react-router-dom';
 
 import '../../css/galleryCss/styletopnav.css';
 import '../../css/galleryCss/phonenav.css'
@@ -31,6 +32,7 @@ class Header extends React.Component {
     logout = () => {
         cookie.remove('auth', { path: '/' })
         this.setState({ user: "" });
+        this.props.history.push('/')
     }
 
     signUpHandelClick = () => {
@@ -112,4 +114,4 @@ class Header extends React.Component {
     }
 }
 
-export default Header;
+export default withRouter(Header);

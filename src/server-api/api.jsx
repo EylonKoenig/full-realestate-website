@@ -164,6 +164,24 @@ const api = {
             console.log(error);
         }
     },
+    async getPassword(password) {
+        try {
+            const data = await fecther.post(`http://localhost:5000/users/get/password`,{password:password});
+            return data.data;
+        }
+        catch (error) {
+            console.log(error);
+        }
+    },
+    async editUser(userDetails) {
+        try {
+            const data = await fecther.post(`http://localhost:5000/users/edit_user`,userDetails);
+            return data;
+        }
+        catch (error) {
+            console.log(error);
+        }
+    },
 
 
 }
