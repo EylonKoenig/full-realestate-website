@@ -34,7 +34,7 @@ function getAllapartments({ property_type, city, country, minPrice, maxPrice, mi
     });
 }
 
-function getAllAdminApartments({ property_type, city, country, minPrice, maxPrice, minRooms, maxRooms, minBath, maxBath, sale_status, page = 1, size = 24 }) {
+function getAllAdminApartments({ property_type, city, country, minPrice, maxPrice, minRooms, maxRooms, minBath, maxBath, sale_status, page = 1, size = 100 }) {
     return new Promise((resolve, reject) => {
         try {
             const { query, params } = Builder.allApartments(page, size)

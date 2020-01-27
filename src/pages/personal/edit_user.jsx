@@ -1,5 +1,7 @@
 import React from 'react';
 import cookie from 'react-cookies'
+import {withRouter} from 'react-router-dom';
+
 
 import setData from './convertData/convertEdirUser'
 import api from '../../server-api/api'
@@ -83,7 +85,7 @@ class EditUser extends React.Component {
         if (isOK) {
             const userId = cookie.load('auth').id
             const data = setData(this.state.userDetails,userId);
-            api.editUser(data).then(result => { if (result) {console.log("wewee")} })
+            api.editUser(data).then(result => { if (result) {this.props.history.push('/')} })
 
         }
     }
@@ -143,4 +145,4 @@ class EditUser extends React.Component {
     }
 }
 
-export default EditUser;
+export default withRouter(EditUser);

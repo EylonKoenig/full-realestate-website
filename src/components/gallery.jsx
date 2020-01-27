@@ -12,8 +12,7 @@ class Gallery extends React.Component {
                         return (
                             <Card {...item} cardType={this.props.cardType} key={i} setData={this.props.setData}/>
                         )
-                    })
-                    }
+                    })}
                 </div>
             </div>
 
