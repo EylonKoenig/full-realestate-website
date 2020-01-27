@@ -60,7 +60,7 @@ class RightNavBar extends React.Component {
                                     <Link to={'/my_apartments'}>My apartments</Link>
                                     <Link to={'/postApartment'}>Add Property</Link>
                                     <Link to={'/'}>Wish List</Link>
-                                    <Link to={'/'}>Edit Profile</Link>
+                                    <Link to={'/edit_user'}>Edit Profile</Link>
                                     <button onClick={this.props.logout}>LOGOUT</button>
                                 </div>
                             </li>

@@ -1,4 +1,4 @@
-export const field = ({ name, value = '', isRequired = false, minLength = 0, pattern = '', checklist, checkstatus }) => {
+export const field = ({ name, value = '', isRequired = false, minLength = 0, pattern = '', checklist, checkstatus, checkPassword }) => {
     const settings = {
         name,
         value,
@@ -21,13 +21,16 @@ export const field = ({ name, value = '', isRequired = false, minLength = 0, pat
     if (checkstatus) {
         settings.validations.checkstatus = checkstatus
     }
+    if (checkPassword) {
+        settings.validations.checkPassword = checkPassword
+    }
 
     return settings;
 }
 
 export default (name, value, validations) => {
     const errors = [];
-    const convertedName = name.split("_").join(" ")
+    const convertedName = name.split("_").join(" ");
     if (validations.required && required(value)) {
         errors.push(`${convertedName} is required`);
     }
@@ -49,6 +52,9 @@ export default (name, value, validations) => {
     if (validations.checkstatus && checkStatus(value)) {
         errors.push(`please select listing status`);
     }
+    if (validations.checkPassword && checkPassword(value, validations.checkPassword)) {
+        errors.push(`password incorrect`);
+    }
 
     return errors;
 }
@@ -60,18 +66,14 @@ const minLength = (value, min) => value.length < min;
 const pattern = (value, pattern) => !pattern.test(value);
 
 const checkinlist = function(value, list, status) {
-
     const isInclude = list.includes(value);
-    if (status) {
-        return !isInclude
-    } else {
-        return isInclude
-    }
+    return status ? !isInclude : isInclude
+}
+
+const checkPassword = (value, password) => {
+    return value !== password;
 }
 
 const checkStatus = function(values) {
-    if (!values[0] && !values[1]) {
-        return true
-    }
-    return false
+    return !values[0] && !values[1]
 }
