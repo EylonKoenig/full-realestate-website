@@ -171,7 +171,13 @@ class editApartment extends React.Component {
     redirect = () => {
         this.props.history.push("/my_apartments")
     }
-
+    checkauthorize=()=>{
+        const apartment = this.props.location.apartment
+        const userCookie = cookie.load('auth')
+        let apratment_userId = undefined;
+        if (apartment) apratment_userId = apartment.user_id;
+        return ((userCookie && userCookie.id === apratment_userId) || userCookie.role_id === 1)
+    }
     render() {
 
         let apratment_userId = undefined;
@@ -180,7 +186,7 @@ class editApartment extends React.Component {
         const userCookie = cookie.load('auth')
         return (
             <div style={{ margin: '50px auto', width: '500px' ,minHeight:'676px'}}>
-                {userCookie && userCookie.id === apratment_userId ?
+                {this.checkauthorize() ?
                     <div>
                         {this.state.imagesVisbilte && <UploadImages
                                                             type={"edit"}
@@ -286,7 +292,10 @@ class editApartment extends React.Component {
                             </Form.Row>
                             <Form.Row>
                                 <Form.Group as={Col} style={{ height: "150px" }}>
-                                    <img className={'image-preview'} src={apartment.main_image ? `http://localhost:5000/${apartment.main_image}` : "http://localhost:5000/images/general/loadingApartment.jpg"} multiple id={'image-preview-File1'} alt='' />
+                                    <img className={'image-preview'}
+                                        src={apartment.main_image ? `http://localhost:5000/${apartment.main_image}` : "http://localhost:5000/images/general/loadingApartment.jpg"} 
+                                        multiple id={'image-preview-File1'} 
+                                        alt='' />
                                     <Label for="exampleFile">Upload your image</Label>
                                     <Input type="file" name="file" id="File1" onChange={this.imageChange} />
                                     <FormText color="muted">

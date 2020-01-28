@@ -10,7 +10,8 @@ var {
     getAratmentbyUserId,
     deleteApartmentById,
     editApartment,
-    getAllAdminApartments
+    getAllAdminApartments,
+    editStatus,
 } = require('../db/apartments')
 var { addImages } = require('../db/images.js')
 const { isUser } = require('../middlewares/authentication');
@@ -123,5 +124,14 @@ const addPhoto = async function(file) {
     return name
 
 }
+router.put('/edit/status', function(req, res, next) {
+    try {
+        let data = req.body;
+        editStatus(data.status, data.apartmentId)
+        res.end(req.body.status);
+    } catch (error) {
+        console.log(error)
+    }
+});
 
 module.exports = router;

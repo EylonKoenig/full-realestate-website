@@ -182,6 +182,15 @@ const api = {
             console.log(error);
         }
     },
+    async editStatusApartment(statusDetails) {
+        try {
+            const data = await fecther.put(`http://localhost:5000/apartments/edit/status`,statusDetails);
+            return data;
+        }
+        catch (error) {
+            console.log(error);
+        }
+    },
 
 
 }
