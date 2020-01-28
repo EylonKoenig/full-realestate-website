@@ -163,6 +163,18 @@ function deleteApartmentById(apartmentId) {
     });
 }
 
+function editStatus(status, apartmentId) {
+    return new Promise((resolve, reject) => {
+        connection.query(`UPDATE \`realtor\`.\`apartments\` SET \`status\` = '${status}' WHERE (\`id\` = '${apartmentId}')`, (error, results, fields) => {
+            if (error) {
+                reject(error);
+                return;
+            }
+            resolve(results);
+        });
+    });
+}
+
 module.exports = {
     getAllapartments,
     getbyId,
@@ -173,5 +185,6 @@ module.exports = {
     postApartment,
     deleteApartmentById,
     editApartment,
-    getAllAdminApartments
+    getAllAdminApartments,
+    editStatus
 };

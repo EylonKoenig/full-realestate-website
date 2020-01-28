@@ -58,12 +58,16 @@ class SearchGallery extends React.Component {
         });
 
         if (name === 'sortby') {
-            let checkState = this.state.filterObj;
-            checkState.sort_by = value;
-            this.setState({ filterObj: checkState });
-            // this.filter();
+            let filterArray = this.state.allApartments
+            if (value === 'formExpensive'){
+                filterArray = filterArray.sort((a,b) => (a.price < b.price) ? 1 : ((b.price < a.price) ? -1 : 0));
+            } else if (value === 'formCheapest'){
+                filterArray = filterArray.sort((a,b) => (a.price > b.price) ? 1 : ((b.price > a.price) ? -1 : 0));
+            }
+            this.setState({allApartments:filterArray})
         }
         if (name === 'restArray') {
+
             this.setState({ filterObj: { for_sale: false, for_rent: false } })
             this.getdata();
         }
