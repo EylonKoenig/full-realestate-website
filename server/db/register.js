@@ -30,17 +30,6 @@ async function addUser(data) {
             resolve(results.insertId, userPasswordHashed)
         });
     });
-    // try {
-    //     return await connection.query(query, (error, results) => {
-    //         if (error) {
-    //             console.log(error);
-    //             return
-    //         }
-    //         return results
-    //     });
-    // } catch (error) {
-    //     console.log(error)
-    // }
 }
 
 

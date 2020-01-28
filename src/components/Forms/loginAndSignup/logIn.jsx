@@ -50,6 +50,7 @@ class LogIn extends React.Component {
                 .then(response => {
                     if (response) {
                         this.props.loginHandelClick();
+                        this.props.history.push('/my_apartments')
                     }
                 })
         }

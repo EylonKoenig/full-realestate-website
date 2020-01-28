@@ -76,13 +76,7 @@ class SearchGallery extends React.Component {
     componentDidMount() {
         const query = this.props.location.search ? this.props.location.search : "";
         this.getdata(query);
-        // if (this.props.routerData) {
-        // let cur = this.state.filterObj;
-        // cur.cityFilter = this.props.routerData;
-        // this.setState({ filterObj: cur });
-        // document.getElementById('searchInput').value = this.props.routerData;
-        // this.filter();
-        // }
+
     }
     async getdata(query = "") {
         let data = await api.getApartments(query)
@@ -93,9 +87,10 @@ class SearchGallery extends React.Component {
         return (
             <div>
                 <SearchNav handleInputChange={this.handleInputChange} filters={this.state.filterObj} />
+                
                 {this.state.loading ? <SearchPageLoading loadingApartments={searchLoadingData} /> :
                     <div className={'container-fluid'} style={{height:'100vh'}}>
-                        <SortResults resultsLength={this.state.allApartments.length} handleInputChange={this.handleInputChange} />
+                        <SortResults resultsLength={this.state.allApartments.length} handleInputChange={this.handleInputChange}/>
                         <Gallery apartments={this.state.allApartments} cardType={'apartment'}/>
                     </div>}
             </div>

@@ -17,6 +17,7 @@ var { addImages } = require('../db/images.js')
 const { isUser } = require('../middlewares/authentication');
 
 router.get('/', function(req, res, next) {
+    console.log(JSON.parse(req.cookies.auth))
     getAllapartments(req.query)
         .then(apartments => res.status(200).json({ apartments }))
         .catch(error => res.status(500).json({ error: error.message }));
@@ -71,7 +72,6 @@ router.get('/four/bydate', function(req, res, next) {
         .catch(error => res.status(500).json({ error: error.message }));
 });
 router.get('/get/adminAprtments', function(req, res, next) {
-    console.log(req.query)
     getAllAdminApartments(req.query)
         .then(apartments => res.status(200).json(apartments))
         .catch(error => res.status(500).json({ error: error.message }));

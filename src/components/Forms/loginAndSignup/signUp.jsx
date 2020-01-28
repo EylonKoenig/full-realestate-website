@@ -55,7 +55,7 @@ class SignUp extends React.Component {
         }
         if (isOK) {
             const data = setFormData(this.state);
-            api.addUser(data).then(result => { if (result) { console.log(this.state); this.props.signUpHandelClick() } })
+            api.addUser(data).then(result => { if (result) {this.props.signUpHandelClick() } })
 
         }
     }

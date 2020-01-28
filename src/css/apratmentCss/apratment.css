@@ -138,6 +138,10 @@
     transform: scale(0.7)!important;
 }
 
+.sortResults {
+    margin-top: 10px;
+}
+
 @media (min-width: 576px) {
     .container-fluid {
         padding-left: 15px;

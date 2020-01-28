@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import Fade from 'react-bootstrap/Fade'
 
 import InsideImage from "./InsideImage";
 import UnderImage from "./UnderImage";
@@ -7,7 +8,6 @@ import InsideEditImage from './InsideEditCard'
 
 class Card extends React.Component {
     render() {
-
         let images = "http://localhost:5000/images/general/loadingApartment.jpg"
         let insideImg , underImg , srcImg = null;
         if (this.props.cardType === 'personalApartment'){

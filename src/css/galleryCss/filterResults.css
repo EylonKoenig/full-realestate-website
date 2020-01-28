@@ -1,26 +1,28 @@
-.totalHomes  {
+.totalHomes {
     color: #757575;
     font-weight: 400;
     font-size: 14px;
 }
+
 .sortFiled {
     margin-left: 40px;
 }
 
-.sortFiled select{
-border: none;
-color: blue;
+.sortFiled select {
+    cursor: pointer;
+    border: none;
+    color: blue;
 }
 
-.no-result{
+.no-result {
     height: 100vh;
 }
 
-.no-result a{
+.no-result a {
     text-decoration: none;
     background: red;
     border-radius: 30px;
-    padding:10px;
-    color:white;
+    padding: 10px;
+    color: white;
     font-size: 15px;
 }
