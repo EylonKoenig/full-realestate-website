@@ -2,6 +2,7 @@ import fecther from './fetcher';
 
 const api = {
     async getApartments(query = "") {
+        console.log(query)
         try {
             const data = await fecther.get(`/apartments${query}`);
             return data;
@@ -10,9 +11,9 @@ const api = {
             console.log(error);
         }
     },
-    async getAllAdminApartments() {
+    async getAllAdminApartments(query = "") {
         try {
-            const data = await fecther.get(`/apartments/get/adminAprtments`);
+            const data = await fecther.get(`/apartments/get/adminAprtments${query}`);
             return data;
         }
         catch (error) {
@@ -191,8 +192,6 @@ const api = {
             console.log(error);
         }
     },
-
-
 }
 
 export default api;

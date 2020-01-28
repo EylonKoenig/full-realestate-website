@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import Fade from 'react-bootstrap/Fade'
 
 import InsideImage from "./InsideImage";
 import UnderImage from "./UnderImage";
@@ -7,7 +8,6 @@ import InsideEditImage from './InsideEditCard'
 
 class Card extends React.Component {
     render() {
-
         let images = "http://localhost:5000/images/general/loadingApartment.jpg"
         let insideImg , underImg , srcImg = null;
         if (this.props.cardType === 'personalApartment'){
@@ -29,7 +29,9 @@ class Card extends React.Component {
          images = this.props.images.toString().split(',')
             .map(image => "http://localhost:5000/"+image);
         }
+        console.log("inside card",this.props)
         return (
+            <Fade in={this.props.main_image ? true : false} timeout={10000} unmountOnExit={true}>
             <div className={"cell col-12 col-sm-6 col-md-4 col-lg-3"}>
                 <div className={'text-above-picter'} id={"picter"}>{this.props.title}</div>
                 <div className={"card-cover"}>
@@ -45,6 +47,7 @@ class Card extends React.Component {
                     </Link>
                 </div>
             </div>
+            </Fade>
         )
     }
 }

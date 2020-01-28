@@ -1,6 +1,5 @@
 import React from 'react';
-import { Dropdown } from 'react-bootstrap';
-
+import cookie from 'react-cookies'
 
 import api from '../../server-api/api'
 import DeleteApartmentModal from './deleteModal';
@@ -23,7 +22,6 @@ class InsideEditImage extends React.Component {
     delete_apartment(event) {
         event.stopPropagation();
         event.preventDefault();
-
     }
     handleEdit = async () => {
         history.push({
@@ -38,12 +36,15 @@ class InsideEditImage extends React.Component {
 
     }
     render() {
+        console.log("inside edit",this.props)
         return (
             <div>
                 <div id={'contentImgEdit'} className={'inimagecontent'} onClick={this.delete_apartment} style={{height:'100%'}}>
                     <button className="editButton" onClick={this.handleEdit}>edit property</button>
                     <DeleteApartmentModal id={this.props.apartment.id} setData={this.props.setData} />
-                    <StatusButton apartment={this.state.apartment}/>
+                    {cookie.load('auth') && cookie.load('auth').role_id === 1 &&
+                    <StatusButton apartment={this.props.apartment}/>
+                    }                    
                 </div>
             </div>
         )

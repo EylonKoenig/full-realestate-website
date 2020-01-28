@@ -20,10 +20,9 @@ class PersonalApartments extends React.Component {
             pageOfItems: [],
             user: cookie.load('auth')
         }
-        this.onChangePage = this.onChangePage.bind(this);
     };
 
-    onChangePage(pageOfItems) {
+    onChangePage =(pageOfItems)=> {
         // update state with new page of items
         this.setState({ pageOfItems: pageOfItems });
     }
@@ -41,21 +40,38 @@ class PersonalApartments extends React.Component {
     }
     getAprtments = async userId => {
         let data = await api.getApartmentByUserId(userId)
+        // await new Promise(resolve => { setTimeout(resolve, 100000); });
         this.setState({ allApartments: data.data, loading: false });
-        await new Promise(resolve => { setTimeout(resolve, 100000); });
         
     }
     getAdminApartments = async userId => {
         let data = await api.getAllAdminApartments(userId)
-        await new Promise(resolve => { setTimeout(resolve, 5000); });
+        // await new Promise(resolve => { setTimeout(resolve, 5000); });
         this.setState({ allApartments: data.data, loading: false });
     }
+     handleInputChange = async (event) => {
+        const { name, value } = event.target;
+        if (name === 'sortby') {
+            let filterArray = this.state.allApartments
+            if (value === 'formExpensive'){
+                filterArray = filterArray.sort((a,b) => (a.price < b.price) ? 1 : ((b.price < a.price) ? -1 : 0));
+            } else if (value === 'formCheapest'){
+                filterArray = filterArray.sort((a,b) => (a.price > b.price) ? 1 : ((b.price > a.price) ? -1 : 0));
+            }
+            this.setState({allApartments:filterArray})
+        }
+        if (name === 'filterBy') {
+            const apartments = await api.getAllAdminApartments(`?status=${value}`);
+            console.log(apartments)
+            this.setState({allApartments:apartments.data})
+        }
+    };
     render() {
         return (
             <div>
                 {this.state.loading ? <SearchPageLoading loadingApartments={searchLoadingData} /> :
                     <div className={'container-fluid'} style={{ height: '100vh' }}>
-                        <SortResults resultsLength={this.state.allApartments.length} handleInputChange={this.handleInputChange} />
+                        <SortResults resultsLength={this.state.allApartments.length} handleInputChange={this.handleInputChange} type={'admin'}/>
                         <Gallery apartments={this.state.allApartments} cardType={'personalApartment'} setData={this.getAprtments} />
                         {this.state.pageOfItems.map(item =>
                             <div key={item.id}>{item.name}</div>
