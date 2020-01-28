@@ -137,9 +137,9 @@ const api = {
             console.log(error);
         }
     },
-    async getApartmentByUserId(uesrId) {
+    async getApartmentByUserId(uesrId,query = "") {
         try {
-            const data = await fecther.get(`http://localhost:5000/apartments/user/${uesrId}`);
+            const data = await fecther.get(`http://localhost:5000/apartments/user/${uesrId}${query}`);
             return data;
         }
         catch (error) {

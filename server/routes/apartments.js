@@ -16,12 +16,16 @@ var {
 var { addImages } = require('../db/images.js')
 const { isUser } = require('../middlewares/authentication');
 
-router.get('/', function(req, res, next) {
-    console.log(JSON.parse(req.cookies.auth))
-    getAllapartments(req.query)
-        .then(apartments => res.status(200).json({ apartments }))
-        .catch(error => res.status(500).json({ error: error.message }));
-});
+router.get('/', async function(req, res, next) {
+    try {
+        const apartments = await getAllapartments(req.query);
+        if (req.query.size === '123456') {
+            res.status(200).json(apartments.length)
+        } else { res.status(200).json({ apartments }) }
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+})
 
 router.get('/:apartmentId', function(req, res, next) {
     getbyId(req.params.apartmentId)
@@ -71,10 +75,15 @@ router.get('/four/bydate', function(req, res, next) {
         .then(apartments => res.status(200).json(apartments))
         .catch(error => res.status(500).json({ error: error.message }));
 });
-router.get('/get/adminAprtments', function(req, res, next) {
-    getAllAdminApartments(req.query)
-        .then(apartments => res.status(200).json(apartments))
-        .catch(error => res.status(500).json({ error: error.message }));
+router.get('/get/adminAprtments', async function(req, res, next) {
+    try {
+        const apartments = await getAllAdminApartments(req.query);
+        if (req.query.size === '123456') {
+            res.status(200).json(apartments.length)
+        } else { res.status(200).json(apartments) }
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 });
 // router.post('/upload', isUser, function(req, res, next) {
 router.post('/upload', async function(req, res, next) {

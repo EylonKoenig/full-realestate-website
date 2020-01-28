@@ -79,7 +79,7 @@ class SearchGallery extends React.Component {
 
     }
     async getdata(query = "") {
-        let data = await api.getApartments(query)
+        let data = await api.getApartments(query);
         await new Promise(resolve => { setTimeout(resolve, 3500); });
         this.setState({ allApartments: data.data.apartments, loading: false });
     }

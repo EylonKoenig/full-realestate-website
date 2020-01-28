@@ -1,5 +1,7 @@
 import React from 'react';
 import cookie from 'react-cookies'
+import { withRouter } from 'react-router-dom';
+
 
 import SortResults from '../search/sortResults';
 import { searchLoadingData } from "../../data-app/searchLoadingData";
@@ -17,35 +19,34 @@ class PersonalApartments extends React.Component {
         this.state = {
             allApartments: [],
             loading: true,
-            user: cookie.load('auth')
+            user: cookie.load('auth'),
         }
     };
-
-    onChangePage =(pageOfItems)=> {
-        // update state with new page of items
-        this.setState({ pageOfItems: pageOfItems });
+    
+    async componentWillMount(){
+        let legnthData = await api.getAllAdminApartments('?size=123456');
+        this.setState({apartmentsLength:legnthData.data})
     }
-
     componentDidMount() {
+        const query = this.props.location.search ? this.props.location.search : "";
         if (this.state.user) {
             if (this.state.user.role_id === 1) {
-                this.getAdminApartments();
+                this.getAdminApartments(query);
                 
                 return
             }
-            this.getAprtments(this.state.user.id);
-        }
-
+            this.getAprtments(this.state.user.id,query);
+        }   
     }
-    getAprtments = async userId => {
-        let data = await api.getApartmentByUserId(userId)
-        // await new Promise(resolve => { setTimeout(resolve, 100000); });
+    getAprtments = async (userId,query) => {
+        let data = await api.getApartmentByUserId(userId,query)
+        await new Promise(resolve => { setTimeout(resolve, 100000); });
         this.setState({ allApartments: data.data, loading: false });
         
     }
-    getAdminApartments = async userId => {
-        let data = await api.getAllAdminApartments(userId)
-        // await new Promise(resolve => { setTimeout(resolve, 5000); });
+    getAdminApartments = async (query) => {
+        let data = await api.getAllAdminApartments(query)
+        await new Promise(resolve => { setTimeout(resolve, 5000); });
         this.setState({ allApartments: data.data, loading: false });
     }
      handleInputChange = async (event) => {
@@ -64,6 +65,17 @@ class PersonalApartments extends React.Component {
             this.setState({allApartments:apartments.data})
         }
     };
+    handlePagination =(event)=>{
+        const page = event.target.id;
+        this.props.history.push(`?page=${page}`)
+        this.setState({page})
+        this.getAdminApartments(`?page=${page}`)
+    }
+    async getdata(query = "") {
+        let data = await api.getApartments(query)
+        await new Promise(resolve => { setTimeout(resolve, 3500); });
+        this.setState({ allApartments: data.data.apartments, loading: false });
+    }
     render() {
         return (
             <div>
@@ -71,14 +83,17 @@ class PersonalApartments extends React.Component {
                     <div className={'container-fluid'} style={{ height: '100vh' }}>
                         <SortResults resultsLength={this.state.allApartments.length} handleInputChange={this.handleInputChange} type={'admin'}/>
                         <Gallery apartments={this.state.allApartments} cardType={'personalApartment'} setData={this.getAprtments} />
-                        <MyPagination allapartments={this.state.allApartments.length}  displaylimit={12}/>
+                        <MyPagination allapartments={this.state.apartmentsLength}
+                            handleInputChange={this.handlePagination}
+                            currentPage={this.state.page}
+                            displaylimit={12}/>
                     </div>}
             </div>
         )
     }
 }
 
-export default PersonalApartments;
+export default withRouter(PersonalApartments);
 
 
 
