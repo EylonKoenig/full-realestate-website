@@ -22,6 +22,7 @@ class SortResults extends React.Component {
                                 <select name="sortby" className="hasCustomSelect" onChange={handleInputChange}>
                                     <option value="">Select your preference</option>
                                     <option value="formExpensive">Highest Price</option>
+                                    <option value="formCheapest">Lowest Price</option>
                                 </select>
                             </fieldset>
                             {type === 'admin' &&

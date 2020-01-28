@@ -12,12 +12,11 @@ class MyPagination extends React.Component {
     }
 
     render() {
-        console.log(this.props)
         return (
             <Pagination style={{marginBottom:'5px'}}>
                 <Pagination.First />
                 <Pagination.Prev />
-        {this.state.displayLimit.map((i,number) =>  <Pagination.Item key={number} id={number+1} name={"pagination"} active={`?page=${number+1}` === `?page=${this.state.page}`}  onClick={this.props.handleInputChange}>{number+1}</Pagination.Item>)}
+        {this.state.displayLimit.map((i,number) =>  <Pagination.Item value={number+1} id={number+1} name={"pagination"} active={number+1 === this.state.page}  onClick={this.props.handleInputChange}>{number+1}</Pagination.Item>)}
                 <Pagination.Next />
                 <Pagination.Last />
             </Pagination>
