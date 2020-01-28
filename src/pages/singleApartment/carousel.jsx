@@ -2,11 +2,6 @@ import React from 'react';
 import '../../css/apratmentCss/apratment.css'
 
 class Carousel extends React.Component {
-    constructor(props) {
-        super(props);
-
-    }
-
     render() {
         const {apartment} = this.props;
         let carouselItems = [];

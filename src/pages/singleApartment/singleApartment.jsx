@@ -1,4 +1,6 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
+
 import '../../css/apratmentCss/apratment.css'
 import ApartmentFrom from "./singleApartmentForm";
 import api from '../../server-api/api'
@@ -9,38 +11,42 @@ class singleApartment extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            apartment:{},
-            images:[],
-            loading:true,
+            apartment: {},
+            images: [],
+            loading: true,
         }
     }
-    componentDidMount(){
-        this.getdata();
+    componentDidMount() {
+            this.getdata();
     }
-    async getdata(){
+    async getdata() {
         const data = await api.getApartmentById(this.props.aprId);
-        this.setState({apartment:data.data[0],loading:false});
-        if(this.state.images.length > 0){
-        this.setState({images:this.state.apartment.images.toString().split(',')})
-    }
+        if(data.data.length === 0){
+            this.props.history.push('/apartments')
+        }
+        this.setState({ apartment: data.data[0], loading: false });
+        const images = this.state.apartment.images
+        if (images && images.length > 0) {
+            this.setState({ images: this.state.apartment.images.toString().split(',') })
+        }
     }
     render() {
-        const {apartment} = this.state;
+        const { apartment } = this.state;
         let carouselItems = [];
-        let detailsArr = ['number_of_bath','number_of_room','sqft'];
-        let detailsArrLabel = ['Bath','Rooms','sqft'];
+        let detailsArr = ['number_of_bath', 'number_of_room', 'sqft'];
+        let detailsArrLabel = ['Bath', 'Rooms', 'sqft'];
         let status = null;
-        if(apartment.sale_status === 'both'){
+        if (apartment.sale_status === 'both') {
             status = ' sale or rent'
-        } else if (apartment.sale_status === 'sale'){
+        } else if (apartment.sale_status === 'sale') {
             status = ' sale'
         } else {
             status = ' rent'
         }
-        carouselItems.push(this.state.images.map((item,i) =>  {
+        carouselItems.push(this.state.images.map((item, i) => {
             return (
                 <div className='carousel-item' key={i}>
-                    <img src={`http://localhost:5000/${this.state.images[i]}`} className="d-block w-100" alt="..."/>
+                    <img src={`http://localhost:5000/${this.state.images[i]}`} className="d-block w-100" alt="..." />
                 </div>
             )
         }));
@@ -48,6 +54,7 @@ class singleApartment extends React.Component {
             x = Math.round(x);
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
+        console.log(this.state)
         return (
             <div className={'container-fluid'}>
                 <div className={'apartment-wrapper'}>
@@ -59,9 +66,9 @@ class singleApartment extends React.Component {
                             <div id="carouselExampleFade" className="carousel slide carousel-fade" data-ride="carousel">
                                 <div className="carousel-inner">
                                     {!this.state.loading &&
-                                    <div className="carousel-item active">
-                                        <img src={`http://localhost:5000/${apartment.main_image}`} className="d-block w-100" alt="..." data-interval="10000" ref={'cpDev1'}/>
-                                    </div>}
+                                        <div className="carousel-item active">
+                                            <img src={`http://localhost:5000/${apartment.main_image}`} className="d-block w-100" alt="..." data-interval="10000" ref={'cpDev1'} />
+                                        </div>}
                                     {carouselItems}
                                 </div>
                                 <a className="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
@@ -74,15 +81,15 @@ class singleApartment extends React.Component {
                                 </a>
                             </div>
                             <div className={'from-wrapper'}>
-                                <ApartmentFrom/>
+                                <ApartmentFrom />
                             </div>
                             <div className={'inside-carousel'}>
-                                <div className={'carousel-overlay topleftimg'} style={{top:'unset'}}>
-                                    <span className={'green-background'} style={{padding:'3px'}}>{apartment.description}</span>
-                                    { (apartment.for_sale || apartment.for_rent) ?
-                                        <span  style={{padding:'3px' ,background:'black',marginLeft:'5px' }}>
-                                        {`For ${status}`}
-                                    </span> : null}
+                                <div className={'carousel-overlay topleftimg'} style={{ top: 'unset' }}>
+                                    <span className={'green-background'} style={{ padding: '3px' }}>{apartment.description}</span>
+                                    {(apartment.for_sale || apartment.for_rent) ?
+                                        <span style={{ padding: '3px', background: 'black', marginLeft: '5px' }}>
+                                            {`For ${status}`}
+                                        </span> : null}
                                 </div>
                             </div>
                         </div>
@@ -93,8 +100,8 @@ class singleApartment extends React.Component {
                                 <p>{`$${numberWithCommas((apartment.price))}`}</p>
 
                                 <ul className={'apartment-details pictuerdetails'}>
-                                    { detailsArr.map(function(item, i){
-                                        return  <li key={i}><span><b>{apartment[item] ? apartment[item] : ""}</b></span><span>{` ${detailsArrLabel[i]}`}</span></li>
+                                    {detailsArr.map(function (item, i) {
+                                        return <li key={i}><span><b>{apartment[item] ? apartment[item] : ""}</b></span><span>{` ${detailsArrLabel[i]}`}</span></li>
                                     })}
                                 </ul>
                                 <ul className={'pictuerdetails'}>
@@ -138,12 +145,14 @@ class singleApartment extends React.Component {
                             </div>
                         </div>
                         {!this.state.loading &&
-                        <GoogleMap address={apartment.city_name}/>
+                            <GoogleMap address={apartment.city_name} />
                         }
                     </div>
                 </div>
             </div>
 
-        )}}
+        )
+    }
+}
 
-export default singleApartment;
+export default withRouter(singleApartment);

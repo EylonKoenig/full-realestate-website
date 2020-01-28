@@ -5,7 +5,6 @@ import Card from "../components/card/Card";
 
 class Gallery extends React.Component {
     render() {
-        console.log(this.props)
         return (
             <div className={'container-fluid'} style={{ overflow: 'hidden' }}>
                 <div id={'apartment_row'} className={'row'}>

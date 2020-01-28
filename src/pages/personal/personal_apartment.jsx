@@ -1,6 +1,5 @@
 import React from 'react';
 import cookie from 'react-cookies'
-import {Pagination} from 'react-bootstrap'
 
 import SortResults from '../search/sortResults';
 import { searchLoadingData } from "../../data-app/searchLoadingData";
@@ -9,6 +8,7 @@ import '../../css/galleryCss/galleryCss.css'
 import SearchPageLoading from "../../components/Loading/searchPageLoading";
 import Gallery from '../../components/gallery';
 import api from '../../server-api/api';
+import MyPagination from '../../components/paginatino/pagaination';
 
 
 class PersonalApartments extends React.Component {
@@ -17,7 +17,6 @@ class PersonalApartments extends React.Component {
         this.state = {
             allApartments: [],
             loading: true,
-            pageOfItems: [],
             user: cookie.load('auth')
         }
     };
@@ -62,7 +61,6 @@ class PersonalApartments extends React.Component {
         }
         if (name === 'filterBy') {
             const apartments = await api.getAllAdminApartments(`?status=${value}`);
-            console.log(apartments)
             this.setState({allApartments:apartments.data})
         }
     };
@@ -73,9 +71,7 @@ class PersonalApartments extends React.Component {
                     <div className={'container-fluid'} style={{ height: '100vh' }}>
                         <SortResults resultsLength={this.state.allApartments.length} handleInputChange={this.handleInputChange} type={'admin'}/>
                         <Gallery apartments={this.state.allApartments} cardType={'personalApartment'} setData={this.getAprtments} />
-                        {this.state.pageOfItems.map(item =>
-                            <div key={item.id}>{item.name}</div>
-                        )}
+                        <MyPagination allapartments={this.state.allApartments.length}  displaylimit={12}/>
                     </div>}
             </div>
         )

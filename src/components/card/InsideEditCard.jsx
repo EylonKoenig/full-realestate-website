@@ -36,7 +36,6 @@ class InsideEditImage extends React.Component {
 
     }
     render() {
-        console.log("inside edit",this.props)
         return (
             <div>
                 <div id={'contentImgEdit'} className={'inimagecontent'} onClick={this.delete_apartment} style={{height:'100%'}}>

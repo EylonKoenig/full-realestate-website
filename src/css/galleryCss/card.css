@@ -13,6 +13,7 @@
 
 #apartment_row {
     justify-content: center;
+    min-height: 500px;
 }
 
 .images-center {

@@ -5,8 +5,7 @@ import api from '../../server-api/api'
 class StatusButton extends React.Component {
     constructor(props) {
         super(props);
-        console.log(props.apartment.status)
-        this.state = {   //enum('pending','approved','denied','removed')
+        this.state = {
             statusOption: [["approved", 'approvedButton'], ["pending", 'editDiv'], ["denied", 'deleteDiv'], ["removed", 'deleteDiv']],
             status: props.apartments,
             statusClass: props.apartment.stauts ? "approvedButton" : "bla"
@@ -27,7 +26,6 @@ class StatusButton extends React.Component {
             this.setState({ status: setData.data })
             this.setState({ statusClass: classSet })
         }
-
     }
 
     componentWillReceiveProps(nextProps) {
@@ -36,15 +34,8 @@ class StatusButton extends React.Component {
             this.setState({statusClass:classColor[1]})
     }
     render() {
-        console.log(this.props)
         return (
             <div style={{ position: "absolute", bottom: '5px', width: '100%' }}>
-                {/* <DropdownButton id="dropdown-basic-button"
-                                title={this.state.status}
-                                as={ButtonGroup}
-                                 onChange={this.handleChange}
-                                 className={this.state.statusOption.find(status=> {if(status[0] === apartment.status) return status[1]})}> */}
-
                 <div className="dropdown d-flex">
                     <button className={this.state.statusClass + ' dropdown-toggle'}
                         type="button"

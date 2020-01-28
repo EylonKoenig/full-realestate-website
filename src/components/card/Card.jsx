@@ -29,9 +29,7 @@ class Card extends React.Component {
          images = this.props.images.toString().split(',')
             .map(image => "http://localhost:5000/"+image);
         }
-        console.log("inside card",this.props)
         return (
-            <Fade in={this.props.main_image ? true : false} timeout={10000} unmountOnExit={true}>
             <div className={"cell col-12 col-sm-6 col-md-4 col-lg-3"}>
                 <div className={'text-above-picter'} id={"picter"}>{this.props.title}</div>
                 <div className={"card-cover"}>
@@ -47,7 +45,6 @@ class Card extends React.Component {
                     </Link>
                 </div>
             </div>
-            </Fade>
         )
     }
 }
