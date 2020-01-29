@@ -22,53 +22,58 @@ class PersonalApartments extends React.Component {
             user: cookie.load('auth'),
         }
     };
-    
-    async componentWillMount(){
-        let legnthData = await api.getAllAdminApartments('?size=123456');
-        this.setState({apartmentsLength:legnthData.data})
+
+    async componentWillMount() {
+        let legnthData = {};
+        if (this.state.user.role_id === 1) {
+            legnthData = await api.getAllAdminApartments('?size=123456');
+        } else {
+            legnthData = await api.getApartmentByUserId(this.state.user.id, '?size=123456');
+        }
+        this.setState({ apartmentsLength: legnthData.data })
     }
     componentDidMount() {
         const query = this.props.location.search ? this.props.location.search : "";
         if (this.state.user) {
             if (this.state.user.role_id === 1) {
                 this.getAdminApartments(query);
-                
+
                 return
             }
-            this.getAprtments(this.state.user.id,query);
-        }   
+            this.getAprtments(this.state.user.id, query);
+        }
     }
-    getAprtments = async (userId,query) => {
-        let data = await api.getApartmentByUserId(userId,query)
-        await new Promise(resolve => { setTimeout(resolve, 100000); });
+    getAprtments = async (userId, query) => {
+        let data = await api.getApartmentByUserId(userId, query)
+        await new Promise(resolve => { setTimeout(resolve, 3500); });
         this.setState({ allApartments: data.data, loading: false });
-        
+
     }
     getAdminApartments = async (query) => {
         let data = await api.getAllAdminApartments(query)
-        await new Promise(resolve => { setTimeout(resolve, 5000); });
+        await new Promise(resolve => { setTimeout(resolve, 3500); });
         this.setState({ allApartments: data.data, loading: false });
     }
-     handleInputChange = async (event) => {
+    handleInputChange = async (event) => {
         const { name, value } = event.target;
         if (name === 'sortby') {
             let filterArray = this.state.allApartments
-            if (value === 'formExpensive'){
-                filterArray = filterArray.sort((a,b) => (a.price < b.price) ? 1 : ((b.price < a.price) ? -1 : 0));
-            } else if (value === 'formCheapest'){
-                filterArray = filterArray.sort((a,b) => (a.price > b.price) ? 1 : ((b.price > a.price) ? -1 : 0));
+            if (value === 'formExpensive') {
+                filterArray = filterArray.sort((a, b) => (a.price < b.price) ? 1 : ((b.price < a.price) ? -1 : 0));
+            } else if (value === 'formCheapest') {
+                filterArray = filterArray.sort((a, b) => (a.price > b.price) ? 1 : ((b.price > a.price) ? -1 : 0));
             }
-            this.setState({allApartments:filterArray})
+            this.setState({ allApartments: filterArray })
         }
         if (name === 'filterBy') {
             const apartments = await api.getAllAdminApartments(`?status=${value}`);
-            this.setState({allApartments:apartments.data})
+            this.setState({ allApartments: apartments.data })
         }
     };
-    handlePagination =(event)=>{
+    handlePagination = (event) => {
         const page = event.target.id;
         this.props.history.push(`?page=${page}`)
-        this.setState({page})
+        this.setState({ page })
         this.getAdminApartments(`?page=${page}`)
     }
     async getdata(query = "") {
@@ -79,14 +84,16 @@ class PersonalApartments extends React.Component {
     render() {
         return (
             <div>
-                {this.state.loading ? <SearchPageLoading loadingApartments={searchLoadingData} /> :
-                    <div className={'container-fluid'} style={{ height: '100vh' }}>
-                        <SortResults resultsLength={this.state.allApartments.length} handleInputChange={this.handleInputChange} type={'admin'}/>
+                {this.state.loading ? <SearchPageLoading loadingApartments={searchLoadingData.slice(0, this.state.apartmentsLength)} /> :
+                    <div className={'container-fluid position-relative py-3' }>
+                        <SortResults resultsLength={this.state.allApartments.length} handleInputChange={this.handleInputChange} type={'admin'} />
                         <Gallery apartments={this.state.allApartments} cardType={'personalApartment'} setData={this.getAprtments} />
-                        <MyPagination allapartments={this.state.apartmentsLength}
-                            handleInputChange={this.handlePagination}
-                            currentPage={this.state.page}
-                            displaylimit={12}/>
+                        <div className={'paginationPosition'}>
+                            <MyPagination allapartments={this.state.apartmentsLength}
+                                handleInputChange={this.handlePagination}
+                                currentPage={this.state.page}
+                                displaylimit={12} />
+                        </div>
                     </div>}
             </div>
         )

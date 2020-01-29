@@ -54,7 +54,6 @@ class singleApartment extends React.Component {
             x = Math.round(x);
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
-        console.log(this.state)
         return (
             <div className={'container-fluid'}>
                 <div className={'apartment-wrapper'}>

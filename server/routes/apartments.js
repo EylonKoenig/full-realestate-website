@@ -115,10 +115,15 @@ router.post('/upload', async function(req, res, next) {
         console.log(error)
     }
 });
-router.get('/user/:userId', function(req, res, next) {
-    getAratmentbyUserId(req.params.userId)
-        .then(apartment => res.status(200).json(apartment))
-        .catch(error => res.status(500).json({ error: error.message }));
+router.get('/user/:userId', async function(req, res, next) {
+    try {
+        const apartments = await getAratmentbyUserId(req.params.userId);
+        if (req.query.size === '123456') {
+            res.status(200).json(apartments.length)
+        } else { res.status(200).json(apartments) }
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 });
 router.put('/remove/:apartmentId', function(req, res, next) {
     deleteApartmentById(req.params.apartmentId)

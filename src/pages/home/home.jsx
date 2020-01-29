@@ -1,7 +1,7 @@
 import React from 'react';
 
 import api from '../../server-api/api'
-import MainPageCities from "./subHome/mainPageCities";
+// import MainPageCities from "./subHome/mainPageCities";
 import MainPageCards from "./subHome/mainPageCards";
 import LinksFooter from "../../components/Footer/linksFooter";
 import UnderNavMain from "./subHome/underNavMain";
@@ -37,7 +37,7 @@ class Home extends React.Component {
                 <UnderNavMain/>
                 <HomeMainImage/>
                 <MainPageCards apartments={this.state.apartments} loading={this.state.loading}/>
-               <MainPageCities cities={this.state.apartments} loading={this.state.loading}/>
+               {/* <MainPageCities cities={this.state.apartments} loading={this.state.loading}/> */}
                 <StatisticsData/>
                 <BuyingInsidersGuide/>
                 <RentingInsidersGuide/>

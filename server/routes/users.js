@@ -31,6 +31,15 @@ router.post('/edit_user', function(req, res, next) {
 
     });
 });
+router.get('/admin/allUsers', function(req, res, next) {
+    connection.query(`SELECT * FROM users`, function(error, results, fields) {
+        if (error) throw error;
+        res.send(results);
+
+    });
+});
+
+
 
 
 

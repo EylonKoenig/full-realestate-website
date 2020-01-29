@@ -2,7 +2,6 @@ import fecther from './fetcher';
 
 const api = {
     async getApartments(query = "") {
-        console.log(query)
         try {
             const data = await fecther.get(`/apartments${query}`);
             return data;
@@ -186,6 +185,15 @@ const api = {
     async editStatusApartment(statusDetails) {
         try {
             const data = await fecther.put(`http://localhost:5000/apartments/edit/status`,statusDetails);
+            return data;
+        }
+        catch (error) {
+            console.log(error);
+        }
+    },
+    async getAllUsers() {
+        try {
+            const data = await fecther.get(`http://localhost:5000/users/admin/allUsers`);
             return data;
         }
         catch (error) {

@@ -13,6 +13,7 @@ import Footer from "./components/Footer/footer";
 import ApartmentForm from './components/Forms/apartment/apartmentForm';
 import PersonalApartment from './pages/personal/personal_apartment';
 import WishList from './pages/wishList/wishList';
+import UserList from './pages/personal/usersList'
 import EditApartment from './pages/personal/edit_apartment';
 import EditUser from './pages/personal/edit_user';
 
@@ -49,13 +50,16 @@ class App extends React.Component {
                     <Route path={"/:id/wishlist"}
                         component={(props) => (<WishList aprId={props.match.params.id} />)} />
 
+                    <Route path={"/users_list"}
+                        component={(props) => (<UserList/>)} />
+
                     <Route path={"/my_apartments"}
                         component={(props) => (<PersonalApartment aprId={props.match.params.id} />)} />
 
                     <Route path={"/edit_apartments"} component={(props) => (<EditApartment />)} />
 
                     <Route path="/edit_user">
-                        <EditUser/>
+                        <EditUser />
                     </Route>
 
                     <Route path="/">

@@ -18,31 +18,31 @@ class PriceSearch extends React.Component {
                                                         list={'price-input'}
                                                         placeholder="$ No Min"
                                                         onChange={handleInputChange} />
-                                                 <input id="priceCheck4k" name="min_price" type="radio" value="400000"
+                                                 <input id="priceCheck4k" name="minPrice" type="radio" value="400000"
                                                         onChange={handleInputChange} />
                                                  <label htmlFor="priceCheck4k">$400k</label>
 
-                                                 <input id="priceCheck8k" name="min_price" type="radio" value="800000"
+                                                 <input id="priceCheck8k" name="minPrice" type="radio" value="800000"
                                                         onChange={handleInputChange} />
                                                  <label htmlFor="priceCheck8k">$800k</label>
 
-                                                 <input id="priceCheck1.2m" name="min_price" type="radio" value="1200000"
+                                                 <input id="priceCheck1.2m" name="minPrice" type="radio" value="1200000"
                                                         onChange={handleInputChange} />
                                                  <label htmlFor="priceCheck1.2m">$1.2M</label>
 
-                                                 <input id="priceCheck1.6m" name="min_price" type="radio" value="1600000"
+                                                 <input id="priceCheck1.6m" name="minPrice" type="radio" value="1600000"
                                                         onChange={handleInputChange} />
                                                  <label htmlFor="priceCheck1.6m">$1.6M</label>
 
-                                                 <input id="priceCheck2m" name="min_price" type="radio" value="200000"
+                                                 <input id="priceCheck2m" name="minPrice" type="radio" value="200000"
                                                         onChange={handleInputChange} />
                                                  <label htmlFor="priceCheck2m">$2M</label>
 
-                                                 <input id="priceCheck2.4m" name="min_price" type="radio" value="2400000"
+                                                 <input id="priceCheck2.4m" name="minPrice" type="radio" value="2400000"
                                                         onChange={handleInputChange} />
                                                  <label htmlFor="priceCheck2.4m">$2.4m</label>
 
-                                                 <input id="priceCheckanymin" name="min_price" type="radio" value="0"
+                                                 <input id="priceCheckanymin" name="minPrice" type="radio" value="0"
                                                         onChange={handleInputChange} />
                                                  <label htmlFor="priceCheckanymin">Any Price</label>
                                           </div>
@@ -58,27 +58,27 @@ class PriceSearch extends React.Component {
                                                         onChange={handleInputChange} />
                                                  <label htmlFor="priceCheck4kmax">$400k</label>
 
-                                                 <input id="priceCheck8kmax" name="max_price" type="radio" value="800000"
+                                                 <input id="priceCheck8kmax" name="maxPrice" type="radio" value="800000"
                                                         onChange={handleInputChange} />
                                                  <label htmlFor="priceCheck8kmax">$800k</label>
 
-                                                 <input id="priceCheck1.2mmax" name="max_price" type="radio" value="1200000"
+                                                 <input id="priceCheck1.2mmax" name="maxPrice" type="radio" value="1200000"
                                                         onChange={handleInputChange} />
                                                  <label htmlFor="priceCheck1.2mmax">$1.2M</label>
 
-                                                 <input id="priceCheck1.6mmax" name="max_price" type="radio" value="1600000"
+                                                 <input id="priceCheck1.6mmax" name="maxPrice" type="radio" value="1600000"
                                                         onChange={handleInputChange} />
                                                  <label htmlFor="priceCheck1.6mmax">$1.6M</label>
 
-                                                 <input id="priceCheck2mmax" name="max_price" type="radio" value="200000"
+                                                 <input id="priceCheck2mmax" name="maxPrice" type="radio" value="200000"
                                                         onChange={handleInputChange} />
                                                  <label htmlFor="priceCheck2mmax">$2M</label>
 
-                                                 <input id="priceCheck2.4mmax" name="max_price" type="radio" value="2400000"
+                                                 <input id="priceCheck2.4mmax" name="maxPrice" type="radio" value="2400000"
                                                         onChange={handleInputChange} />
                                                  <label htmlFor="priceCheck2.4mmax">$2.4m</label>
 
-                                                 <input id="priceCheckany" name="max_price" type="radio" value="9999999999"
+                                                 <input id="priceCheckany" name="maxPrice" type="radio" value="9999999999"
                                                         onChange={handleInputChange} />
                                                  <label htmlFor="priceCheckany">Any Price</label>
                                           </div>

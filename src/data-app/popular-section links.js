@@ -53,7 +53,7 @@ const linksData = [{
         { title: "Full-Service Movers", herfLink: '/' },
         { title: "Moving Company SearchNav on Moving.com", herfLink: '/' },
         { title: "Truck Rental", herfLink: '/' },
-        { title: "Assisted Living on SeniorHousingNet.com", herfLink: '/' },
+        { title: "Assisted Living on SeniorHousingNet", herfLink: '/' },
         { title: "Real Estate SearchNav", herfLink: '/' },
         { title: "New Home Construction SearchNav", herfLink: '/' },
         { title: "Foreclosure SearchNav", herfLink: '/' },

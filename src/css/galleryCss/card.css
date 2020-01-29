@@ -13,7 +13,7 @@
 
 #apartment_row {
     justify-content: center;
-    min-height: 500px;
+    /* height: calc(100vh - 122px); */
 }
 
 .images-center {
@@ -563,4 +563,11 @@ input:checked+.slider:before {
     to {
         opacity: 1;
     }
+}
+
+.paginationPosition {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
 }

@@ -47,6 +47,16 @@ class SearchGallery extends React.Component {
     handleInputChange = (event) => {
         const { name, value } = event.target;
         const obj = this.state.filterObj;
+        if (name === 'sortby') {
+            let filterArray = this.state.allApartments
+            if (value === 'formExpensive'){
+                filterArray = filterArray.sort((a,b) => (a.price < b.price) ? 1 : ((b.price < a.price) ? -1 : 0));
+            } else if (value === 'formCheapest'){
+                filterArray = filterArray.sort((a,b) => (a.price > b.price) ? 1 : ((b.price > a.price) ? -1 : 0));
+            }
+            this.setState({allApartments:filterArray})
+            return
+        }
         if (name === 'for_sale' || name === 'for_rent') {
             obj[name] = !obj[name]
         } else {
@@ -56,23 +66,12 @@ class SearchGallery extends React.Component {
             this.getdata(this.setQuery(this.state.filterObj));
             this.props.history.push(this.setQuery(this.state.filterObj))
         });
-
-        if (name === 'sortby') {
-            let filterArray = this.state.allApartments
-            if (value === 'formExpensive'){
-                filterArray = filterArray.sort((a,b) => (a.price < b.price) ? 1 : ((b.price < a.price) ? -1 : 0));
-            } else if (value === 'formCheapest'){
-                filterArray = filterArray.sort((a,b) => (a.price > b.price) ? 1 : ((b.price > a.price) ? -1 : 0));
-            }
-            this.setState({allApartments:filterArray})
-        }
         if (name === 'restArray') {
 
             this.setState({ filterObj: { for_sale: false, for_rent: false } })
             this.getdata();
         }
     };
-
     componentDidMount() {
         const query = this.props.location.search ? this.props.location.search : "";
         this.getdata(query);

@@ -123,7 +123,7 @@ class Footer  extends React.Component{
                                 <li><a href="https://www.realtor.com/international/" title=""
                                        data-omtag="footer:network:international">International</a></li>
                                 <li><a href="https://www.seniorhousingnet.com" title=""
-                                       data-omtag="footer:network:senior">SeniorHousingNet.com</a></li>
+                                       data-omtag="footer:network:senior">SeniorHousing</a></li>
                                 <li><a href="https://www.doorsteps.com" title="" data-omtag="footer:network:doorsteps">Doorsteps</a>
                                 </li>
                                 <li><a
