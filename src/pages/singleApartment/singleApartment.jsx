@@ -30,6 +30,11 @@ class singleApartment extends React.Component {
             this.setState({ images: this.state.apartment.images.toString().split(',') })
         }
     }
+    getDate =()=>{
+        var myDate = new Date(this.state.apartment.created_on);
+        return myDate.toGMTString()
+
+    }
     render() {
         const { apartment } = this.state;
         let carouselItems = [];
@@ -80,7 +85,7 @@ class singleApartment extends React.Component {
                                 </a>
                             </div>
                             <div className={'from-wrapper'}>
-                                <ApartmentFrom />
+                                <ApartmentFrom apartment={this.state.apartment}/>
                             </div>
                             <div className={'inside-carousel'}>
                                 <div className={'carousel-overlay topleftimg'} style={{ top: 'unset' }}>
@@ -106,6 +111,7 @@ class singleApartment extends React.Component {
                                 <ul className={'pictuerdetails'}>
                                     <li>{`${apartment.city_name}`}</li>
                                     <li>{`${apartment.country}`}</li>
+                                    <li>{`${apartment.address}`}</li>
                                 </ul>
                             </div>
                             <div className={'container-fluid SubDetails'}>
@@ -118,20 +124,20 @@ class singleApartment extends React.Component {
                                     </li>
                                     <li className="col-xs-6 col-md-4 indicator">
                                         <div className="">
-                                            <span className="key">Days on site</span>
-                                            <span className="value">14 Hours</span>
-                                        </div>
-                                    </li>
-                                    <li className="col-xs-6 col-md-4 indicator">
-                                        <div className="">
-                                            <span className="key">Year Built</span>
-                                            <span className="value">1955</span>
+                                            <span className="key">Upload date</span>
+                                <span className="value">{   this.getDate()}</span>
                                         </div>
                                     </li>
                                     <li className="col-xs-6 col-md-4 indicator">
                                         <div className="">
                                             <span className="key">Style</span>
                                             <span className="value">Co-op</span>
+                                        </div>
+                                    </li>
+                                    <li className="col-xs-6 col-md-4 indicator">
+                                        <div className="">
+                                            <span className="key">Year Built</span>
+                                            <span className="value">1955</span>
                                         </div>
                                     </li>
                                     <li className="col-xs-6 col-md-4 indicator">
