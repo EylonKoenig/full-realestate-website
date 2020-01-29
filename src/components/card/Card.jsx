@@ -21,7 +21,8 @@ class Card extends React.Component {
              srcImg = `http://localhost:5000/${this.props.main_image}`
         }
         else if (this.props.cardType === 'loading'){
-             insideImg = null;
+            insideImg = null;
+            console.log(srcImg)
              underImg = <UnderImage item={this.props} cardType={'loading'}/>;
              srcImg = this.props.main_image
         }
@@ -37,8 +38,8 @@ class Card extends React.Component {
                                 className={'pictuerhref'}>
                         <div className={'image-cover'} index={'0'}>
                                 <img className={'images-center'} id={'image-bottom'} src={srcImg} alt={''}/>
-                            {this.props.cardType === 'apartment' &&
-                                <img className={'images-center'} id={'image-top'} src={`${images[0]}`} alt={''} style={{position: 'absolute',left:0}}/>}
+                            {/* {this.props.cardType === 'apartment' && */}
+                                {/* // <img className={'images-center'} id={'image-top'} src={`${images[0]}`} alt={''} style={{position: 'absolute',left:0}}/>} */}
                             {insideImg}
                         </div>
                         {underImg}

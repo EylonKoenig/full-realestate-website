@@ -40,8 +40,8 @@ class InsideEditImage extends React.Component {
             <div>
                 <div id={'contentImgEdit'} className={'inimagecontent'} onClick={this.delete_apartment} style={{height:'100%'}}>
                     <button className="editButton" onClick={this.handleEdit}>edit property</button>
-                    <DeleteApartmentModal id={this.props.apartment.id} setData={this.props.setData} />
-                    {cookie.load('auth') && cookie.load('auth').role_id === 1 &&
+                    {cookie.load('auth') && cookie.load('auth').role_id !== 1 ?
+                    <DeleteApartmentModal id={this.props.apartment.id} setData={this.props.setData} /> :
                     <StatusButton apartment={this.props.apartment}/>
                     }                    
                 </div>

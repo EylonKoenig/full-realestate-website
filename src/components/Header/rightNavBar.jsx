@@ -59,6 +59,7 @@ class RightNavBar extends React.Component {
                                 <div className={'submissionMenu'} id='submissionMenu'>
                                     <Link to={'/my_apartments'}>My apartments</Link>
                                     <Link to={'/postApartment'}>Add Property</Link>
+                                    <Link to={'/apartments'}>Search Property</Link>
                                     {this.props.user.role_id === 1 &&
                                         <Link to={'/users_list'}>Users List</Link>
                                     }

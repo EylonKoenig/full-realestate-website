@@ -124,6 +124,7 @@ class editApartment extends React.Component {
 
     onSubmit = async e => {
         e.preventDefault();
+        console.log("weweewew")
         const { formDetails } = this.state;
         let isOK = true;
         let errors = undefined;

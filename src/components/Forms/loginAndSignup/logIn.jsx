@@ -1,5 +1,7 @@
 import React from 'react';
 import { withRouter } from "react-router";
+import cookie from 'react-cookies'
+
 
 import validate, { field } from '../validator';
 import InputErrors from '../inputErrors';
@@ -49,8 +51,15 @@ class LogIn extends React.Component {
             api.login(result)
                 .then(response => {
                     if (response) {
-                        this.props.loginHandelClick();
-                        this.props.history.push('/my_apartments')
+                        console.log(response)
+                        if (response.data.status === 'inactive') {
+                            cookie.remove('auth', { path: '/' })
+                            alert("your user is suspended");
+                            this.props.history.push('/')
+                        } else {
+                            this.props.loginHandelClick();
+                            this.props.history.push('/my_apartments')
+                        }
                     }
                 })
         }

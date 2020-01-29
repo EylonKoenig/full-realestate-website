@@ -86,7 +86,7 @@ class PersonalApartments extends React.Component {
             <div>
                 {this.state.loading ? <SearchPageLoading loadingApartments={searchLoadingData.slice(0, this.state.apartmentsLength)} /> :
                     <div className={'container-fluid position-relative py-3' }>
-                        <SortResults resultsLength={this.state.allApartments.length} handleInputChange={this.handleInputChange} type={'admin'} />
+                        <SortResults resultsLength={this.state.apartmentsLength} handleInputChange={this.handleInputChange} rold_id={this.state.user.role_id} />
                         <Gallery apartments={this.state.allApartments} cardType={'personalApartment'} setData={this.getAprtments} />
                         <div className={'paginationPosition'}>
                             <MyPagination allapartments={this.state.apartmentsLength}

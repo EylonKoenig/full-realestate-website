@@ -2,15 +2,14 @@ import React from 'react';
 
 class SortResults extends React.Component {
     render() {
-        let { resultsLength, handleInputChange, type } = this.props;
+        let { resultsLength, handleInputChange, rold_id } = this.props;
         const statusList = ['','pending', 'approved', 'denied', 'removed']
         return (
             <div className={'sortResults'}>
                 {resultsLength === 0 ? <div>
                     <div className="no-result">
                         <div>
-                            <h2 className={'my-3'}>We didn't find matching results</h2>
-                            <a href={'/apartments'}>Remove all filters</a>
+                            <h2 className={'my-3'}>We didn't find matching</h2>
                         </div>
 
                     </div>
@@ -25,7 +24,7 @@ class SortResults extends React.Component {
                                     <option value="formCheapest">Lowest Price</option>
                                 </select>
                             </fieldset>
-                            {type === 'admin' &&
+                            {rold_id === 1 &&
                                 <fieldset className={'sortFiled'}>
                                     <label>Filter by: </label>
                                     <select name="filterBy" className="hasCustomSelect" onChange={handleInputChange}>

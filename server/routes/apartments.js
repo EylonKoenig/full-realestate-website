@@ -104,12 +104,13 @@ router.post('/upload', async function(req, res, next) {
                     images.push(`images/apartment/${fileName}`);
                     await addImages(apartmentId, images);
                 }
-            }
+            } else {}
         } else {
             // add defult image
             data.main_image = `images/general/loadingApartment.jpg`;
             await postApartment(data)
         }
+
         res.end('apartemnt upload!');
     } catch (error) {
         console.log(error)

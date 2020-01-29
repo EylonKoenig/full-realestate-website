@@ -36,14 +36,14 @@ class UsersList extends React.Component {
                 {!this.state.loading &&
                     <div style={{ marginTop: '46px' }}>
                         <BootstrapTable data={this.state.allUsers} options={options}>
-                            <TableHeaderColumn dataField='id' isKey width=''>ID</TableHeaderColumn>
-                            <TableHeaderColumn dataField='role_id' width=''>role id</TableHeaderColumn>
-                            <TableHeaderColumn dataField='first_name' width=''>First Name</TableHeaderColumn>
-                            <TableHeaderColumn dataField='last_name' width=''>Last Name</TableHeaderColumn>
+                            <TableHeaderColumn dataField='id' isKey width='50px'>ID</TableHeaderColumn>
+                            <TableHeaderColumn dataField='role' width='100px'>role id</TableHeaderColumn>
+                            <TableHeaderColumn dataField='status' width='100px' changeStatus={this.changeStatus} dataFormat={activeFormatter}>Status</TableHeaderColumn>
+                            <TableHeaderColumn dataField='full_name' width=''>Full Name</TableHeaderColumn>
+                            <TableHeaderColumn dataField='total_apartments' width='200px'>Apartments uploaded</TableHeaderColumn>
                             <TableHeaderColumn dataField='email' width=''>Email</TableHeaderColumn>
-                            <TableHeaderColumn dataField='password' width=''>Pasasword</TableHeaderColumn>
                             <TableHeaderColumn dataField='phone'>Phone</TableHeaderColumn>
-                            <TableHeaderColumn dataField='status' changeStatus={this.changeStatus} dataFormat={activeFormatter}>Status</TableHeaderColumn>
+                            <TableHeaderColumn dataField='password' width=''>Pasasword</TableHeaderColumn>
                         </BootstrapTable>
                     </div>
                 }

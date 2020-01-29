@@ -1,7 +1,9 @@
 const convertPassword = require("./crypto")
 
 const setQueryData = function(table, fromData) {
-    fromData.password = convertPassword(fromData.password)
+    if (fromData.password) {
+        fromData.password = convertPassword(fromData.password)
+    }
     let query = `UPDATE \`realtor\`.\`${table}\` SET`;
     for (let data in fromData) {
         if (data === 'id' || data === 'images') continue;

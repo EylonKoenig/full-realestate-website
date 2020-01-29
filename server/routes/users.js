@@ -32,7 +32,12 @@ router.post('/edit_user', function(req, res, next) {
     });
 });
 router.get('/admin/allUsers', function(req, res, next) {
-    connection.query(`SELECT * FROM users`, function(error, results, fields) {
+    connection.query(`
+    select u.*,count(ap.id) as total_apartments, concat(u.first_name,' ',u.last_name) as full_name,
+roles.type as role from apartments  ap
+left join users u on ap.user_id = u.id 
+  join roles on u.role_id = roles.id
+ group by u.id`, function(error, results, fields) {
         if (error) throw error;
         res.send(results);
 
