@@ -23,7 +23,10 @@ class SearchGallery extends React.Component {
     setQuery(obj) {
         let filters = obj;
         if ((filters.for_rent && filters.for_sale) || (!filters.for_rent && !filters.for_sale)) {
-            filters.sale_status = '';
+            delete filters.sale_status;
+            delete filters.for_sale;
+            delete filters.for_rent;
+            // filters.sale_status = '';
         } else if (filters.for_rent) {
             filters.sale_status = 'rent';
         } else {
@@ -31,7 +34,8 @@ class SearchGallery extends React.Component {
         }
 
         if (filters.property_type === 'any') {
-            filters.property_type = "";
+            delete filters.property_type
+            // filters.property_type = "";
         }
 
         if (filters.maxPrice === false) {

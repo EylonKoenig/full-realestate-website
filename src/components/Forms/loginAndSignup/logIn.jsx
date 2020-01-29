@@ -51,11 +51,9 @@ class LogIn extends React.Component {
             api.login(result)
                 .then(response => {
                     if (response) {
-                        console.log(response)
-                        if (response.data.status === 'inactive') {
+                        if (response.data.user.status === 'inactive') {
                             cookie.remove('auth', { path: '/' })
                             alert("your user is suspended");
-                            this.props.history.push('/')
                         } else {
                             this.props.loginHandelClick();
                             this.props.history.push('/my_apartments')

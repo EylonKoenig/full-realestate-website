@@ -52,6 +52,7 @@ class EditUser extends React.Component {
     }
 
     inputChange = ({ target: { name, value } }) => {
+        if(name === 'user' && value === "") value = cookie.load('auth').user
         const errors = validate(name, value, this.state.userDetails[name].validations);
         const { userDetails } = { ...this.state };
         userDetails[name].value = value;
@@ -124,12 +125,12 @@ class EditUser extends React.Component {
                                     <InputErrors errors={userDetails.phone.errors}></InputErrors>
                                 </div>
                                 <div className="form-group">
-                                    <label htmlFor="exampleInputEmail1">Password</label>
+                                    <label htmlFor="exampleInputEmail1">Old Password</label>
                                     <input type="password" name="old_password" id="oldPassword" className="form-control" aria-describedby="emailHelp" placeholder="Enter your old Password" onBlur={this.inputChange} />
                                     <InputErrors errors={userDetails.old_password.errors}></InputErrors>
                                 </div>
                                 <div className="form-group">
-                                    <label htmlFor="exampleInputEmail1">Password</label>
+                                    <label htmlFor="exampleInputEmail1">New Password</label>
                                     <input type="password" name="password" id="newPassword" className="form-control" aria-describedby="emailHelp" placeholder="Enter your new Password" onBlur={this.inputChange} />
                                     <InputErrors errors={userDetails.password.errors}></InputErrors>
                                 </div>

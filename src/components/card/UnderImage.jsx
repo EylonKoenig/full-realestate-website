@@ -3,7 +3,13 @@ import '../../css/loading/loading.css'
 
 
 class UnderImage extends React.Component {
+    alertEmail =(e)=>{
+        e.stopPropagation();
+        e.preventDefault();
+        alert(`the email is ${this.props.item.email}`)
+    }
     render() {
+        console.log(this.props.item)
         const apartment = this.props.item;
         return (
             <div>
@@ -29,7 +35,7 @@ class UnderImage extends React.Component {
                         </div>
                         <div className={'email-agent'}>
                             {/*need to add email agent action as  obj.email_agent*/}
-                            <button>Email Agent</button>
+                            <button onClick={this.alertEmail}>Email Agent</button>
                         </div>
                     </div>
                 }
