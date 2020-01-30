@@ -1,6 +1,5 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import Fade from 'react-bootstrap/Fade'
 
 import InsideImage from "./InsideImage";
 import UnderImage from "./UnderImage";
@@ -22,7 +21,6 @@ class Card extends React.Component {
         }
         else if (this.props.cardType === 'loading'){
             insideImg = null;
-            console.log(srcImg)
              underImg = <UnderImage item={this.props} cardType={'loading'}/>;
              srcImg = this.props.main_image
         }

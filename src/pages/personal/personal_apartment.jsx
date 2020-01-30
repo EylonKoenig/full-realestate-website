@@ -10,7 +10,7 @@ import '../../css/galleryCss/galleryCss.css'
 import SearchPageLoading from "../../components/Loading/searchPageLoading";
 import Gallery from '../../components/gallery';
 import api from '../../server-api/api';
-import MyPagination from '../../components/paginatino/pagaination';
+// import MyPagination from '../../components/paginatino/pagaination';
 
 
 class PersonalApartments extends React.Component {
@@ -89,10 +89,10 @@ class PersonalApartments extends React.Component {
                         <SortResults resultsLength={this.state.apartmentsLength} handleInputChange={this.handleInputChange} rold_id={this.state.user.role_id} />
                         <Gallery apartments={this.state.allApartments} cardType={'personalApartment'} setData={this.getAprtments} />
                         <div className={'paginationPosition'}>
-                            <MyPagination allapartments={this.state.apartmentsLength}
+                            {/* <MyPagination allapartments={this.state.apartmentsLength}
                                 handleInputChange={this.handlePagination}
                                 currentPage={this.state.page}
-                                displaylimit={12} />
+                                displaylimit={12} /> */}
                         </div>
                     </div>}
             </div>

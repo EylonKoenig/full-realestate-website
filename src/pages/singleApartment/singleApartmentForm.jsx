@@ -2,13 +2,11 @@ import React from 'react';
 
 class ApartmentFrom extends React.Component {
     handleClick(e){
-        console.log("sdadsadsa")
         e.stopPropagation();
         e.preventDefault();
         alert('this functionality is not available right now. please try again later.')
     }
     render() {
-        console.log(this.props)
         const apartment = this.props.apartment
         return (
             <form>

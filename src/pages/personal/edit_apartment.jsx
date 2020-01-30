@@ -124,7 +124,6 @@ class editApartment extends React.Component {
 
     onSubmit = async e => {
         e.preventDefault();
-        console.log("weweewew")
         const { formDetails } = this.state;
         let isOK = true;
         let errors = undefined;
@@ -181,10 +180,10 @@ class editApartment extends React.Component {
     }
     render() {
 
-        let apratment_userId = undefined;
+        // let apratment_userId = undefined;
         const apartment = this.props.location.apartment
-        if (apartment) apratment_userId = apartment.user_id;
-        const userCookie = cookie.load('auth')
+        // if (apartment) {     
+        //    let  apratment_userId = apartment.user_id;}
         return (
             <div style={{ margin: '50px auto', width: '500px' ,minHeight:'676px'}}>
                 {this.checkauthorize() ?

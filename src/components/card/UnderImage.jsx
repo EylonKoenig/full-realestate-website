@@ -9,7 +9,6 @@ class UnderImage extends React.Component {
         alert(`the email is ${this.props.item.email}`)
     }
     render() {
-        console.log(this.props.item)
         const apartment = this.props.item;
         return (
             <div>

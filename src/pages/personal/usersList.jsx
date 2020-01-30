@@ -14,7 +14,6 @@ class UsersList extends React.Component {
         }
     };
     changeStatus(e) {
-        // console.log(e)
     }
     async componentDidMount() {
         const data = await api.getAllUsers();
@@ -58,7 +57,7 @@ class UsersList extends React.Component {
 class ActiveFormatter extends React.Component {
     render() {
         return (
-            <input type='checkbox' style={{ opacity: 1 }} checked={this.props.active === 'active' && 'checked'} />
+            <input type='checkbox' style={{ opacity: 1 }} readOnly checked={this.props.active === 'active' && 'checked'} />
         );
     }
 }

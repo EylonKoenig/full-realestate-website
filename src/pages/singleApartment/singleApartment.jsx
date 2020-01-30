@@ -32,7 +32,13 @@ class singleApartment extends React.Component {
     }
     getDate =()=>{
         var myDate = new Date(this.state.apartment.created_on);
-        return myDate.toGMTString()
+        const test = myDate.getTime();
+        const current = new Date();
+        const result = (current-test)/1000;
+        if(result/3600 < 24) return `${Math.ceil(result/3600)} Hours ago`
+        if(result/86400 < 24) return `${Math.ceil(result/86400)} Days ago`
+        if(result/604800  < 24) return `${Math.ceil(result/604800)} Weeks ago`
+        if(result/2629743  < 24) return `${Math.ceil(result/2629743)} Mnoths ago`
 
     }
     render() {
@@ -124,7 +130,7 @@ class singleApartment extends React.Component {
                                     </li>
                                     <li className="col-xs-6 col-md-4 indicator">
                                         <div className="">
-                                            <span className="key">Upload date</span>
+                                <span className="key">Time on site</span>
                                 <span className="value">{   this.getDate()}</span>
                                         </div>
                                     </li>
