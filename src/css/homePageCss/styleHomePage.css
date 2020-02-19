@@ -4,7 +4,7 @@ h2 {
 
 #main {
     height: 570px;
-    background-image: url("http://localhost:5000/images/general/takeover-desktop.jpg");
+    background-image: url("http://localhost:4000/images/general/takeover-desktop.jpg");
     background-size: cover;
     background-position: center center;
 }
@@ -253,7 +253,7 @@ button.myButton {
 
 #hero-image {
     height: 350px;
-    background-image: url("http://localhost:5000/images/general/main_image.png");
+    background-image: url("http://localhost:4000/images/general/main_image.png");
     background-size: cover;
     background-position: center center;
 }

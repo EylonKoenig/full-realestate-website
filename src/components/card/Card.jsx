@@ -7,26 +7,21 @@ import InsideEditImage from './InsideEditCard'
 
 class Card extends React.Component {
     render() {
-        let images = "http://localhost:5000/images/general/loadingApartment.jpg"
         let insideImg , underImg , srcImg = null;
         if (this.props.cardType === 'personalApartment'){
             insideImg = <InsideEditImage apartment={this.props} setData={this.props.setData}/> ;
             underImg = <UnderImage item={this.props} cardType={'apartment'}/>;
-            srcImg = `http://localhost:5000/${this.props.main_image}`;
+            srcImg = `http://localhost:4000/${this.props.main_image}`;
         }
         else if (this.props.cardType === 'apartment'){
              insideImg = <InsideImage item={this.props} cardType={'apartment'}/>;
              underImg = <UnderImage item={this.props} cardType={'apartment'}/>;
-             srcImg = `http://localhost:5000/${this.props.main_image}`
+             srcImg = `http://localhost:4000/${this.props.main_image}`
         }
         else if (this.props.cardType === 'loading'){
             insideImg = null;
              underImg = <UnderImage item={this.props} cardType={'loading'}/>;
              srcImg = this.props.main_image
-        }
-        if(this.props.images){
-         images = this.props.images.toString().split(',')
-            .map(image => "http://localhost:5000/"+image);
         }
         return (
             <div className={"cell col-12 col-sm-6 col-md-4 col-lg-3"}>

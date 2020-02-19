@@ -63,7 +63,7 @@
 
 .cell {
     position: relative;
-    padding: 15px;
+    padding: 0 15px;
     border-radius: 4px;
     max-width: 420px;
 }

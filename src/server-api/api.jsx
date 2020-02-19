@@ -4,6 +4,7 @@ const api = {
     async getApartments(query = "") {
         try {
             const data = await fecther.get(`/apartments${query}`);
+            console.log(data)
             return data;
         }
         catch (error) {
@@ -21,7 +22,8 @@ const api = {
     },
     async getApartmentById(apartmentId) {
         try {
-            const data = await fecther.get(`http://localhost:5000/apartments/${apartmentId}`);
+            // const data = await fecther.get(`http://localhost:5000/apartments/${apartmentId}`);
+            const data = await fecther.get(`http://localhost:4000/apartments/${apartmentId}`);
             return data;
         }
         catch (error) {
@@ -30,7 +32,7 @@ const api = {
     },
     async getImagesById(apartmentId) {
         try {
-            const data = await fecther.get(`http://localhost:5000/images/${apartmentId}`);
+            const data = await fecther.get(`http://localhost:4000/images/${apartmentId}`);
             return data;
         }
         catch (error) {
@@ -39,7 +41,7 @@ const api = {
     },
     async deleteImagesById(imageId) {
         try {
-            const data = await fecther.delete(`http://localhost:5000/images/${imageId}`);
+            const data = await fecther.delete(`http://localhost:4000/images/${imageId}`);
             return data;
         }
         catch (error) {
@@ -48,7 +50,7 @@ const api = {
     },
     async editApartment(apartment) {
         try {
-            const data = await fecther.put('http://localhost:5000/apartments/',apartment);
+            const data = await fecther.put('http://localhost:4000/apartments/',apartment);
             return data;
         }
         catch (error) {
@@ -57,7 +59,7 @@ const api = {
     },
     async getRecentApartment() {
         try {
-            const data = await fecther.get(`http://localhost:5000/apartments/four/bydate`);
+            const data = await fecther.get(`http://localhost:4000/apartments/four/bydate`);
             return data;
         }
         catch (error) {
@@ -120,7 +122,7 @@ const api = {
     },
     async getRelevantCities(query) {
         try {
-            const data = await fecther.get(`http://localhost:5000/apartments/all/cities/${query}`);
+            const data = await fecther.get(`http://localhost:4000/apartments/all/cities/${query}`);
             return data;
         }
         catch (error) {
@@ -138,7 +140,7 @@ const api = {
     },
     async getApartmentByUserId(uesrId,query = "") {
         try {
-            const data = await fecther.get(`http://localhost:5000/apartments/user/${uesrId}${query}`);
+            const data = await fecther.get(`http://localhost:4000/apartments/user/${uesrId}${query}`);
             return data;
         }
         catch (error) {
@@ -147,7 +149,7 @@ const api = {
     },
     async removeApartment(apartmentId) {
         try {
-            const data = await fecther.put(`http://localhost:5000/apartments/remove/${apartmentId}`);
+            const data = await fecther.put(`http://localhost:4000/apartments/remove/${apartmentId}`);
             return data;
         }
         catch (error) {
@@ -157,7 +159,7 @@ const api = {
 
     async getUserDeatils(userId) {
         try {
-            const data = await fecther.get(`http://localhost:5000/users/${userId}`);
+            const data = await fecther.get(`http://localhost:4000/users/${userId}`);
             return data;
         }
         catch (error) {
@@ -166,7 +168,7 @@ const api = {
     },
     async getPassword(password) {
         try {
-            const data = await fecther.post(`http://localhost:5000/users/get/password`,{password:password});
+            const data = await fecther.post(`http://localhost:4000/users/get/password`,{password:password});
             return data.data;
         }
         catch (error) {
@@ -175,7 +177,7 @@ const api = {
     },
     async editUser(userDetails) {
         try {
-            const data = await fecther.post(`http://localhost:5000/users/edit_user`,userDetails);
+            const data = await fecther.post(`http://localhost:4000/users/edit_user`,userDetails);
             return data;
         }
         catch (error) {
@@ -184,7 +186,7 @@ const api = {
     },
     async editStatusApartment(statusDetails) {
         try {
-            const data = await fecther.put(`http://localhost:5000/apartments/edit/status`,statusDetails);
+            const data = await fecther.put(`http://localhost:4000/apartments/edit/status`,statusDetails);
             return data;
         }
         catch (error) {
@@ -193,7 +195,7 @@ const api = {
     },
     async getAllUsers() {
         try {
-            const data = await fecther.get(`http://localhost:5000/users/admin/allUsers`);
+            const data = await fecther.get(`http://localhost:4000/users/admin/allUsers`);
             return data;
         }
         catch (error) {

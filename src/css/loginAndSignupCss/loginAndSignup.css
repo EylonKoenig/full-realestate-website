@@ -1,57 +1,71 @@
 .login_or_singUp_page {
-    padding-top: 4.2rem;
-    padding-bottom: 4.2rem;
-    background: rgba(0, 0, 0, 0.5);
-    position: fixed;
-    z-index: 99;
-    height: 100vh; }
+  padding-top: 4.2rem;
+  padding-bottom: 4.2rem;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  z-index: 99;
+  height: 100vh;
+}
+
 .login_or_singUp_page a {
-    text-decoration: none !important; }
+  text-decoration: none !important;
+}
+
 .login_or_singUp_page h1, .login_or_singUp_page h2, .login_or_singUp_page h3 {
-    font-family: 'Kaushan Script', cursive; }
+  font-family: 'Kaushan Script', cursive;
+}
 
 .myform {
-    position: absolute;
-    -webkit-transform: translate(-50%, 0%);
-    -ms-transform: translate(-50%, 0%);
-    transform: translate(-50%, 0%);
-    top: 80px;
-    left: 50%;
-    z-index: 100;
-    display: -ms-flexbox;
-    display: -webkit-box;
-    display: flex;
-    padding: 1rem;
-    -ms-flex-direction: column;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    flex-direction: column;
-    width: 100%;
-    pointer-events: auto;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 1.1rem;
-    outline: 0;
-    max-width: 500px; }
+  position: absolute;
+  -webkit-transform: translate(-50%, 0%);
+          transform: translate(-50%, 0%);
+  top: 80px;
+  left: 50%;
+  z-index: 100;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  padding: 1rem;
+  -ms-flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  width: 100%;
+  pointer-events: auto;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 1.1rem;
+  outline: 0;
+  max-width: 500px;
+}
 
 .tx-tfm {
-    text-transform: uppercase; }
+  text-transform: uppercase;
+}
 
 .mybtn {
-    color: white;
-    border: none;
-    border-radius: 50px;
-    background: #b32827; }
+  color: white;
+  border: none;
+  border-radius: 50px;
+  background: #b32827;
+}
+
 .mybtn:hover {
-    background: #912422;
-    color: white; }
+  background: #912422;
+  color: white;
+}
 
 .form_link {
-    color: red;
-    border: none; }
+  color: red;
+  border: none;
+}
+
 .form_link:hover {
-    color: #b32827; }
+  color: #b32827;
+}
 
 form .error {
-    color: #ff0000; }
+  color: #ff0000;
+}
+/*# sourceMappingURL=loginAndSignup.css.map */

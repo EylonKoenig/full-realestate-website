@@ -24,7 +24,7 @@ class ImageForm extends React.Component {
         if (image) {
             var output = document.getElementById(`image-preview-File${this.props.index}`);
             if (typeof (image) == "string") {
-                output.src = "http://localhost:5000/" + image
+                output.src = "http://localhost:4000/" + image
             }
             else {
                 output.src = URL.createObjectURL(image);
@@ -36,7 +36,7 @@ class ImageForm extends React.Component {
         const deleteImage = await api.deleteImagesById(this.props.imageId.id);
         if (deleteImage) {
             var output = document.getElementById(`image-preview-File${this.props.index}`);
-            output.src = 'http://localhost:5000/images/general/loadingApartment.jpg'
+            output.src = 'http://localhost:4000/images/general/loadingApartment.jpg'
         }
         this.setState({ showDelete: false, showUpload: true })
     }
@@ -44,7 +44,7 @@ class ImageForm extends React.Component {
         return (
             <Form.Row>
                 <Form.Group as={Col} style={{ height: "150px" }}>
-                    <img className={'image-preview'} id={`image-preview-File${this.props.index}`} src="http://localhost:5000/images/general/loadingApartment.jpg" alt='' />
+                    <img className={'image-preview'} id={`image-preview-File${this.props.index}`} src="http://localhost:4000/images/general/loadingApartment.jpg" alt='' />
                     {this.state.showDelete ?
                         <Button id='delete-image' variant="danger" onClick={this.handelDelete}>delete image</Button> :
                         this.state.showUpload &&
