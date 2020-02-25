@@ -58,6 +58,8 @@ class LogIn extends React.Component {
                             this.props.loginHandelClick();
                             this.props.history.push('/my_apartments')
                         }
+                    } else {
+                        alert("worng user or password")
                     }
                 })
         }

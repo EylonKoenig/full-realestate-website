@@ -8,7 +8,7 @@ class StatusButton extends React.Component {
         this.state = {
             statusOption: [["approved", 'approvedButton'], ["pending", 'editDiv'], ["denied", 'deleteDiv'], ["removed", 'deleteDiv']],
             status: props.apartments,
-            statusClass: props.apartment.stauts ? "approvedButton" : "bla"
+            statusClass: props.apartment.stauts ? "approvedButton" : ""
         }
     }
 
@@ -39,12 +39,12 @@ class StatusButton extends React.Component {
                 <div className="dropdown d-flex">
                     <button className={this.state.statusClass + ' dropdown-toggle'}
                         type="button"
-                        id="status" data-toggle="dropdown">{this.state.status}</button>
+                        id="status" 
+                        data-toggle="dropdown">{this.state.status}</button>
                     <div className="dropdown-menu status" role="menu" aria-labelledby="menu1">
                         {this.state.statusOption.map((item, index) => {
                             return (
                                 <div key={index} className='statusButton'>
-                                    {/* <label htmlFor={item[0]} >{item[0]}</label> */}
                                     <input name="status" className={item[1]} type="button" value={item[0]}
                                         onClick={this.handleChange} />
                                 </div>

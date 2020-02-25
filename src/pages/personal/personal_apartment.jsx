@@ -45,13 +45,13 @@ class PersonalApartments extends React.Component {
     }
     getAprtments = async (userId, query) => {
         let data = await api.getApartmentByUserId(userId, query)
-        await new Promise(resolve => { setTimeout(resolve, 3500); });
+        await new Promise(resolve => { setTimeout(resolve, 2000); });
         this.setState({ allApartments: data.data, loading: false });
 
     }
     getAdminApartments = async (query) => {
         let data = await api.getAllAdminApartments(query)
-        await new Promise(resolve => { setTimeout(resolve, 3500); });
+        await new Promise(resolve => { setTimeout(resolve, 2000); });
         this.setState({ allApartments: data.data, loading: false });
     }
     handleInputChange = async (event) => {
@@ -78,7 +78,7 @@ class PersonalApartments extends React.Component {
     }
     async getdata(query = "") {
         let data = await api.getApartments(query)
-        await new Promise(resolve => { setTimeout(resolve, 3500); });
+        await new Promise(resolve => { setTimeout(resolve, 2000); });
         this.setState({ allApartments: data.data.apartments, loading: false });
     }
     render() {

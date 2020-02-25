@@ -52,7 +52,7 @@ class ProtopyType extends React.Component{
                                     </svg>
                                 </div>
                                 <div className="label-position">
-                                    <span className="blabla">House</span>
+                                    <span className="s">House</span>
                                 </div>
                             </label>
                         </div>

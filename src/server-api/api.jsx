@@ -4,7 +4,6 @@ const api = {
     async getApartments(query = "") {
         try {
             const data = await fecther.get(`/apartments${query}`);
-            console.log(data)
             return data;
         }
         catch (error) {
