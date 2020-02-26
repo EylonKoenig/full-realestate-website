@@ -37,7 +37,6 @@ class Home extends React.Component {
                 <UnderNavMain/>
                 <HomeMainImage/>
                 <MainPageCards apartments={this.state.apartments} loading={this.state.loading}/>
-               {/* <MainPageCities cities={this.state.apartments} loading={this.state.loading}/> */}
                 <StatisticsData/>
                 <BuyingInsidersGuide/>
                 <RentingInsidersGuide/>

@@ -20,10 +20,11 @@ class HomeMainImage extends React.Component {
                         <h1>The Home of Home Search<sup>℠</sup></h1>
                         <p>With the most complete source of homes for sale & real estate near you</p>
                         <ul className="center-nav">
-                            <li><a href="/">BUY</a></li>
-                            <li><a href="/">RENT</a></li>
-                            <li><a href="/">JUST SOLD</a></li>
-                            <li><a href="/">HOME VALUE</a></li>
+                            {/* <li><a href="/">BUY</a></li> */}
+                            <li><Link  to={{pathname:'/apartments',search:'?sale_status=sale'}}>BUY</Link></li>
+                            <li><Link  to={{pathname:'/apartments',search:'?sale_status=rent'}}>BUY</Link></li>
+                            <li><Link  to={{pathname:'/apartments'}}>JUST SOLD</Link></li>
+                            <li><Link  to={{pathname:'/apartments'}}>HOME VALUE</Link></li>
                         </ul>
                         <form>
                             <input type="text" className="search-input"
