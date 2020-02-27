@@ -293,7 +293,7 @@ class editApartment extends React.Component {
                             <Form.Row>
                                 <Form.Group as={Col} style={{ height: "150px" }}>
                                     <img className={'image-preview'}
-                                        src={apartment.main_image ? `http://shielded-savannah-89374.herokuapp.com/${apartment.main_image}` : "http://shielded-savannah-89374.herokuapp.com/images/general/loadingApartment.jpg"} 
+                                        src={apartment.main_image ? `https://shielded-savannah-89374.herokuapp.com/${apartment.main_image}` : "https://shielded-savannah-89374.herokuapp.com/images/general/loadingApartment.jpg"} 
                                         multiple id={'image-preview-File1'} 
                                         alt='' />
                                     <Label for="exampleFile">Upload your image</Label>

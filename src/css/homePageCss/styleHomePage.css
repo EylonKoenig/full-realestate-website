@@ -4,7 +4,7 @@ h2 {
 
 #main {
     height: 570px;
-    background-image: url("http://shielded-savannah-89374.herokuapp.com/images/general/takeover-desktop.jpg");
+    background-image: url("https://shielded-savannah-89374.herokuapp.com/images/general/takeover-desktop.jpg");
     background-size: cover;
     background-position: center center;
 }
@@ -253,7 +253,7 @@ button.myButton {
 
 #hero-image {
     height: 350px;
-    background-image: url("http://shielded-savannah-89374.herokuapp.com/images/general/main_image.png");
+    background-image: url("https://shielded-savannah-89374.herokuapp.com/images/general/main_image.png");
     background-size: cover;
     background-position: center center;
 }
