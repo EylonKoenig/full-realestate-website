@@ -20,9 +20,10 @@ class Header extends React.Component {
             login: false,
             singUp: false,
             user: cookie.load('auth')
+            
         };
-    }
 
+    }
     loginHandelClick = () => {
         this.setState({
             login: !this.state.login,
