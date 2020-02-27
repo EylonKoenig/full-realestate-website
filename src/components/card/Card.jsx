@@ -11,12 +11,12 @@ class Card extends React.Component {
         if (this.props.cardType === 'personalApartment'){
             insideImg = <InsideEditImage apartment={this.props} setData={this.props.setData}/> ;
             underImg = <UnderImage item={this.props} cardType={'apartment'}/>;
-            srcImg = `http://localhost:4000/${this.props.main_image}`;
+            srcImg = `http://shielded-savannah-89374.herokuapp.com/${this.props.main_image}`;
         }
         else if (this.props.cardType === 'apartment'){
              insideImg = <InsideImage item={this.props} cardType={'apartment'}/>;
              underImg = <UnderImage item={this.props} cardType={'apartment'}/>;
-             srcImg = `http://localhost:4000/${this.props.main_image}`
+             srcImg = `http://shielded-savannah-89374.herokuapp.com/${this.props.main_image}`
         }
         else if (this.props.cardType === 'loading'){
             insideImg = null;
@@ -31,8 +31,6 @@ class Card extends React.Component {
                                 className={'pictuerhref'}>
                         <div className={'image-cover'} index={'0'}>
                                 <img className={'images-center'} id={'image-bottom'} src={srcImg} alt={''}/>
-                            {/* {this.props.cardType === 'apartment' && */}
-                                {/* // <img className={'images-center'} id={'image-top'} src={`${images[0]}`} alt={''} style={{position: 'absolute',left:0}}/>} */}
                             {insideImg}
                         </div>
                         {underImg}

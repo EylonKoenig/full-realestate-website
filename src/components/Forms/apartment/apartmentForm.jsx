@@ -239,7 +239,7 @@ class ApartmentForm extends React.Component {
                             </Form.Row>
                             <Form.Row>
                                 <Form.Group as={Col} style={{ height: "150px" }}>
-                                    <img className={'image-preview'} src={"http://localhost:4000/images/general/loadingApartment.jpg"} multiple id={'image-preview-File1'} alt='' />
+                                    <img className={'image-preview'} src={"http://shielded-savannah-89374.herokuapp.com/images/general/loadingApartment.jpg"} multiple id={'image-preview-File1'} alt='' />
                                     <Label for="exampleFile">Upload your image</Label>
                                     <Input type="file" name="file" id="File1" onChange={this.imageChange} />
                                     <FormText color="muted">

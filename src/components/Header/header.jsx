@@ -72,7 +72,7 @@ class Header extends React.Component {
                     </button>
                     <div className="naverbar-position">
                         <div id="logo" className="navbar-brand ">
-                            <Link to={'/'}><img src="http://localhost:4000/images/general/logo.png" width="150px" alt={''} /></Link>
+                            <Link to={'/'}><img src="http://shielded-savannah-89374.herokuapp.com/images/general/logo.png" width="150px" alt={''} /></Link>
                         </div>
                         <div id="navbarNav" className="collapse navbar-collapse">
                             <ul className={"navigation navbar-nav order-lg-3 navbar-items"}>

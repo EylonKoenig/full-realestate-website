@@ -1,2 +1,2 @@
-const loading = { main_image: "http://localhost:4000/images/general/loadingApartment.jpg", images: ["http://localhost:4000/images/general/loadingApartment.jpg"] }
+const loading = { main_image: "http://shielded-savannah-89374.herokuapp.com/images/general/loadingApartment.jpg", images: ["http://shielded-savannah-89374.herokuapp.com/images/general/loadingApartment.jpg"] }
 export const searchLoadingData = Array(20).fill(loading);
