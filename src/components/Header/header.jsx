@@ -22,6 +22,7 @@ class Header extends React.Component {
             user: cookie.load('auth')
             
         };
+        console.log(document.cookie)
 
     }
     loginHandelClick = () => {
