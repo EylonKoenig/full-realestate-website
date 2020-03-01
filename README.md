@@ -9,16 +9,16 @@ password:
 for better experience use chrome 
 
 
-frontend: react.js
-backend:express.js
-db:mysql(heroku)
+frontend: react.js<br/>
+backend:express.js<br/>
+db:mysql(heroku)<br/>
 
 Website functionality:
- login and registration, Cookie Implementation
- search property with fliters
- add property ( need to approve with admin user)
- edit property
- edit user details
+ login and registration, Cookie Implementation<br/>
+ search property with fliters<br/>
+ add property ( need to approve with admin user)<br/>
+ edit property<br/>
+ edit user details<br/>
  
 admin user:
   eylonkoenig@gmail.com
