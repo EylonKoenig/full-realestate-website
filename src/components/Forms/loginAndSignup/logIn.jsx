@@ -51,13 +51,14 @@ class LogIn extends React.Component {
             api.login(result)
                 .then(response => {
                     if (response) {
-                        if (response.data.user.status === 'inactive') {
-                            cookie.remove('auth', { path: '/' })
-                            alert("your user is suspended");
-                        } else {
+                        // if (response.data.user.status === 'inactive') {    //  cookie cant be set with 3 party cors
+                        //     cookie.remove('auth', { path: '/' })
+                        //     alert("your user is suspended");
+                        // } else {
+                            cookie.save('auth',response.data,{path:'/',maxAge:1000 * 60 * 60 * 24})
                             this.props.loginHandelClick();
                             this.props.history.push('/my_apartments')
-                        }
+                        // }
                     } else {
                         alert("worng user or password")
                     }
