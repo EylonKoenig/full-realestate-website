@@ -1,9 +1,6 @@
 ![HomePage Form](https://i.imgur.com/03fTUby.jpg)
 # Full-real-estate-website
-A fully functional real estate website written in PHP.
-## On HOLD
-As my university academic session is starting, I won't be able to update my projects as often as I would like to.
-A fully functional real estate website
+A fully functional real estate website.
 Front-end - React.js
 Back-end - Express.js
 Database - MySQL
