@@ -14,7 +14,7 @@ https://koenigrealestate.netlify.com/
   * Add property
   * Edit property
   * Edit user details
-  *
+
 ## ToDO: 
   * Wish List
 
