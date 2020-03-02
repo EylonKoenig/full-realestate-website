@@ -1,31 +1,25 @@
-**my first react project:**
+![HomePage Form](https://i.imgur.com/03fTUby.jpg)
+# Full-real-estate-website
+A fully functional real estate website written in PHP.
+## On HOLD
+As my university academic session is starting, I won't be able to update my projects as often as I would like to.
+A fully functional real estate website
+Front-end - React.js
+Back-end - Express.js
+Database - MySQL
+
+## Live demo
 https://koenigrealestate.netlify.com/
 
-**user exmple:**
-sava@gmail.com
-password:
-123456
+## What is done at the moment ?
+  * Login and registration, Cookie Implementation
+  * Search property with fliters
+  * Add property
+  * Edit property
+  * Edit user details
+  *
+## ToDO: 
+  * Wish List
 
-for better experience use chrome 
-
-
-frontend: react.js<br/>
-backend:express.js<br/>
-db:mysql(heroku)<br/>
-
-**Website functionality:**<br/>
- login and registration, Cookie Implementation<br/>
- search property with fliters<br/>
- add property ( need to approve with admin user)<br/>
- edit property<br/>
- edit user details<br/>
- 
-**admin user:**
-  eylonkoenig@gmail.com
-  password:
-  123456
-  
-  enjoy!
-
- 
- 
+## License
+Licensed under MIT. You can use this script for free for any private or commercial projects.
