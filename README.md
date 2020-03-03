@@ -13,6 +13,7 @@ https://koenigrealestate.netlify.com/
   * Search property with fliters
   * Add property
   * Edit property
+  * Remove property
   * Edit user details
 
 ## ToDO: 
