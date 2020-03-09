@@ -55,7 +55,7 @@ class RightNavBar extends React.Component {
                         </div>
                         : <div className={'d-flex'}>
                             <li className="navigation"><a href="/">Hello {this.props.user.first_name}</a></li>
-                            <li className="navigation" id='submission'><a href="/">Submission</a>
+                            <li className="navigation" id='submission'><Link to={"/"}>Submission</Link>
                                 <div className={'submissionMenu'} id='submissionMenu'>
                                     <Link to={'/my_apartments'}>My apartments</Link>
                                     <Link to={'/postApartment'}>Add Property</Link>
