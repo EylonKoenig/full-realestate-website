@@ -22,7 +22,7 @@ class HomeMainImage extends React.Component {
                         <ul className="center-nav">
                             {/* <li><a href="/">BUY</a></li> */}
                             <li><Link  to={{pathname:'/apartments',search:'?sale_status=sale'}}>BUY</Link></li>
-                            <li><Link  to={{pathname:'/apartments',search:'?sale_status=rent'}}>BUY</Link></li>
+                            <li><Link  to={{pathname:'/apartments',search:'?sale_status=rent'}}>RENT</Link></li>
                             <li><Link  to={{pathname:'/apartments'}}>JUST SOLD</Link></li>
                             <li><Link  to={{pathname:'/apartments'}}>HOME VALUE</Link></li>
                         </ul>

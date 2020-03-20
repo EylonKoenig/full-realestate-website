@@ -1,7 +1,7 @@
 ![HomePage Form](https://i.imgur.com/03fTUby.jpg)
 # Full-realestate-website
 A fully functional realestate website.</br>
-The website connectes between salers and buyers</br>
+The website connects between sellers and buyers</br>
 
 
 Front-end - React.js</br>
@@ -13,7 +13,7 @@ https://koenigrealestate.netlify.com/
 
 ## What is done at the moment ?
   * Login and registration
-  * Search property with fliters
+  * Search property with filters
   * Add property
   * Edit property
   * Remove property
