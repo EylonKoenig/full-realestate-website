@@ -24,7 +24,7 @@ class Card extends React.Component {
              srcImg = this.props.main_image
         }
         return (
-            <div className={"cell col-12 col-sm-6 col-md-4 col-lg-3"}>
+            <div className={"cell col-12 col-sm-6 col-md-6 col-lg-3"}>
                 <div className={'text-above-picter'} id={"picter"}>{this.props.title}</div>
                 <div className={"card-cover"}>
                     <Link to={`/apartment/${this.props.id}` }

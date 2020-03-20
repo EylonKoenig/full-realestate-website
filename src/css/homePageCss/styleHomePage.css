@@ -375,6 +375,7 @@ button.myButton {
 }
 
 .form-section {
+    margin: auto;
     width: 80%;
     position: relative;
     display: -webkit-box;
@@ -383,7 +384,7 @@ button.myButton {
 }
 
 .form-section #searchinput {
-    background: transparent;
+    background: white;
     width: 100%;
     border-radius: .25rem 0 0 .25rem;
 }
