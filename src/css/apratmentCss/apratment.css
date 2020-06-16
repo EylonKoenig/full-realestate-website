@@ -28,7 +28,7 @@
     object-fit: cover;
 }
 
-#carouselExampleFade {
+#carouselExampleControls {
     position: absolute;
     left: 0;
     right: 0;
@@ -157,7 +157,7 @@
 }
 
 @media (min-width: 768px) {
-    #carouselExampleFade {
+    #carouselExampleControls {
         position: relative;
     }
     .carousel-item img {
