@@ -11,12 +11,12 @@ class Card extends React.Component {
         if (this.props.cardType === 'personalApartment'){
             insideImg = <InsideEditImage apartment={this.props} setData={this.props.setData}/> ;
             underImg = <UnderImage item={this.props} cardType={'apartment'}/>;
-            srcImg = `https://shielded-savannah-89374.herokuapp.com/${this.props.main_image}`;
+            srcImg = `https://eylonrealestate.herokuapp.com/${this.props.main_image}`;
         }
         else if (this.props.cardType === 'apartment'){
              insideImg = <InsideImage item={this.props} cardType={'apartment'}/>;
              underImg = <UnderImage item={this.props} cardType={'apartment'}/>;
-             srcImg = `https://shielded-savannah-89374.herokuapp.com/${this.props.main_image}`
+             srcImg = `https://eylonrealestate.herokuapp.com/${this.props.main_image}`
         }
         else if (this.props.cardType === 'loading'){
             insideImg = null;

@@ -24,7 +24,7 @@ class ImageForm extends React.Component {
         if (image) {
             var output = document.getElementById(`image-preview-File${this.props.index}`);
             if (typeof (image) == "string") {
-                output.src = "https://shielded-savannah-89374.herokuapp.com/" + image
+                output.src = "https://eylonrealestate.herokuapp.com/" + image
             }
             else {
                 output.src = URL.createObjectURL(image);
@@ -36,7 +36,7 @@ class ImageForm extends React.Component {
         const deleteImage = await api.deleteImagesById(this.props.imageId.id);
         if (deleteImage) {
             var output = document.getElementById(`image-preview-File${this.props.index}`);
-            output.src = 'https://shielded-savannah-89374.herokuapp.com/images/general/loadingApartment.jpg'
+            output.src = 'https://eylonrealestate.herokuapp.com/images/general/loadingApartment.jpg'
         }
         this.setState({ showDelete: false, showUpload: true })
     }
@@ -44,7 +44,7 @@ class ImageForm extends React.Component {
         return (
             <Form.Row>
                 <Form.Group as={Col} style={{ height: "150px" }}>
-                    <img className={'image-preview'} id={`image-preview-File${this.props.index}`} src="https://shielded-savannah-89374.herokuapp.com/images/general/loadingApartment.jpg" alt='' />
+                    <img className={'image-preview'} id={`image-preview-File${this.props.index}`} src="https://eylonrealestate.herokuapp.com/images/general/loadingApartment.jpg" alt='' />
                     {this.state.showDelete ?
                         <Button id='delete-image' variant="danger" onClick={this.handelDelete}>delete image</Button> :
                         this.state.showUpload &&

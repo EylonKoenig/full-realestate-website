@@ -57,7 +57,7 @@ class singleApartment extends React.Component {
         carouselItems.push(this.state.images.map((item, i) => {
             return (
                 <div className='carousel-item' key={i}>
-                    <img src={`https://shielded-savannah-89374.herokuapp.com/${this.state.images[i]}`} className="d-block w-100" alt="..." />
+                    <img src={`https://eylonrealestate.herokuapp.com/${this.state.images[i]}`} className="d-block w-100" alt="..." />
                 </div>
             )
         }));
@@ -78,7 +78,7 @@ class singleApartment extends React.Component {
                                 <div className="carousel-inner">
                                     {!this.state.loading &&
                                         <div className="carousel-item active">
-                                            <img src={`https://shielded-savannah-89374.herokuapp.com/${apartment.main_image}`} className="d-block w-100" alt="..." data-interval="10000" ref={'cpDev1'} />
+                                            <img src={`https://eylonrealestate.herokuapp.com/${apartment.main_image}`} className="d-block w-100" alt="..." data-interval="10000" ref={'cpDev1'} />
                                         </div>}
                                     {carouselItems}
                                 </div>
