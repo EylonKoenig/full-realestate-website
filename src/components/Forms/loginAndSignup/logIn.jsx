@@ -66,7 +66,7 @@ class LogIn extends React.Component {
                     }
                 })
         }
-    }
+    };
     render() {
         return (
             <div className={"row"} onClick={this.props.handleChildClick()}>

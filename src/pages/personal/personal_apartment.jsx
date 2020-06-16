@@ -10,7 +10,6 @@ import '../../css/galleryCss/galleryCss.css'
 import SearchPageLoading from "../../components/Loading/searchPageLoading";
 import Gallery from '../../components/gallery';
 import api from '../../server-api/api';
-// import MyPagination from '../../components/paginatino/pagaination';
 
 
 class PersonalApartments extends React.Component {

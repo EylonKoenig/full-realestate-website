@@ -8,7 +8,7 @@ function DeleteApartmentModal(props) {
     const [show, setShow] = useState(false);
   
     const handleClose = () => setShow(false);
-    const handleShow = () => {setShow(true)}
+    const handleShow = () => {setShow(true)};
     const handleDelete = async function(){
         await api.removeApartment(props.id)
         props.setData(cookie.load('auth').id);
