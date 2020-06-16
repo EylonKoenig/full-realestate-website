@@ -25,22 +25,22 @@ class singleApartment extends React.Component {
             this.props.history.push('/apartments')
         }
         this.setState({ apartment: data.data[0], loading: false });
-        const images = this.state.apartment.images
+        const images = this.state.apartment.images;
         if (images && images.length > 0) {
             this.setState({ images: this.state.apartment.images.toString().split(',') })
         }
     }
     getDate =()=>{
-        var myDate = new Date(this.state.apartment.created_on);
+        let myDate = new Date(this.state.apartment.created_on);
         const test = myDate.getTime();
         const current = new Date();
         const result = (current-test)/1000;
-        if(result/3600 < 24) return `${Math.ceil(result/3600)} Hours ago`
-        if(result/86400 < 24) return `${Math.ceil(result/86400)} Days ago`
-        if(result/604800  < 24) return `${Math.ceil(result/604800)} Weeks ago`
-        if(result/2629743  < 24) return `${Math.ceil(result/2629743)} Mnoths ago`
+        if(result/3600 < 24) return `${Math.ceil(result/3600)} Hours ago`;
+        if(result/86400 < 24) return `${Math.ceil(result/86400)} Days ago`;
+        if(result/604800  < 24) return `${Math.ceil(result/604800)} Weeks ago`;
+        if(result/2629743  < 24) return `${Math.ceil(result/2629743)} Mnoths ago`;
 
-    }
+    };
     render() {
         const { apartment } = this.state;
         let carouselItems = [];
@@ -65,6 +65,7 @@ class singleApartment extends React.Component {
             x = Math.round(x);
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
+
         return (
             <div className={'container-fluid'}>
                 <div className={'apartment-wrapper'}>
@@ -73,7 +74,7 @@ class singleApartment extends React.Component {
                     </section>
                     <div className={'carousel-wrapper position-relative'}>
                         <div className={'carousel-cover'}>
-                            <div id="carouselExampleFade" className="carousel slide carousel-fade" data-ride="carousel">
+                            <div id="carouselExampleControls" className="carousel slide carousel-fade" data-ride="carousel">
                                 <div className="carousel-inner">
                                     {!this.state.loading &&
                                         <div className="carousel-item active">
@@ -81,11 +82,11 @@ class singleApartment extends React.Component {
                                         </div>}
                                     {carouselItems}
                                 </div>
-                                <a className="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+                                <a className="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                                     <span className="carousel-control-prev-icon" aria-hidden="true"></span>
                                     <span className="sr-only">Previous</span>
                                 </a>
-                                <a className="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+                                <a className="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
                                     <span className="carousel-control-next-icon" aria-hidden="true"></span>
                                     <span className="sr-only">Next</span>
                                 </a>
@@ -167,3 +168,4 @@ class singleApartment extends React.Component {
 }
 
 export default withRouter(singleApartment);
+

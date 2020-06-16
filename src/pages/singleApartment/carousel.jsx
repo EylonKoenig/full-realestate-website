@@ -5,7 +5,6 @@ class Carousel extends React.Component {
     render() {
         const {apartment} = this.props;
         let carouselItems = [];
-
         carouselItems.push(apartment.images.map((item,i) =>  {
             return (
                 <div className='carousel-item'>
@@ -13,6 +12,8 @@ class Carousel extends React.Component {
                 </div>
             )
         }));
+        console.log(carouselItems);
+
 
         return (
             <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">

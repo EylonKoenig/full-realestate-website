@@ -20,6 +20,12 @@ class LogIn extends React.Component {
 
     }
 
+    componentDidMount() {
+        // set default user
+        document.getElementById("email").defaultValue = "example@gmail.com";
+        document.getElementById("password").defaultValue = "123456";
+    }
+
     inputChange =({ target: { name, value } })=> {
         const errors = validate(name, value, this.state[name].validations);
         this.setState({
@@ -33,7 +39,7 @@ class LogIn extends React.Component {
     handleSubmit = e => {
         e.preventDefault();
         let isOK = true;
-        this.setState({loading:true})
+        this.setState({loading:true});
         for (let prop in this.state) {
             if(prop === 'loading') continue;
             const field = this.state[prop];
@@ -90,8 +96,6 @@ class LogIn extends React.Component {
                                         className="form-control"
                                         id="email"
                                         aria-describedby="emailHelp"
-                                        // placeholder="Enter email"
-                                        value='example@gmail.com'
                                         onBlur={this.inputChange} />
                                     <InputErrors errors={this.state.user.errors}></InputErrors>
                                 </div>
@@ -102,8 +106,6 @@ class LogIn extends React.Component {
                                         id="password"
                                         className="form-control"
                                         autoComplete="on"
-                                        // placeholder="Enter Password"
-                                        value={'123456'}
                                         onBlur={this.inputChange} />
                                     <InputErrors errors={this.state.password.errors}></InputErrors>
                                 </div>
