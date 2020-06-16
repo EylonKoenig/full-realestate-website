@@ -76,7 +76,16 @@
     justify-content: space-between;
     -webkit-box-align: center;
     -ms-flex-align: center;
-    align-items: center; } }
+    align-items: center; }
+  .naverbar-position{
+    width: 100%;
+  }
+  .navbar-brand{
+    margin: 0;
+  }
+}
+
+
 
 
 .details div {

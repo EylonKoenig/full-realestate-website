@@ -402,7 +402,7 @@ input:checked+.slider:before {
 .naverbar-position {
     display: flex;
     justify-content: space-around;
-    width: 100%;
+    width: 90%;
 }
 
 .editButton,
